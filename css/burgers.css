@@ -1,0 +1,32 @@
+.burgers-content {
+    padding: 36px 76px 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+}
+
+.category-page-header {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+.back-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.category-page-title {
+    color: #000;
+    font-size: 35px;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.burger-items-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 35px 50px;
+}
