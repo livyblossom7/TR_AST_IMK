@@ -1,0 +1,122 @@
+:root {
+    --brand-orange: #fd5c28;
+    --brand-orange-hover: #e04a1b;
+}
+
+body {
+    background-color: #f9f9fb;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Navbar Styling */
+.navbar-brand span {
+    color: var(--brand-orange);
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin-left: 8px;
+}
+.nav-link {
+    font-weight: 600;
+    color: #333;
+}
+.nav-link:hover {
+    color: var(--brand-orange);
+}
+.icon-nav {
+    font-size: 1.2rem;
+    color: #333;
+    cursor: pointer;
+}
+
+/* Card Styling */
+.card {
+    border: 1px solid #f0f0f0;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    transition: transform 0.2s ease;
+    background-color: #fff;
+}
+.card:hover {
+    transform: translateY(-5px);
+}
+.card-img-top {
+    padding: 15px;
+    object-fit: contain;
+    height: 180px;
+}
+
+/* Badges & Buttons */
+.btn-add {
+    background-color: var(--brand-orange);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    line-height: 1;
+    cursor: pointer;
+}
+.btn-add:hover {
+    background-color: var(--brand-orange-hover);
+}
+.fav-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: white;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    color: var(--brand-orange);
+    font-size: 0.9rem;
+}
+
+/* Typography */
+.price {
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+.rating-star {
+    color: var(--brand-orange);
+    font-size: 0.85rem;
+}
+.text-orange {
+    color: var(--brand-orange);
+}
+.title-fw {
+    font-weight: 800;
+}
+
+/* Horizontal Card (Recommended) */
+.card-horizontal {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+}
+.card-horizontal img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+.card-horizontal .fav-badge-horiz {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: #555;
+    cursor: pointer;
+}
+.card-horizontal .btn-add {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+}
