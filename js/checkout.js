@@ -11,6 +11,10 @@
 
     var TRUCK_ICON = '<svg width="90" height="90" viewBox="0 0 166 166" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16.6 41.4999C16.6 32.344 24.0441 24.8999 33.2 24.8999H107.9C117.056 24.8999 124.5 32.344 124.5 41.4999V49.7999H137.65C142.06 49.7999 146.288 51.5377 149.4 54.6502L161.15 66.3999C164.262 69.5124 166 73.7402 166 78.1496V116.2C166 125.356 158.556 132.8 149.4 132.8H148.544C145.847 142.371 137.028 149.4 126.575 149.4C116.122 149.4 107.329 142.371 104.606 132.8H77.9941C75.2966 142.371 66.4778 149.4 56.025 149.4C45.5722 149.4 36.7794 142.371 34.0559 132.8H33.2C24.0441 132.8 16.6 125.356 16.6 116.2V103.75H6.225C2.77531 103.75 0 100.975 0 97.5249C0 94.0752 2.77531 91.2999 6.225 91.2999H35.275C38.7247 91.2999 41.5 88.5246 41.5 85.0749C41.5 81.6252 38.7247 78.8499 35.275 78.8499H6.225C2.77531 78.8499 0 76.0746 0 72.6249C0 69.1752 2.77531 66.3999 6.225 66.3999H51.875C55.3247 66.3999 58.1 63.6246 58.1 60.1749C58.1 56.7252 55.3247 53.9499 51.875 53.9499H6.225C2.77531 53.9499 0 51.1746 0 47.7249C0 44.2752 2.77531 41.4999 6.225 41.4999H16.6Z" fill="#FF8800"/></svg>';
 
+    var SEARCH_ICON = '<svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M16.5002 9.3502C16.5002 10.928 15.988 12.3855 15.1252 13.568L19.4771 17.9233C19.9068 18.353 19.9068 19.0508 19.4771 19.4805C19.0474 19.9102 18.3496 19.9102 17.9199 19.4805L13.568 15.1252C12.3855 15.988 10.928 16.5002 9.3502 16.5002C5.40051 16.5002 2.2002 13.2999 2.2002 9.3502C2.2002 5.40051 5.40051 2.2002 9.3502 2.2002C13.2999 2.2002 16.5002 5.40051 16.5002 9.3502ZM9.3502 14.3002C12.083 14.3002 14.3002 12.083 14.3002 9.3502C14.3002 6.61738 12.083 4.4002 9.3502 4.4002C6.61738 4.4002 4.4002 6.61738 4.4002 9.3502C4.4002 12.083 6.61738 14.3002 9.3502 14.3002Z" fill="black" fill-opacity="0.25"/></svg>';
+
+    var PIN_ICON = '<svg width="32" height="34" viewBox="0 0 32 34" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.40002 13.3841C6.40002 7.86305 10.7 3.39111 16 3.39111C21.3 3.39111 25.6 7.86305 25.6 13.3841C25.6 19.7052 19.59 27.2821 17.08 30.1698C16.49 30.848 15.505 30.848 14.915 30.1698C12.405 27.2821 6.39502 19.7052 6.39502 13.3841H6.40002ZM16 16.9553C17.765 16.9553 19.2 15.4346 19.2 13.5642C19.2 11.6939 17.765 10.1732 16 10.1732C14.235 10.1732 12.8 11.6939 12.8 13.5642C12.8 15.4346 14.235 16.9553 16 16.9553Z" fill="black"/></svg>';
+
     /* ---------------------------------------------------------
        Payment method catalogue
        --------------------------------------------------------- */
@@ -376,6 +380,141 @@
     }
 
     /* ---------------------------------------------------------
+       Delivery address flow
+       --------------------------------------------------------- */
+    var addresses = [
+        { id: 'home', label: 'Rumah', recipient: 'John Doe', address: 'Jl. Soekarno-Hatta No 87, RT 029/RW 012, Menteng, Jakarta Pusat, DKI Jakarta', phone: '+62-291-2912-1290' }
+    ];
+    var selectedAddressId = 'home';
+
+    function getAddress(id) {
+        for (var i = 0; i < addresses.length; i++) {
+            if (addresses[i].id === id) return addresses[i];
+        }
+        return null;
+    }
+
+    function renderAddressList() {
+        var selected = getAddress(selectedAddressId);
+        var others = addresses.filter(function (a) { return a.id !== selectedAddressId; });
+
+        var otherHtml = others.length ?
+            others.map(function (a) {
+                return '<div class="address-card" data-address-id="' + a.id + '">' +
+                    '<div class="address-card-accent"></div>' +
+                    '<div>' +
+                    '<div class="address-card-header"><span class="address-card-name">' + a.label + '</span><span class="address-card-divider"></span><span class="address-card-recipient">' + a.recipient + '</span></div>' +
+                    '<p class="address-card-line">' + a.address + '</p>' +
+                    '<p class="address-card-line">' + a.phone + '</p>' +
+                    '</div></div>';
+            }).join('') :
+            '<p class="address-empty">You don\u2019t have any :(</p>';
+
+        openModal(
+            BACK_ARROW_BTN() +
+            '<h2 class="address-modal-title">Addresses</h2>' +
+            '<div class="address-search">' + SEARCH_ICON + '<input type="text" class="address-search-input" placeholder="Find your address..." /></div>' +
+            '<p class="address-list-label">Selected Address:</p>' +
+            '<div class="address-card is-selected">' +
+            '<div class="address-card-accent"></div>' +
+            '<div>' +
+            '<div class="address-card-header"><span class="address-card-name">' + selected.label + '</span><span class="address-card-divider"></span><span class="address-card-recipient">' + selected.recipient + '</span></div>' +
+            '<p class="address-card-line">' + selected.address + '</p>' +
+            '<p class="address-card-line">' + selected.phone + '</p>' +
+            '<button type="button" class="address-card-edit" id="editAddressBtn">Edit Address</button>' +
+            '</div></div>' +
+            '<p class="address-list-label">Your Other Address:</p>' +
+            otherHtml +
+            '<button type="button" class="modal-submit modal-submit--wide" id="addNewAddressBtn">Add New Address</button>',
+            'address'
+        );
+
+        wireBack(closeModal);
+
+        modalBox.querySelector('#editAddressBtn').addEventListener('click', function () {
+            renderEditAddress(selected);
+        });
+        modalBox.querySelector('#addNewAddressBtn').addEventListener('click', renderAddNewAddress);
+        modalBox.querySelectorAll('.address-card[data-address-id]').forEach(function (card) {
+            card.addEventListener('click', function () {
+                selectedAddressId = card.dataset.addressId;
+                applySelectedAddress();
+                closeModal();
+            });
+        });
+    }
+
+    function renderEditAddress(address) {
+        openModal(
+            BACK_ARROW_BTN() +
+            '<h2 class="address-modal-title">Edit Address</h2>' +
+            '<div class="address-form">' +
+            '<div><label class="address-form-label">Location:</label>' +
+            '<div class="address-location-field">' + PIN_ICON + '<span class="address-location-value">' + address.address + '</span><span class="address-location-edit">Edit</span></div></div>' +
+            '<div><label class="address-form-label">Point Name:</label>' +
+            '<input type="text" class="address-form-input" id="addrPointName" value="' + address.label + '" /></div>' +
+            '<div><label class="address-form-label">Recepient\u2019s Name</label>' +
+            '<input type="text" class="address-form-input" id="addrRecipientName" value="' + address.recipient + '" /></div>' +
+            '<div><label class="address-form-label">Recepient\u2019s Telephone</label>' +
+            '<input type="text" class="address-form-input" id="addrRecipientPhone" value="' + address.phone + '" /></div>' +
+            '</div>' +
+            '<button type="button" class="modal-submit modal-submit--wide" id="saveAddressBtn">Save Edit</button>',
+            'address'
+        );
+
+        wireBack(renderAddressList);
+
+        modalBox.querySelector('#saveAddressBtn').addEventListener('click', function () {
+            address.label = valueOf('addrPointName') || address.label;
+            address.recipient = valueOf('addrRecipientName') || address.recipient;
+            address.phone = valueOf('addrRecipientPhone') || address.phone;
+            applySelectedAddress();
+            renderAddressList();
+        });
+    }
+
+    function renderAddNewAddress() {
+        openModal(
+            BACK_ARROW_BTN() +
+            '<h2 class="address-modal-title">Add New Address</h2>' +
+            '<div class="address-form">' +
+            '<div><label class="address-form-label">Location:</label>' +
+            '<div class="address-location-field">' + PIN_ICON + '<span class="address-location-value is-placeholder">Pick your location...</span><span class="address-location-edit">Edit</span></div></div>' +
+            '<div><label class="address-form-label">Point Name:</label>' +
+            '<input type="text" class="address-form-input" id="addrPointName" placeholder="Save your address as...." /></div>' +
+            '<div><label class="address-form-label">Recepient\u2019s Name</label>' +
+            '<input type="text" class="address-form-input" id="addrRecipientName" placeholder="Insert name..." /></div>' +
+            '<div><label class="address-form-label">Recepient\u2019s Telephone</label>' +
+            '<input type="text" class="address-form-input" id="addrRecipientPhone" placeholder="Insert your number..." /></div>' +
+            '</div>' +
+            '<button type="button" class="modal-submit modal-submit--wide" id="saveAddressBtn">Save New Address</button>',
+            'address'
+        );
+
+        wireBack(renderAddressList);
+
+        modalBox.querySelector('#saveAddressBtn').addEventListener('click', function () {
+            var newAddress = {
+                id: 'addr' + Date.now(),
+                label: valueOf('addrPointName') || 'New Address',
+                recipient: valueOf('addrRecipientName') || 'John Doe',
+                address: addresses[0].address,
+                phone: valueOf('addrRecipientPhone') || addresses[0].phone
+            };
+            addresses.push(newAddress);
+            selectedAddressId = newAddress.id;
+            applySelectedAddress();
+            closeModal();
+        });
+    }
+
+    function applySelectedAddress() {
+        var address = getAddress(selectedAddressId);
+        document.getElementById('addressRowName').innerHTML = address.label + '&nbsp;&nbsp;|&nbsp; ' + address.recipient;
+        document.getElementById('addressRowSub').textContent = address.address;
+    }
+
+    /* ---------------------------------------------------------
        Order success modal
        --------------------------------------------------------- */
     function renderOrderSuccess() {
@@ -395,6 +534,8 @@
     /* ---------------------------------------------------------
        Wire up entry points
        --------------------------------------------------------- */
+    document.getElementById('addressRow').addEventListener('click', renderAddressList);
+
     document.getElementById('paymentPicker').addEventListener('click', renderCategoryList);
 
     document.getElementById('buyNowBtn').addEventListener('click', function () {
