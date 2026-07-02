@@ -1,0 +1,510 @@
+/* === Checkout Page === */
+.checkout-page {
+    padding: 51px 111px 100px;
+}
+
+.checkout-back-link {
+    display: inline-flex;
+    margin-bottom: 45px;
+}
+
+.checkout-title {
+    font-size: 38px;
+    font-weight: 800;
+    margin-bottom: 30px;
+}
+
+.checkout-layout {
+    display: flex;
+    align-items: flex-start;
+    gap: 89px;
+}
+
+.checkout-main {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.checkout-box {
+    border-radius: 15px;
+    border: 4px solid rgba(0, 0, 0, 0.06);
+    background: #fff;
+    position: relative;
+}
+
+/* Address box */
+.address-box {
+    padding: 17px 24px 20px;
+}
+
+.address-box-label {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+
+.address-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    position: relative;
+    padding-right: 40px;
+    cursor: pointer;
+}
+
+.address-row-name {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.address-row-sub {
+    font-size: 16px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.5);
+    margin-top: 8px;
+}
+
+.address-chevron {
+    position: absolute;
+    right: 0;
+    top: 8px;
+}
+
+/* Payment box */
+.payment-box {
+    padding: 17px 24px 24px;
+}
+
+.payment-box-label {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+
+.payment-box-label.is-error {
+    color: #FE4343;
+}
+
+.payment-picker {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 81px;
+    padding: 16px 20px;
+    border-radius: 15px;
+    border: 4px solid rgba(0, 0, 0, 0.06);
+    background: #fff;
+    text-align: left;
+}
+
+.payment-picker.is-selected {
+    border-color: rgba(244, 83, 10, 0.5);
+    background: rgba(244, 83, 10, 0.2);
+}
+
+.payment-picker.is-error {
+    border-color: rgba(192, 25, 25, 0.25);
+    background: rgba(255, 0, 0, 0.16);
+}
+
+.payment-picker-label {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.payment-picker.is-error .payment-picker-label {
+    color: #FE4343;
+}
+
+.payment-picker-sub {
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 4px;
+}
+
+.payment-picker-action {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.payment-picker.is-selected .payment-picker-action {
+    color: var(--orange-primary);
+}
+
+/* Notes box */
+.notes-box {
+    padding: 17px 24px 20px;
+}
+
+.notes-box-label {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+
+.notes-input {
+    width: 100%;
+    height: 50px;
+    padding: 0 17px;
+    border-radius: 15px;
+    border: 4px solid rgba(0, 0, 0, 0.06);
+    font-family: var(--font);
+    font-size: 16px;
+    font-weight: 500;
+    color: #000;
+}
+
+.notes-input::placeholder {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+/* Checkout Summary sidebar (reuse cart-summary look) */
+.checkout-summary {
+    flex-shrink: 0;
+    width: 446px;
+    padding: 29px 33px;
+    border-radius: 15px;
+    border: 3px solid rgba(0, 0, 0, 0.06);
+}
+
+.checkout-summary-title {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+.checkout-summary-line {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    font-size: 20px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
+}
+
+.checkout-summary-note {
+    font-size: 10px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+.checkout-summary-divider {
+    height: 4px;
+    background: rgba(0, 0, 0, 0.06);
+    margin: 8px 0 24px;
+}
+
+.checkout-summary-total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+.checkout-summary-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* =====================================================
+   Modal system
+   ===================================================== */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+}
+
+.modal-overlay.is-open {
+    display: flex;
+}
+
+.modal {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    background: #fff;
+    border-radius: 20px;
+    padding: 40px 45px;
+    box-sizing: border-box;
+}
+
+.modal--narrow {
+    max-width: 498px;
+    padding: 28px 40px 36px;
+}
+
+.modal--list {
+    max-width: 356px;
+    padding: 30px 36px 36px;
+}
+
+.modal-back-btn {
+    position: absolute;
+    left: 24px;
+    top: 24px;
+    display: flex;
+}
+
+.modal-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.modal-subtitle {
+    text-align: center;
+    font-size: 19px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+/* Category / sub-choice list */
+.method-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-top: 8px;
+}
+
+.method-list-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 16px 22px;
+    border-radius: 15px;
+    border: 4px solid rgba(0, 0, 0, 0.06);
+    background: #fff;
+    text-align: left;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.method-list-item:hover {
+    border-color: rgba(244, 83, 10, 0.5);
+    background: rgba(244, 83, 10, 0.08);
+}
+
+/* Credential form */
+.cred-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-top: 4px;
+}
+
+.cred-field-label {
+    font-size: 19px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.cred-input {
+    width: 100%;
+    height: 49px;
+    padding: 0 17px;
+    border-radius: 15px;
+    border: 4px solid rgba(0, 0, 0, 0.06);
+    font-family: var(--font);
+    font-size: 15px;
+    font-weight: 500;
+    color: #000;
+}
+
+.cred-row {
+    display: flex;
+    gap: 20px;
+}
+
+.cred-row .cred-field {
+    flex: 1;
+}
+
+.modal-submit {
+    display: flex;
+    width: 220px;
+    height: 53px;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 10px;
+    background: var(--orange-primary);
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 26px auto 0;
+}
+
+/* Confirmation / review rows */
+.review-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin: 10px 0 20px;
+}
+
+.review-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    font-size: 19px;
+}
+
+.review-row-label {
+    font-weight: 600;
+}
+
+.review-row-value {
+    font-weight: 500;
+}
+
+.confirm-note {
+    text-align: center;
+    font-size: 19px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+/* Redirect / instructions modal */
+.redirect-icon {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.redirect-title {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.redirect-sub {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 24px;
+}
+
+.va-details {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.va-details-row {
+    display: flex;
+    gap: 40px;
+    font-size: 22px;
+}
+
+.va-details-row .va-label {
+    font-weight: 600;
+}
+
+.va-details-row .va-value {
+    font-weight: 500;
+}
+
+.va-deadline {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.va-deadline-label {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.va-deadline-value {
+    font-size: 19px;
+    font-weight: 600;
+}
+
+.modal-btn-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+}
+
+.modal-btn-primary {
+    display: flex;
+    width: 308px;
+    height: 60px;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 10px;
+    background: var(--orange-primary);
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.modal-btn-secondary {
+    display: flex;
+    width: 308px;
+    height: 60px;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 10px;
+    background: #ebebeb;
+    color: #000;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+/* Success modal */
+.success-icon {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.success-title {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.success-sub {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+
+.success-time {
+    text-align: center;
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 26px;
+}
