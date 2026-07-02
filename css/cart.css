@@ -45,6 +45,12 @@
     gap: 20px;
 }
 
+.cart-empty {
+    font-size: 20px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.5);
+}
+
 .cart-item {
     display: flex;
     align-items: center;
