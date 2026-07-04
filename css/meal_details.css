@@ -1,12 +1,14 @@
 :root {
-    --brand-orange: #f25c05; 
-    --brand-orange-hover: #d95304;
+    /* Warnanya udah gue ganti ke kode hex dari gambar lu */
+    --brand-orange: #F4530A; 
+    --brand-orange-hover: #d14708; /* Sedikit lebih gelap buat efek hover */
     --brand-orange-light: #ffeadf;
 }
 
 body {
     background-color: #f9f9fb;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* Fontnya gue ubah ke Plus Jakarta Sans */
+    font-family: 'Plus Jakarta Sans', sans-serif; 
 }
 
 /* Navbar Styling */
@@ -148,75 +150,4 @@ body {
     font-size: 3rem;
     line-height: 1;
     color: white;
-}
-
-/* Profile Dropdown */
-.profile-dropdown-menu {
-    width: 320px;
-    padding: 0;
-    border: none;
-    border-radius: 10px;
-    box-shadow: 0 4px 13px rgba(0, 0, 0, 0.25);
-    overflow: hidden;
-}
-
-.profile-dropdown-menu.show {
-    animation: profileDropdownSlide 0.2s ease;
-}
-
-@keyframes profileDropdownSlide {
-    from { opacity: 0; transform: translateY(-12px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.profile-dropdown-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 16px 20px;
-    border-bottom: 1px solid #eee;
-}
-
-.profile-dropdown-header img {
-    width: 36px;
-    height: 36px;
-    flex-shrink: 0;
-    border: 1.5px solid var(--brand-orange);
-}
-
-.profile-dropdown-name {
-    font-weight: 600;
-    font-size: 0.95rem;
-    color: #1a1c1c;
-}
-
-.profile-dropdown-email {
-    font-size: 0.8rem;
-    color: #9a9999;
-}
-
-.profile-dropdown-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 20px;
-    font-weight: 600;
-    color: #000;
-}
-
-.profile-dropdown-item:hover,
-.profile-dropdown-item:focus {
-    background: var(--brand-orange-light);
-    color: var(--brand-orange);
-}
-
-.profile-dropdown-item--logout {
-    color: #f00;
-    border-top: 1px solid #eee;
-}
-
-.profile-dropdown-item--logout:hover,
-.profile-dropdown-item--logout:focus {
-    background: #ffe1e1;
-    color: #f00;
 }

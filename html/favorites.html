@@ -1,225 +1,353 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wagba - Favorite Menu</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <!-- Panggil CSS buatan sendiri -->
-    <link rel="stylesheet" href="../css/favorites.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wagba - Favorite Menu</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --brand-orange: #F4530A;
+    --brand-orange-hover: #d14708;
+    --brand-orange-light: #ffeadf;
+}
+body {
+    background-color: #f9f9fb;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+.navbar-brand span { color: var(--brand-orange); font-weight: 700; font-size: 1.5rem; margin-left: 8px; }
+.nav-link { font-weight: 600; color: #333; padding: 8px 20px !important; }
+.nav-link:hover { color: var(--brand-orange); }
+.nav-active { background-color: var(--brand-orange-light); color: var(--brand-orange) !important; border-radius: 8px; }
+.icon-nav { font-size: 1.2rem; color: #333; cursor: pointer; }
+.text-orange { color: var(--brand-orange) !important; }
+.title-fw { font-weight: 800; }
+.rating-star { color: var(--brand-orange); font-size: 0.9rem; }
+.btn-back { background: #fff; border: 1px solid #eee; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; color: #333; cursor: pointer; transition: 0.2s; }
+.btn-back:hover { background: var(--brand-orange-light); color: var(--brand-orange); }
+
+/* --- CSS TAMBAHAN BUAT HALAMAN FAVORITE --- */
+.fav-card {
+    border: 1px solid #eaeaea;
+    border-radius: 12px;
+    background-color: #fff;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.fav-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.04);
+}
+.fav-card-img-wrap {
+    position: relative;
+    padding: 20px;
+    text-align: center;
+}
+.fav-card-img-wrap img {
+    height: 130px;
+    object-fit: contain;
+}
+.btn-heart-circle {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #fff;
+    border: 1px solid #f0f0f0;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ccc;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    cursor: pointer;
+    transition: 0.2s;
+}
+.btn-heart-circle:hover {
+    background: var(--brand-orange-light);
+}
+.btn-heart-circle.active {
+    color: var(--brand-orange);
+}
+.fav-card-body {
+    border-top: 1px solid #eaeaea;
+    padding: 15px;
+}
+.price-medium {
+    font-weight: 800;
+    font-size: 1.25rem;
+}
+
+/* Horizontal Cards buat "Recommended" */
+.rec-horizontal-card {
+    border: 1px solid #eaeaea;
+    border-radius: 12px;
+    background-color: #fff;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    transition: transform 0.2s;
+}
+.rec-horizontal-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+}
+.rec-horizontal-card img {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    margin-right: 15px;
+}
+.btn-heart-plain {
+    background: none;
+    border: none;
+    color: #333;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.btn-heart-plain:hover {
+    transform: scale(1.1);
+}
+</style>
 </head>
 <body>
 
-    <!-- Header / Navbar -->
-    <div class="bg-white border-bottom shadow-sm mb-4">
-        <div class="container">
-            <nav class="navbar navbar-expand-lg py-3">
-                <a class="navbar-brand d-flex align-items-center" href="#">
-                    <i class="bi bi-egg-fried text-orange fs-2"></i>
-                    <span>Wagba</span>
-                </a>
-                
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                
-                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-                    <ul class="navbar-nav gap-4">
-                        <li class="nav-item"><a class="nav-link text-dark" href="#">Home</a></li>
-                        <li class="nav-item"><a class="nav-link text-dark" href="#">Categories</a></li>
-                        <li class="nav-item"><a class="nav-link text-dark" href="#">Offers</a></li>
-                    </ul>
-                </div>
+<nav class="navbar navbar-expand-lg bg-white border-bottom py-3">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="#">
+       <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M10.5 42C9.675 42 9 42.675 9 43.5C9 47.6437 12.3562 51 16.5 51H43.5C47.6437 51 51 47.6437 51 43.5C51 42.675 50.325 42 49.5 42H10.5ZM9 24.9375C9 26.0812 9.92812 27 11.0625 27H48.9375C50.0812 27 51 26.0719 51 24.9375C51 23.325 50.7563 21.7125 49.9875 20.2969C47.9062 16.4719 42.2719 9 30 9C17.7281 9 12.0938 16.4625 10.0125 20.2969C9.24375 21.7125 9 23.325 9 24.9375ZM6 34.5C6 36.1594 7.34062 37.5 9 37.5H51C52.6594 37.5 54 36.1594 54 34.5C54 32.8406 52.6594 31.5 51 31.5H9C7.34062 31.5 6 32.8406 6 34.5ZM30 12.75C31.2469 12.75 32.25 13.7531 32.25 15C32.25 16.2469 31.2469 17.25 30 17.25C28.7531 17.25 27.75 16.2469 27.75 15C27.75 13.7531 28.7531 12.75 30 12.75ZM17.25 18C17.25 16.7531 18.2531 15.75 19.5 15.75C20.7469 15.75 21.75 16.7531 21.75 18C21.75 19.2469 20.7469 20.25 19.5 20.25C18.2531 20.25 17.25 19.2469 17.25 18ZM40.5 15.75C41.7469 15.75 42.75 16.7531 42.75 18C42.75 19.2469 41.7469 20.25 40.5 20.25C39.2531 20.25 38.25 19.2469 38.25 18C38.25 16.7531 39.2531 15.75 40.5 15.75Z" fill="#F4530A"/>
+</svg>
+      <span>Wagba</span>
+    </a>
+    <div class="collapse navbar-collapse justify-content-center">
+      <ul class="navbar-nav gap-2">
+        <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Categories</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Offers</a></li>
+      </ul>
+    </div>
+    <div class="d-flex align-items-center gap-3">
+      <i class="bi bi-search icon-nav"></i>
+      <i class="bi bi-suit-heart-fill text-orange icon-nav"></i>
+      <i class="bi bi-cart3 icon-nav"></i>
+      <div class="dropdown">
+        <a class="d-flex align-items-center text-decoration-none dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+          <img src="https://i.pravatar.cc/32" class="rounded-circle" width="32" height="32" alt="Profile">
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
 
-                <div class="d-flex align-items-center gap-4 d-none d-lg-flex">
-                    <i class="bi bi-search icon-nav"></i>
-                    <i class="bi bi-heart-fill text-orange icon-nav"></i>
-                    <i class="bi bi-cart2 icon-nav"></i>
-                    <div class="dropdown">
-                        <a href="#" class="d-flex align-items-center text-decoration-none text-dark dropdown-toggle" data-bs-toggle="dropdown">
-                            <img src="https://via.placeholder.com/35" alt="Profile" class="rounded-circle me-2">
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end profile-dropdown-menu">
-                            <li class="profile-dropdown-header">
-                                <img src="https://via.placeholder.com/35" alt="Profile" class="rounded-circle">
-                                <div>
-                                    <p class="profile-dropdown-name mb-0">SpongeBob SquarePants</p>
-                                    <p class="profile-dropdown-email mb-0">spongebob1407@gmail.com</p>
-                                </div>
-                            </li>
-                            <li><a class="dropdown-item profile-dropdown-item" href="#"><i class="bi bi-person"></i> My Profile</a></li>
-                            <li><a class="dropdown-item profile-dropdown-item" href="#"><i class="bi bi-gear"></i> Settings</a></li>
-                            <li><a class="dropdown-item profile-dropdown-item profile-dropdown-item--logout" href="#"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
+<div class="container py-4">
+
+  <div class="d-flex align-items-center mb-1">
+    <button class="btn-back me-3" id="backBtn">
+      <i class="bi bi-chevron-left fw-bold"></i>
+    </button>
+    <h2 class="title-fw m-0 fs-3">Favorite Menu</h2>
+  </div>
+  <p class="text-muted mb-4" style="margin-left: 3.5rem; font-size: 0.95rem;">Delicious meals you've saved for later. Just one tap away.</p>
+
+  <div class="row g-4 mb-5">
+    
+    <div class="col-sm-6 col-lg-3">
+      <div class="fav-card h-100">
+        <div class="fav-card-img-wrap">
+          <div class="btn-heart-circle active"><i class="bi bi-suit-heart-fill"></i></div>
+          <img src="assets/img/jumbo-burger.png" alt="Jumbo Burger" class="img-fluid">
         </div>
+        <div class="fav-card-body">
+          <h6 class="fw-bold mb-1 fs-6">Jumbo Burger</h6>
+          <div class="d-flex align-items-center gap-1 mb-2" style="font-size: 0.85rem;">
+            <i class="bi bi-star-fill rating-star"></i>
+            <span class="fw-semibold">4.8</span>
+            <span class="text-muted">(2.3k+)</span>
+          </div>
+          <div class="price-medium text-dark">$12.00</div>
+        </div>
+      </div>
     </div>
 
-    <!-- Main Content -->
-    <div class="container pb-5">
-        
-        <!-- Header Title -->
-        <div class="d-flex align-items-center mb-1">
-            <a href="#" class="text-dark me-3"><i class="bi bi-chevron-left fs-3 fw-bold"></i></a>
-            <h2 class="m-0 title-fw">Favorite Menu</h2>
+    <div class="col-sm-6 col-lg-3">
+      <div class="fav-card h-100">
+        <div class="fav-card-img-wrap">
+          <div class="btn-heart-circle active"><i class="bi bi-suit-heart-fill"></i></div>
+          <img src="assets/img/margherita-pizza.png" alt="Margherita Pizza" class="img-fluid">
         </div>
-        <p class="text-muted ms-5 mb-4">Delicious meals you've saved for later. Just one tap away.</p>
-
-        <!-- Favorite Menu Grid -->
-        <div class="row g-4 mb-5">
-            <!-- Card 1 -->
-            <div class="col-lg-3 col-md-6">
-                <div class="card h-100 position-relative">
-                    <div class="fav-badge"><i class="bi bi-heart-fill"></i></div>
-                    <img src="https://via.placeholder.com/300x200?text=Jumbo+Burger" class="card-img-top" alt="Burger">
-                    <div class="card-body">
-                        <h6 class="card-title fw-bold">Jumbo Burger</h6>
-                        <div class="d-flex align-items-center mb-3">
-                            <i class="bi bi-star-fill rating-star me-1"></i>
-                            <span class="fs-6 fw-bold me-1">4.8</span>
-                            <span class="text-muted" style="font-size: 0.8rem;">(2.3k+)</span>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="price">$12.00</span>
-                            <button class="btn-add">+</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 2 -->
-            <div class="col-lg-3 col-md-6">
-                <div class="card h-100 position-relative">
-                    <div class="fav-badge"><i class="bi bi-heart-fill"></i></div>
-                    <img src="https://via.placeholder.com/300x200?text=Margherita+Pizza" class="card-img-top" alt="Pizza">
-                    <div class="card-body">
-                        <h6 class="card-title fw-bold">Margherita Pizza</h6>
-                        <div class="d-flex align-items-center mb-3">
-                            <i class="bi bi-star-fill rating-star me-1"></i>
-                            <span class="fs-6 fw-bold me-1">4.6</span>
-                            <span class="text-muted" style="font-size: 0.8rem;">(1.4k+)</span>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="price">$10.00</span>
-                            <button class="btn-add">+</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 3 -->
-            <div class="col-lg-3 col-md-6">
-                <div class="card h-100 position-relative">
-                    <div class="fav-badge"><i class="bi bi-heart-fill"></i></div>
-                    <img src="https://via.placeholder.com/300x200?text=Chicken+Shawarma" class="card-img-top" alt="Shawarma">
-                    <div class="card-body">
-                        <h6 class="card-title fw-bold">Chicken Shawarma</h6>
-                        <div class="d-flex align-items-center mb-3">
-                            <i class="bi bi-star-fill rating-star me-1"></i>
-                            <span class="fs-6 fw-bold me-1">4.8</span>
-                            <span class="text-muted" style="font-size: 0.8rem;">(2.2k+)</span>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="price">$9.00</span>
-                            <button class="btn-add">+</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 4 -->
-            <div class="col-lg-3 col-md-6">
-                <div class="card h-100 position-relative">
-                    <div class="fav-badge"><i class="bi bi-heart-fill"></i></div>
-                    <img src="https://via.placeholder.com/300x200?text=Beef+Bulgogi" class="card-img-top" alt="Bulgogi">
-                    <div class="card-body">
-                        <h6 class="card-title fw-bold">Beef Bulgogi Bowl</h6>
-                        <div class="d-flex align-items-center mb-3">
-                            <i class="bi bi-star-fill rating-star me-1"></i>
-                            <span class="fs-6 fw-bold me-1">4.8</span>
-                            <span class="text-muted" style="font-size: 0.8rem;">(1.2k+)</span>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="price">$13.00</span>
-                            <button class="btn-add">+</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="fav-card-body">
+          <h6 class="fw-bold mb-1 fs-6">Margherita Pizza</h6>
+          <div class="d-flex align-items-center gap-1 mb-2" style="font-size: 0.85rem;">
+            <i class="bi bi-star-fill rating-star"></i>
+            <span class="fw-semibold">4.6</span>
+            <span class="text-muted">(1.4k+)</span>
+          </div>
+          <div class="price-medium text-dark">$10.00</div>
         </div>
-
-        <hr class="text-muted my-5">
-
-        <!-- Recommended Section -->
-        <div class="d-flex justify-content-between align-items-center mb-4">
-            <h3 class="title-fw m-0">Recommended For You</h3>
-            <a href="#" class="text-decoration-none text-orange fw-bold">View All</a>
-        </div>
-
-        <div class="row g-4">
-            <!-- Rec Card 1 -->
-            <div class="col-lg-4 col-md-12">
-                <div class="card card-horizontal position-relative">
-                    <img src="https://via.placeholder.com/150?text=Fried+Chicken" alt="Chicken">
-                    <div class="ms-3 pt-2 w-100">
-                        <h6 class="fw-bold mb-1">Crispy Fried Chicken</h6>
-                        <div class="d-flex align-items-center mb-2">
-                            <i class="bi bi-star-fill rating-star me-1" style="font-size: 0.75rem;"></i>
-                            <span class="fw-bold me-1" style="font-size: 0.85rem;">4.8</span>
-                            <span class="text-muted" style="font-size: 0.75rem;">(2.4k+)</span>
-                        </div>
-                        <div class="price" style="font-size: 0.95rem;">$10.00</div>
-                    </div>
-                    <i class="bi bi-heart fav-badge-horiz"></i>
-                    <button class="btn-add">+</button>
-                </div>
-            </div>
-
-            <!-- Rec Card 2 -->
-            <div class="col-lg-4 col-md-12">
-                <div class="card card-horizontal position-relative">
-                    <img src="https://via.placeholder.com/150?text=Truffle+Burger" alt="Burger">
-                    <div class="ms-3 pt-2 w-100">
-                        <h6 class="fw-bold mb-1">Truffle Burger</h6>
-                        <div class="d-flex align-items-center mb-2">
-                            <i class="bi bi-star-fill rating-star me-1" style="font-size: 0.75rem;"></i>
-                            <span class="fw-bold me-1" style="font-size: 0.85rem;">4.9</span>
-                            <span class="text-muted" style="font-size: 0.75rem;">(1.8k+)</span>
-                        </div>
-                        <div class="price" style="font-size: 0.95rem;">$15.00</div>
-                    </div>
-                    <i class="bi bi-heart fav-badge-horiz"></i>
-                    <button class="btn-add">+</button>
-                </div>
-            </div>
-
-            <!-- Rec Card 3 -->
-            <div class="col-lg-4 col-md-12">
-                <div class="card card-horizontal position-relative">
-                    <img src="https://via.placeholder.com/150?text=Matcha+Latte" alt="Matcha">
-                    <div class="ms-3 pt-2 w-100">
-                        <h6 class="fw-bold mb-1">Matcha Latte</h6>
-                        <div class="d-flex align-items-center mb-2">
-                            <i class="bi bi-star-fill rating-star me-1" style="font-size: 0.75rem;"></i>
-                            <span class="fw-bold me-1" style="font-size: 0.85rem;">4.7</span>
-                            <span class="text-muted" style="font-size: 0.75rem;">(1.2k+)</span>
-                        </div>
-                        <div class="price" style="font-size: 0.95rem;">$6.00</div>
-                    </div>
-                    <i class="bi bi-heart fav-badge-horiz"></i>
-                    <button class="btn-add">+</button>
-                </div>
-            </div>
-        </div>
-
+      </div>
     </div>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <div class="col-sm-6 col-lg-3">
+      <div class="fav-card h-100">
+        <div class="fav-card-img-wrap">
+          <div class="btn-heart-circle active"><i class="bi bi-suit-heart-fill"></i></div>
+          <img src="assets/img/chicken-shawarma.png" alt="Chicken Shawarma" class="img-fluid">
+        </div>
+        <div class="fav-card-body">
+          <h6 class="fw-bold mb-1 fs-6">Chicken Shawarma</h6>
+          <div class="d-flex align-items-center gap-1 mb-2" style="font-size: 0.85rem;">
+            <i class="bi bi-star-fill rating-star"></i>
+            <span class="fw-semibold">4.8</span>
+            <span class="text-muted">(2.2k+)</span>
+          </div>
+          <div class="price-medium text-dark">$9.00</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-6 col-lg-3">
+      <div class="fav-card h-100">
+        <div class="fav-card-img-wrap">
+          <div class="btn-heart-circle active"><i class="bi bi-suit-heart-fill"></i></div>
+          <img src="assets/img/beef-bulgogi.png" alt="Beef Bulgogi Bowl" class="img-fluid">
+        </div>
+        <div class="fav-card-body">
+          <h6 class="fw-bold mb-1 fs-6">Beef Bulgogi Bowl</h6>
+          <div class="d-flex align-items-center gap-1 mb-2" style="font-size: 0.85rem;">
+            <i class="bi bi-star-fill rating-star"></i>
+            <span class="fw-semibold">4.8</span>
+            <span class="text-muted">(1.2k+)</span>
+          </div>
+          <div class="price-medium text-dark">$13.00</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <hr class="text-muted opacity-25 mb-4">
+
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h4 class="title-fw m-0 fs-4">Reccomended For You</h4>
+    <a href="#" class="text-orange fw-bold text-decoration-none">View All</a>
+  </div>
+
+  <div class="row g-4">
+    
+    <div class="col-md-6 col-lg-4">
+      <div class="rec-horizontal-card">
+        <img src="assets/img/fried-chicken.png" alt="Crispy Fried Chicken">
+        <div class="d-flex justify-content-between align-items-center w-100">
+          <div>
+            <h6 class="fw-bold mb-1" style="font-size: 0.95rem;">Crispy Fried Chicken</h6>
+            <div class="d-flex align-items-center gap-1 mb-2" style="font-size: 0.8rem;">
+              <i class="bi bi-star-fill rating-star"></i>
+              <span class="fw-semibold">4.8</span>
+              <span class="text-muted">(2.4k+)</span>
+            </div>
+            <div class="fw-bold fs-6">$10.00</div>
+          </div>
+          <button class="btn-heart-plain">
+            <i class="bi bi-suit-heart"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4">
+      <div class="rec-horizontal-card">
+        <img src="assets/img/truffle-burger.png" alt="Truffle Burger">
+        <div class="d-flex justify-content-between align-items-center w-100">
+          <div>
+            <h6 class="fw-bold mb-1" style="font-size: 0.95rem;">Truffle Burger</h6>
+            <div class="d-flex align-items-center gap-1 mb-2" style="font-size: 0.8rem;">
+              <i class="bi bi-star-fill rating-star"></i>
+              <span class="fw-semibold">4.9</span>
+              <span class="text-muted">(1.8k+)</span>
+            </div>
+            <div class="fw-bold fs-6">$15.00</div>
+          </div>
+          <button class="btn-heart-plain">
+            <i class="bi bi-suit-heart"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4">
+      <div class="rec-horizontal-card">
+        <img src="assets/img/matcha-latte.png" alt="Matcha Latte">
+        <div class="d-flex justify-content-between align-items-center w-100">
+          <div>
+            <h6 class="fw-bold mb-1" style="font-size: 0.95rem;">Matcha Latte</h6>
+            <div class="d-flex align-items-center gap-1 mb-2" style="font-size: 0.8rem;">
+              <i class="bi bi-star-fill rating-star"></i>
+              <span class="fw-semibold">4.7</span>
+              <span class="text-muted">(1.2k+)</span>
+            </div>
+            <div class="fw-bold fs-6">$6.00</div>
+          </div>
+          <button class="btn-heart-plain">
+            <i class="bi bi-suit-heart"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // 1. Logic Tombol Back
+    const backBtn = document.getElementById('backBtn');
+    if(backBtn) {
+        backBtn.addEventListener('click', function() {
+            // Bisa diganti jadi history.back() kalo udah nyambung halaman lain
+            alert("Tombol back dipencet! Balik ke halaman sebelumnya.");
+        });
+    }
+
+    // 2. Logic Tombol Favorite (Card Atas)
+    const favCircles = document.querySelectorAll('.btn-heart-circle');
+    favCircles.forEach(circle => {
+        circle.addEventListener('click', function() {
+            // Toggle class 'active' buat nyalain/matiin warna orange
+            this.classList.toggle('active');
+        });
+    });
+
+    // 3. Logic Tombol Favorite (Card Horizontal Bawah)
+    const favPlains = document.querySelectorAll('.btn-heart-plain i');
+    favPlains.forEach(icon => {
+        icon.addEventListener('click', function(e) {
+            // Biar ga lompat kalo kebetulan ini tag <a>
+            e.preventDefault(); 
+            
+            // Cek kalo lagi icon hati kosong
+            if (this.classList.contains('bi-suit-heart')) {
+                this.classList.remove('bi-suit-heart');
+                this.classList.add('bi-suit-heart-fill', 'text-orange');
+            } else {
+                // Kalo udah kepenuhin, balikin kosong
+                this.classList.remove('bi-suit-heart-fill', 'text-orange');
+                this.classList.add('bi-suit-heart');
+            }
+        });
+    });
+
+});
+</script>
+
 </body>
 </html>
