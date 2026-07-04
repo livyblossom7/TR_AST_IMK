@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wagba</title>
     <link rel="stylesheet" href="css/index.css">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Idiqlat&display=swap" rel="stylesheet">
 </head>
 <body>
 <div class="page-wrapper">
@@ -59,10 +59,12 @@
         <section class="hero-section">
             <div class="hero-banner">
                 <div class="hero-text">
-                    <div class="hero-badge">#1 Trending this week</div>
-                    <div class="hero-headline">
-                        <h1 class="hero-title">Our Best Seller!</h1>
-                        <p class="hero-subtitle">Delicious bites you love, now in one place</p>
+                    <div class="hero-top">
+                        <div class="hero-badge">#1 Trending this week</div>
+                        <div class="hero-headline">
+                            <h1 class="hero-title">Our Best Seller!</h1>
+                            <p class="hero-subtitle">Delicious bites you love, now in one place</p>
+                        </div>
                     </div>
                     <button class="hero-cta">Order Now</button>
                 </div>
@@ -78,7 +80,13 @@
                 <h2 class="section-title">Categories</h2>
                 <a href="categories.html" class="view-all-link">View All</a>
             </div>
-            <div class="categories-list">
+            <div class="scroll-wrapper">
+                <button type="button" class="slider-btn slider-btn--prev" data-slider-target="categories-row" aria-label="Scroll categories left">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <div class="categories-list scroll-row" id="categories-row">
                 <a href="categories.html" class="category-card">
                     <img class="category-image" src="https://api.builder.io/api/v1/image/assets/TEMP/d15fe0a440b5609b33e28ab4f3a0d97451a83d0a?width=226" alt="Burgers" />
                     <span class="category-name">Burgers</span>
@@ -103,6 +111,20 @@
                     <img class="category-image" src="https://api.builder.io/api/v1/image/assets/TEMP/a0aec7389b59c267fe9e6cb147a75e605ac97963?width=226" alt="Drinks" />
                     <span class="category-name">Drinks</span>
                 </a>
+                <a href="categories.html" class="category-card">
+                    <span class="category-dots" aria-hidden="true">
+                        <span class="category-dot"></span>
+                        <span class="category-dot"></span>
+                        <span class="category-dot"></span>
+                    </span>
+                    <span class="category-name">More</span>
+                </a>
+                </div>
+                <button type="button" class="slider-btn slider-btn--next" data-slider-target="categories-row" aria-label="Scroll categories right">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
             </div>
         </section>
 
@@ -112,14 +134,15 @@
                 <h2 class="section-title">Popular Meals</h2>
                 <a href="#" class="view-all-link">View All</a>
             </div>
-            <div class="meals-grid">
+            <div class="scroll-wrapper">
+                <button type="button" class="slider-btn slider-btn--prev" data-slider-target="meals-row" aria-label="Scroll meals left">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <div class="meals-grid scroll-row" id="meals-row">
 
-                <div class="meal-card">
-                    <button class="meal-favorite-btn" aria-label="Add to favorites">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M11.288 20.2C11.046 20.1167 10.8333 19.9834 10.65 19.8L8.925 18.225C7.15833 16.6084 5.56267 15.0044 4.138 13.413C2.71333 11.8217 2.00067 10.0674 2 8.15002C2 6.58336 2.525 5.27502 3.575 4.22502C4.625 3.17502 5.93333 2.65002 7.5 2.65002C8.38333 2.65002 9.21667 2.83736 10 3.21202C10.7833 3.58669 11.45 4.09936 12 4.75002C12.55 4.10002 13.2167 3.58769 14 3.21302C14.7833 2.83836 15.6167 2.65069 16.5 2.65002C18.0667 2.65002 19.375 3.17502 20.425 4.22502C21.475 5.27502 22 6.58336 22 8.15002C22 10.0667 21.2917 11.825 19.875 13.425C18.4583 15.025 16.85 16.6334 15.05 18.25L13.35 19.8C13.1667 19.9834 12.9543 20.1167 12.713 20.2C12.4717 20.2834 12.234 20.325 12 20.325C11.766 20.325 11.5287 20.2834 11.288 20.2Z" fill="black"/>
-                        </svg>
-                    </button>
+                <div class="meal-card" data-href="meal_details.html">
                     <div class="meal-photo">
                         <img src="https://api.builder.io/api/v1/image/assets/TEMP/2571377a2f685273570ec25bd7434e12c5479281?width=234" alt="Wagba Signature Burger" />
                     </div>
@@ -129,22 +152,15 @@
                     </div>
                     <div class="meal-footer">
                         <span class="meal-price">$16.00</span>
-                        <button class="add-to-cart-btn" aria-label="Add to cart">
+                        <button class="meal-favorite-btn" aria-label="Add to favorites">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="1" y="1" width="22" height="22" rx="4" fill="#F4530A"/>
-                                <rect x="1" y="1" width="22" height="22" rx="4" stroke="#E64E09" stroke-width="2"/>
-                                <path d="M18 13H13V18C13 18.2652 12.8946 18.5196 12.7071 18.7071C12.5196 18.8946 12.2652 19 12 19C11.7348 19 11.4804 18.8946 11.2929 18.7071C11.1054 18.5196 11 18.2652 11 18V13H6C5.73478 13 5.48043 12.8946 5.29289 12.7071C5.10536 12.5196 5 12.2652 5 12C5 11.7348 5.10536 11.4804 5.29289 11.2929C5.48043 11.1054 5.73478 11 6 11H11V6C11 5.73478 11.1054 5.48043 11.2929 5.29289C11.4804 5.10536 11.7348 5 12 5C12.2652 5 12.5196 5.10536 12.7071 5.29289C12.8946 5.48043 13 5.73478 13 6V11H18C18.2652 11 18.5196 11.1054 18.7071 11.2929C18.8946 11.4804 19 11.7348 19 12C19 12.2652 18.8946 12.5196 18.7071 12.7071C18.5196 12.8946 18.2652 13 18 13Z" fill="white"/>
+                                <path d="M11.288 20.2C11.046 20.1167 10.8333 19.9834 10.65 19.8L8.925 18.225C7.15833 16.6084 5.56267 15.0044 4.138 13.413C2.71333 11.8217 2.00067 10.0674 2 8.15002C2 6.58336 2.525 5.27502 3.575 4.22502C4.625 3.17502 5.93333 2.65002 7.5 2.65002C8.38333 2.65002 9.21667 2.83736 10 3.21202C10.7833 3.58669 11.45 4.09936 12 4.75002C12.55 4.10002 13.2167 3.58769 14 3.21302C14.7833 2.83836 15.6167 2.65069 16.5 2.65002C18.0667 2.65002 19.375 3.17502 20.425 4.22502C21.475 5.27502 22 6.58336 22 8.15002C22 10.0667 21.2917 11.825 19.875 13.425C18.4583 15.025 16.85 16.6334 15.05 18.25L13.35 19.8C13.1667 19.9834 12.9543 20.1167 12.713 20.2C12.4717 20.2834 12.234 20.325 12 20.325C11.766 20.325 11.5287 20.2834 11.288 20.2Z" fill="black"/>
                             </svg>
                         </button>
                     </div>
                 </div>
 
-                <div class="meal-card">
-                    <button class="meal-favorite-btn" aria-label="Add to favorites">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M11.288 20.2C11.046 20.1167 10.8333 19.9834 10.65 19.8L8.925 18.225C7.15833 16.6084 5.56267 15.0044 4.138 13.413C2.71333 11.8217 2.00067 10.0674 2 8.15002C2 6.58336 2.525 5.27502 3.575 4.22502C4.625 3.17502 5.93333 2.65002 7.5 2.65002C8.38333 2.65002 9.21667 2.83736 10 3.21202C10.7833 3.58669 11.45 4.09936 12 4.75002C12.55 4.10002 13.2167 3.58769 14 3.21302C14.7833 2.83836 15.6167 2.65069 16.5 2.65002C18.0667 2.65002 19.375 3.17502 20.425 4.22502C21.475 5.27502 22 6.58336 22 8.15002C22 10.0667 21.2917 11.825 19.875 13.425C18.4583 15.025 16.85 16.6334 15.05 18.25L13.35 19.8C13.1667 19.9834 12.9543 20.1167 12.713 20.2C12.4717 20.2834 12.234 20.325 12 20.325C11.766 20.325 11.5287 20.2834 11.288 20.2Z" fill="black"/>
-                        </svg>
-                    </button>
+                <div class="meal-card" data-href="meal_details.html">
                     <div class="meal-photo">
                         <img src="https://api.builder.io/api/v1/image/assets/TEMP/3cb8dd8953dcfac80fb0e698237ba5931c801e39?width=234" alt="Truffle Burger" />
                     </div>
@@ -154,22 +170,15 @@
                     </div>
                     <div class="meal-footer">
                         <span class="meal-price">$15.00</span>
-                        <button class="add-to-cart-btn" aria-label="Add to cart">
+                        <button class="meal-favorite-btn" aria-label="Add to favorites">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="1" y="1" width="22" height="22" rx="4" fill="#F4530A"/>
-                                <rect x="1" y="1" width="22" height="22" rx="4" stroke="#E64E09" stroke-width="2"/>
-                                <path d="M18 13H13V18C13 18.2652 12.8946 18.5196 12.7071 18.7071C12.5196 18.8946 12.2652 19 12 19C11.7348 19 11.4804 18.8946 11.2929 18.7071C11.1054 18.5196 11 18.2652 11 18V13H6C5.73478 13 5.48043 12.8946 5.29289 12.7071C5.10536 12.5196 5 12.2652 5 12C5 11.7348 5.10536 11.4804 5.29289 11.2929C5.48043 11.1054 5.73478 11 6 11H11V6C11 5.73478 11.1054 5.48043 11.2929 5.29289C11.4804 5.10536 11.7348 5 12 5C12.2652 5 12.5196 5.10536 12.7071 5.29289C12.8946 5.48043 13 5.73478 13 6V11H18C18.2652 11 18.5196 11.1054 18.7071 11.2929C18.8946 11.4804 19 11.7348 19 12C19 12.2652 18.8946 12.5196 18.7071 12.7071C18.5196 12.8946 18.2652 13 18 13Z" fill="white"/>
+                                <path d="M11.288 20.2C11.046 20.1167 10.8333 19.9834 10.65 19.8L8.925 18.225C7.15833 16.6084 5.56267 15.0044 4.138 13.413C2.71333 11.8217 2.00067 10.0674 2 8.15002C2 6.58336 2.525 5.27502 3.575 4.22502C4.625 3.17502 5.93333 2.65002 7.5 2.65002C8.38333 2.65002 9.21667 2.83736 10 3.21202C10.7833 3.58669 11.45 4.09936 12 4.75002C12.55 4.10002 13.2167 3.58769 14 3.21302C14.7833 2.83836 15.6167 2.65069 16.5 2.65002C18.0667 2.65002 19.375 3.17502 20.425 4.22502C21.475 5.27502 22 6.58336 22 8.15002C22 10.0667 21.2917 11.825 19.875 13.425C18.4583 15.025 16.85 16.6334 15.05 18.25L13.35 19.8C13.1667 19.9834 12.9543 20.1167 12.713 20.2C12.4717 20.2834 12.234 20.325 12 20.325C11.766 20.325 11.5287 20.2834 11.288 20.2Z" fill="black"/>
                             </svg>
                         </button>
                     </div>
                 </div>
 
-                <div class="meal-card">
-                    <button class="meal-favorite-btn" aria-label="Add to favorites">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M11.288 20.2C11.046 20.1167 10.8333 19.9834 10.65 19.8L8.925 18.225C7.15833 16.6084 5.56267 15.0044 4.138 13.413C2.71333 11.8217 2.00067 10.0674 2 8.15002C2 6.58336 2.525 5.27502 3.575 4.22502C4.625 3.17502 5.93333 2.65002 7.5 2.65002C8.38333 2.65002 9.21667 2.83736 10 3.21202C10.7833 3.58669 11.45 4.09936 12 4.75002C12.55 4.10002 13.2167 3.58769 14 3.21302C14.7833 2.83836 15.6167 2.65069 16.5 2.65002C18.0667 2.65002 19.375 3.17502 20.425 4.22502C21.475 5.27502 22 6.58336 22 8.15002C22 10.0667 21.2917 11.825 19.875 13.425C18.4583 15.025 16.85 16.6334 15.05 18.25L13.35 19.8C13.1667 19.9834 12.9543 20.1167 12.713 20.2C12.4717 20.2834 12.234 20.325 12 20.325C11.766 20.325 11.5287 20.2834 11.288 20.2Z" fill="black"/>
-                        </svg>
-                    </button>
+                <div class="meal-card" data-href="meal_details.html">
                     <div class="meal-photo">
                         <img src="https://api.builder.io/api/v1/image/assets/TEMP/1c28a3783692b2066a736a630a9d00c0aebe4bc9?width=234" alt="Mushroom & Truffle Pizza" />
                     </div>
@@ -179,22 +188,15 @@
                     </div>
                     <div class="meal-footer">
                         <span class="meal-price">$14.00</span>
-                        <button class="add-to-cart-btn" aria-label="Add to cart">
+                        <button class="meal-favorite-btn" aria-label="Add to favorites">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="1" y="1" width="22" height="22" rx="4" fill="#F4530A"/>
-                                <rect x="1" y="1" width="22" height="22" rx="4" stroke="#E64E09" stroke-width="2"/>
-                                <path d="M18 13H13V18C13 18.2652 12.8946 18.5196 12.7071 18.7071C12.5196 18.8946 12.2652 19 12 19C11.7348 19 11.4804 18.8946 11.2929 18.7071C11.1054 18.5196 11 18.2652 11 18V13H6C5.73478 13 5.48043 12.8946 5.29289 12.7071C5.10536 12.5196 5 12.2652 5 12C5 11.7348 5.10536 11.4804 5.29289 11.2929C5.48043 11.1054 5.73478 11 6 11H11V6C11 5.73478 11.1054 5.48043 11.2929 5.29289C11.4804 5.10536 11.7348 5 12 5C12.2652 5 12.5196 5.10536 12.7071 5.29289C12.8946 5.48043 13 5.73478 13 6V11H18C18.2652 11 18.5196 11.1054 18.7071 11.2929C18.8946 11.4804 19 11.7348 19 12C19 12.2652 18.8946 12.5196 18.7071 12.7071C18.5196 12.8946 18.2652 13 18 13Z" fill="white"/>
+                                <path d="M11.288 20.2C11.046 20.1167 10.8333 19.9834 10.65 19.8L8.925 18.225C7.15833 16.6084 5.56267 15.0044 4.138 13.413C2.71333 11.8217 2.00067 10.0674 2 8.15002C2 6.58336 2.525 5.27502 3.575 4.22502C4.625 3.17502 5.93333 2.65002 7.5 2.65002C8.38333 2.65002 9.21667 2.83736 10 3.21202C10.7833 3.58669 11.45 4.09936 12 4.75002C12.55 4.10002 13.2167 3.58769 14 3.21302C14.7833 2.83836 15.6167 2.65069 16.5 2.65002C18.0667 2.65002 19.375 3.17502 20.425 4.22502C21.475 5.27502 22 6.58336 22 8.15002C22 10.0667 21.2917 11.825 19.875 13.425C18.4583 15.025 16.85 16.6334 15.05 18.25L13.35 19.8C13.1667 19.9834 12.9543 20.1167 12.713 20.2C12.4717 20.2834 12.234 20.325 12 20.325C11.766 20.325 11.5287 20.2834 11.288 20.2Z" fill="black"/>
                             </svg>
                         </button>
                     </div>
                 </div>
 
-                <div class="meal-card">
-                    <button class="meal-favorite-btn" aria-label="Add to favorites">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M11.288 20.2C11.046 20.1167 10.8333 19.9834 10.65 19.8L8.925 18.225C7.15833 16.6084 5.56267 15.0044 4.138 13.413C2.71333 11.8217 2.00067 10.0674 2 8.15002C2 6.58336 2.525 5.27502 3.575 4.22502C4.625 3.17502 5.93333 2.65002 7.5 2.65002C8.38333 2.65002 9.21667 2.83736 10 3.21202C10.7833 3.58669 11.45 4.09936 12 4.75002C12.55 4.10002 13.2167 3.58769 14 3.21302C14.7833 2.83836 15.6167 2.65069 16.5 2.65002C18.0667 2.65002 19.375 3.17502 20.425 4.22502C21.475 5.27502 22 6.58336 22 8.15002C22 10.0667 21.2917 11.825 19.875 13.425C18.4583 15.025 16.85 16.6334 15.05 18.25L13.35 19.8C13.1667 19.9834 12.9543 20.1167 12.713 20.2C12.4717 20.2834 12.234 20.325 12 20.325C11.766 20.325 11.5287 20.2834 11.288 20.2Z" fill="black"/>
-                        </svg>
-                    </button>
+                <div class="meal-card" data-href="meal_details.html">
                     <div class="meal-photo">
                         <img src="https://api.builder.io/api/v1/image/assets/TEMP/c7ba889ea06325e6f0622a9bfe5e2639c8a6d0b6?width=234" alt="Crispy Fried Chicken" />
                     </div>
@@ -204,22 +206,15 @@
                     </div>
                     <div class="meal-footer">
                         <span class="meal-price">$10.00</span>
-                        <button class="add-to-cart-btn" aria-label="Add to cart">
+                        <button class="meal-favorite-btn" aria-label="Add to favorites">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="1" y="1" width="22" height="22" rx="4" fill="#F4530A"/>
-                                <rect x="1" y="1" width="22" height="22" rx="4" stroke="#E64E09" stroke-width="2"/>
-                                <path d="M18 13H13V18C13 18.2652 12.8946 18.5196 12.7071 18.7071C12.5196 18.8946 12.2652 19 12 19C11.7348 19 11.4804 18.8946 11.2929 18.7071C11.1054 18.5196 11 18.2652 11 18V13H6C5.73478 13 5.48043 12.8946 5.29289 12.7071C5.10536 12.5196 5 12.2652 5 12C5 11.7348 5.10536 11.4804 5.29289 11.2929C5.48043 11.1054 5.73478 11 6 11H11V6C11 5.73478 11.1054 5.48043 11.2929 5.29289C11.4804 5.10536 11.7348 5 12 5C12.2652 5 12.5196 5.10536 12.7071 5.29289C12.8946 5.48043 13 5.73478 13 6V11H18C18.2652 11 18.5196 11.1054 18.7071 11.2929C18.8946 11.4804 19 11.7348 19 12C19 12.2652 18.8946 12.5196 18.7071 12.7071C18.5196 12.8946 18.2652 13 18 13Z" fill="white"/>
+                                <path d="M11.288 20.2C11.046 20.1167 10.8333 19.9834 10.65 19.8L8.925 18.225C7.15833 16.6084 5.56267 15.0044 4.138 13.413C2.71333 11.8217 2.00067 10.0674 2 8.15002C2 6.58336 2.525 5.27502 3.575 4.22502C4.625 3.17502 5.93333 2.65002 7.5 2.65002C8.38333 2.65002 9.21667 2.83736 10 3.21202C10.7833 3.58669 11.45 4.09936 12 4.75002C12.55 4.10002 13.2167 3.58769 14 3.21302C14.7833 2.83836 15.6167 2.65069 16.5 2.65002C18.0667 2.65002 19.375 3.17502 20.425 4.22502C21.475 5.27502 22 6.58336 22 8.15002C22 10.0667 21.2917 11.825 19.875 13.425C18.4583 15.025 16.85 16.6334 15.05 18.25L13.35 19.8C13.1667 19.9834 12.9543 20.1167 12.713 20.2C12.4717 20.2834 12.234 20.325 12 20.325C11.766 20.325 11.5287 20.2834 11.288 20.2Z" fill="black"/>
                             </svg>
                         </button>
                     </div>
                 </div>
 
-                <div class="meal-card">
-                    <button class="meal-favorite-btn" aria-label="Add to favorites">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M11.288 20.2C11.046 20.1167 10.8333 19.9834 10.65 19.8L8.925 18.225C7.15833 16.6084 5.56267 15.0044 4.138 13.413C2.71333 11.8217 2.00067 10.0674 2 8.15002C2 6.58336 2.525 5.27502 3.575 4.22502C4.625 3.17502 5.93333 2.65002 7.5 2.65002C8.38333 2.65002 9.21667 2.83736 10 3.21202C10.7833 3.58669 11.45 4.09936 12 4.75002C12.55 4.10002 13.2167 3.58769 14 3.21302C14.7833 2.83836 15.6167 2.65069 16.5 2.65002C18.0667 2.65002 19.375 3.17502 20.425 4.22502C21.475 5.27502 22 6.58336 22 8.15002C22 10.0667 21.2917 11.825 19.875 13.425C18.4583 15.025 16.85 16.6334 15.05 18.25L13.35 19.8C13.1667 19.9834 12.9543 20.1167 12.713 20.2C12.4717 20.2834 12.234 20.325 12 20.325C11.766 20.325 11.5287 20.2834 11.288 20.2Z" fill="black"/>
-                        </svg>
-                    </button>
+                <div class="meal-card" data-href="meal_details.html">
                     <div class="meal-photo">
                         <img src="https://api.builder.io/api/v1/image/assets/TEMP/9207054598f5bda1e153810c19cc1a8124351c5e?width=234" alt="Chicken Shawarma" />
                     </div>
@@ -229,22 +224,15 @@
                     </div>
                     <div class="meal-footer">
                         <span class="meal-price">$9.00</span>
-                        <button class="add-to-cart-btn" aria-label="Add to cart">
+                        <button class="meal-favorite-btn" aria-label="Add to favorites">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="1" y="1" width="22" height="22" rx="4" fill="#F4530A"/>
-                                <rect x="1" y="1" width="22" height="22" rx="4" stroke="#E64E09" stroke-width="2"/>
-                                <path d="M18 13H13V18C13 18.2652 12.8946 18.5196 12.7071 18.7071C12.5196 18.8946 12.2652 19 12 19C11.7348 19 11.4804 18.8946 11.2929 18.7071C11.1054 18.5196 11 18.2652 11 18V13H6C5.73478 13 5.48043 12.8946 5.29289 12.7071C5.10536 12.5196 5 12.2652 5 12C5 11.7348 5.10536 11.4804 5.29289 11.2929C5.48043 11.1054 5.73478 11 6 11H11V6C11 5.73478 11.1054 5.48043 11.2929 5.29289C11.4804 5.10536 11.7348 5 12 5C12.2652 5 12.5196 5.10536 12.7071 5.29289C12.8946 5.48043 13 5.73478 13 6V11H18C18.2652 11 18.5196 11.1054 18.7071 11.2929C18.8946 11.4804 19 11.7348 19 12C19 12.2652 18.8946 12.5196 18.7071 12.7071C18.5196 12.8946 18.2652 13 18 13Z" fill="white"/>
+                                <path d="M11.288 20.2C11.046 20.1167 10.8333 19.9834 10.65 19.8L8.925 18.225C7.15833 16.6084 5.56267 15.0044 4.138 13.413C2.71333 11.8217 2.00067 10.0674 2 8.15002C2 6.58336 2.525 5.27502 3.575 4.22502C4.625 3.17502 5.93333 2.65002 7.5 2.65002C8.38333 2.65002 9.21667 2.83736 10 3.21202C10.7833 3.58669 11.45 4.09936 12 4.75002C12.55 4.10002 13.2167 3.58769 14 3.21302C14.7833 2.83836 15.6167 2.65069 16.5 2.65002C18.0667 2.65002 19.375 3.17502 20.425 4.22502C21.475 5.27502 22 6.58336 22 8.15002C22 10.0667 21.2917 11.825 19.875 13.425C18.4583 15.025 16.85 16.6334 15.05 18.25L13.35 19.8C13.1667 19.9834 12.9543 20.1167 12.713 20.2C12.4717 20.2834 12.234 20.325 12 20.325C11.766 20.325 11.5287 20.2834 11.288 20.2Z" fill="black"/>
                             </svg>
                         </button>
                     </div>
                 </div>
 
-                <div class="meal-card">
-                    <button class="meal-favorite-btn" aria-label="Add to favorites">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M11.288 20.2C11.046 20.1167 10.8333 19.9834 10.65 19.8L8.925 18.225C7.15833 16.6084 5.56267 15.0044 4.138 13.413C2.71333 11.8217 2.00067 10.0674 2 8.15002C2 6.58336 2.525 5.27502 3.575 4.22502C4.625 3.17502 5.93333 2.65002 7.5 2.65002C8.38333 2.65002 9.21667 2.83736 10 3.21202C10.7833 3.58669 11.45 4.09936 12 4.75002C12.55 4.10002 13.2167 3.58769 14 3.21302C14.7833 2.83836 15.6167 2.65069 16.5 2.65002C18.0667 2.65002 19.375 3.17502 20.425 4.22502C21.475 5.27502 22 6.58336 22 8.15002C22 10.0667 21.2917 11.825 19.875 13.425C18.4583 15.025 16.85 16.6334 15.05 18.25L13.35 19.8C13.1667 19.9834 12.9543 20.1167 12.713 20.2C12.4717 20.2834 12.234 20.325 12 20.325C11.766 20.325 11.5287 20.2834 11.288 20.2Z" fill="black"/>
-                        </svg>
-                    </button>
+                <div class="meal-card" data-href="meal_details.html">
                     <div class="meal-photo">
                         <img src="https://api.builder.io/api/v1/image/assets/TEMP/a0aec7389b59c267fe9e6cb147a75e605ac97963?width=234" alt="Chocolate Milkshake" />
                     </div>
@@ -254,21 +242,27 @@
                     </div>
                     <div class="meal-footer">
                         <span class="meal-price">$6.00</span>
-                        <button class="add-to-cart-btn" aria-label="Add to cart">
+                        <button class="meal-favorite-btn" aria-label="Add to favorites">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="1" y="1" width="22" height="22" rx="4" fill="#F4530A"/>
-                                <rect x="1" y="1" width="22" height="22" rx="4" stroke="#E64E09" stroke-width="2"/>
-                                <path d="M18 13H13V18C13 18.2652 12.8946 18.5196 12.7071 18.7071C12.5196 18.8946 12.2652 19 12 19C11.7348 19 11.4804 18.8946 11.2929 18.7071C11.1054 18.5196 11 18.2652 11 18V13H6C5.73478 13 5.48043 12.8946 5.29289 12.7071C5.10536 12.5196 5 12.2652 5 12C5 11.7348 5.10536 11.4804 5.29289 11.2929C5.48043 11.1054 5.73478 11 6 11H11V6C11 5.73478 11.1054 5.48043 11.2929 5.29289C11.4804 5.10536 11.7348 5 12 5C12.2652 5 12.5196 5.10536 12.7071 5.29289C12.8946 5.48043 13 5.73478 13 6V11H18C18.2652 11 18.5196 11.1054 18.7071 11.2929C18.8946 11.4804 19 11.7348 19 12C19 12.2652 18.8946 12.5196 18.7071 12.7071C18.5196 12.8946 18.2652 13 18 13Z" fill="white"/>
+                                <path d="M11.288 20.2C11.046 20.1167 10.8333 19.9834 10.65 19.8L8.925 18.225C7.15833 16.6084 5.56267 15.0044 4.138 13.413C2.71333 11.8217 2.00067 10.0674 2 8.15002C2 6.58336 2.525 5.27502 3.575 4.22502C4.625 3.17502 5.93333 2.65002 7.5 2.65002C8.38333 2.65002 9.21667 2.83736 10 3.21202C10.7833 3.58669 11.45 4.09936 12 4.75002C12.55 4.10002 13.2167 3.58769 14 3.21302C14.7833 2.83836 15.6167 2.65069 16.5 2.65002C18.0667 2.65002 19.375 3.17502 20.425 4.22502C21.475 5.27502 22 6.58336 22 8.15002C22 10.0667 21.2917 11.825 19.875 13.425C18.4583 15.025 16.85 16.6334 15.05 18.25L13.35 19.8C13.1667 19.9834 12.9543 20.1167 12.713 20.2C12.4717 20.2834 12.234 20.325 12 20.325C11.766 20.325 11.5287 20.2834 11.288 20.2Z" fill="black"/>
                             </svg>
                         </button>
                     </div>
                 </div>
 
+                </div>
+                <button type="button" class="slider-btn slider-btn--next" data-slider-target="meals-row" aria-label="Scroll meals right">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
             </div>
         </section>
 
     </main>
 </div>
 <script src="js/cart.js"></script>
+<script src="js/slider.js"></script>
+<script src="js/favorites.js"></script>
 </body>
 </html>
