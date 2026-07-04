@@ -180,6 +180,116 @@ img { display: block; max-width: 100%; }
     object-fit: cover;
 }
 
+.profile-menu-wrapper {
+    position: relative;
+}
+
+.profile-trigger-arrow {
+    transition: transform 0.2s ease;
+}
+
+.profile-menu-wrapper.is-open .profile-trigger-arrow {
+    transform: rotate(180deg);
+}
+
+.profile-dropdown {
+    position: absolute;
+    top: calc(100% + 12px);
+    right: 0;
+    width: 320px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 13px 0 rgba(0, 0, 0, 0.25);
+    z-index: 200;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-12px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+}
+
+.profile-menu-wrapper.is-open .profile-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.profile-dropdown-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 24px 17px;
+    border-bottom: 1px solid #EEE;
+}
+
+.profile-dropdown-avatar {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    border-radius: 100px;
+    border: 1.5px solid var(--orange-primary);
+    object-fit: cover;
+}
+
+.profile-dropdown-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+
+.profile-dropdown-name {
+    color: #1A1C1C;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+}
+
+.profile-dropdown-email {
+    color: #9A9999;
+    font-size: 14px;
+    line-height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.profile-dropdown-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 14px 28px;
+    color: #000;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background 0.15s, color 0.15s;
+}
+
+.profile-dropdown-item:hover {
+    background: var(--orange-light-bg);
+    color: var(--orange-primary);
+}
+
+.profile-dropdown-icon {
+    flex-shrink: 0;
+}
+
+.profile-dropdown-item--logout {
+    color: #F00;
+    border-top: 1px solid rgba(238, 238, 238, 0.93);
+    border-radius: 0 0 10px 10px;
+}
+
+.profile-dropdown-item--logout:hover {
+    background: #FFE1E1;
+    color: #F00;
+}
+
 /* === Main Content === */
 .main-content {
     padding: 51px 76px 60px;
