@@ -1,153 +1,169 @@
-:root {
-    /* Warnanya udah gue ganti ke kode hex dari gambar lu */
-    --brand-orange: #F4530A; 
-    --brand-orange-hover: #d14708; /* Sedikit lebih gelap buat efek hover */
-    --brand-orange-light: #ffeadf;
+.meal-details-content {
+    padding: 24px 76px 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 47px;
 }
 
-body {
-    background-color: #f9f9fb;
-    /* Fontnya gue ubah ke Plus Jakarta Sans */
-    font-family: 'Plus Jakarta Sans', sans-serif; 
+.back-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 52px;
+    height: 52px;
 }
 
-/* Navbar Styling */
-.navbar-brand span {
-    color: var(--brand-orange);
-    font-weight: 700;
-    font-size: 1.5rem;
-    margin-left: 8px;
+.meal-details-grid {
+    display: flex;
+    align-items: flex-start;
+    gap: 59px;
 }
-.nav-link {
+
+.meal-detail-image {
+    width: 515px;
+    height: 457px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 3px solid #F9F9F9;
+    flex-shrink: 0;
+}
+
+.meal-detail-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 295px;
+}
+
+.meal-detail-heading {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.meal-detail-title {
+    color: #000;
+    font-size: 32px;
     font-weight: 600;
-    color: #333;
-    padding: 8px 20px !important;
 }
-.nav-link:hover {
-    color: var(--brand-orange);
+
+.meal-detail-rating {
+    color: #000;
+    font-size: 24px;
+    font-weight: 500;
 }
-.nav-active {
-    background-color: var(--brand-orange-light);
-    color: var(--brand-orange) !important;
-    border-radius: 8px;
+
+.meal-detail-rating .star {
+    color: var(--orange-primary);
 }
-.icon-nav {
-    font-size: 1.2rem;
-    color: #333;
+
+.meal-detail-rating .rating-count {
+    color: var(--text-muted);
+}
+
+.meal-detail-price {
+    color: #000;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.meal-detail-description {
+    width: 295px;
+    color: var(--text-muted);
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.read-more-link {
+    color: var(--orange-primary);
+}
+
+.section-heading {
+    color: var(--orange-primary);
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.recommended-list {
+    display: flex;
+    gap: 25px;
+}
+
+.recommended-item {
+    display: flex;
+    width: 147px;
+    height: 120px;
+    padding: 10px 10px 10px 15px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    border: 3px solid #F9F9F9;
+}
+
+.recommended-item img {
+    width: 117px;
+    height: 103px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.add-ons-panel {
+    display: flex;
+    flex-direction: column;
+    width: 333px;
+    margin-left: auto;
+}
+
+.add-ons-box {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 23px 26px;
+    border-radius: 10px;
+    border: 3px solid #F9F9F9;
+    background: #FFF;
+}
+
+.add-on-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--text-muted);
+    font-size: 14px;
+    font-weight: 700;
     cursor: pointer;
 }
 
-/* Typography & Colors */
-.text-orange {
-    color: var(--brand-orange);
-}
-.title-fw {
-    font-weight: 800;
-}
-.rating-star {
-    color: var(--brand-orange);
-    font-size: 0.9rem;
-}
-.price-large {
-    font-weight: 800;
-    font-size: 1.5rem;
-}
-.desc-text {
-    font-size: 0.85rem;
-    color: #888;
-    line-height: 1.5;
-}
-.read-more {
-    color: var(--brand-orange);
-    font-weight: 700;
-    text-decoration: none;
+.add-on-checkbox {
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    border: 3px solid #F4F4F4;
+    background: #FFF;
+    accent-color: var(--orange-primary);
 }
 
-/* Cards & Images */
-.main-image-card {
-    background-color: #fff;
-    border: 1px solid #f0f0f0;
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
-    text-align: center;
-}
-.main-image-card img {
-    max-height: 350px;
-    object-fit: contain;
-}
-.rec-card {
-    border: 1px solid #f0f0f0;
-    border-radius: 10px;
-    padding: 10px;
-    background: #fff;
-    text-align: center;
-    transition: transform 0.2s;
-}
-.rec-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-}
-.rec-card img {
-    width: 70px;
-    height: 70px;
-    object-fit: contain;
-}
-
-/* Add Ons Section */
-.add-ons-box {
-    background-color: #fff;
-    border: 1px solid #eaeaea;
-    border-radius: 10px;
-    padding: 15px;
-}
-.form-check-label {
-    font-size: 0.85rem;
-    color: #666;
-    font-weight: 500;
-}
-.form-check-input:checked {
-    background-color: var(--brand-orange);
-    border-color: var(--brand-orange);
-}
-
-/* Buttons */
-.btn-cart {
-    background-color: var(--brand-orange);
-    color: white;
-    font-weight: 600;
-    border: none;
-    border-radius: 8px;
-    padding: 12px;
-    width: 100%;
-    transition: background 0.2s;
-}
-.btn-cart:hover {
-    background-color: var(--brand-orange-hover);
-    color: white;
-}
-
-/* CUSTOM TOAST STYLING */
-.custom-toast {
-    background-color: var(--brand-orange) !important;
-    color: white;
-    border-radius: 8px;
-    padding: 10px 15px;
-    box-shadow: 0 10px 30px rgba(242, 92, 5, 0.4);
-    border: none;
-    width: auto;
-    max-width: 500px;
-}
-.custom-toast .toast-body {
-    padding: 0;
+.add-to-cart-btn-large {
     display: flex;
     align-items: center;
-    gap: 15px;
-    font-weight: 600;
-    font-size: 1.1rem;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    margin-top: 24px;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    background: var(--orange-primary);
+    color: #F9F9F9;
+    font-family: var(--font);
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.15s;
 }
-.icon-badge {
-    font-size: 3rem;
-    line-height: 1;
-    color: white;
+
+.add-to-cart-btn-large:hover {
+    background: #d14708;
 }
