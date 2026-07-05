@@ -38,7 +38,7 @@
             if (count > 0) {
                 if (!badge) {
                     badge = document.createElement('span');
-                    badge.className = 'cart-badge';
+                    badge.className = 'cart-badge badge rounded-pill bg-danger position-absolute top-0 start-100 translate-middle';
                     btn.appendChild(badge);
                 }
                 badge.textContent = count > 99 ? '99+' : String(count);
@@ -67,7 +67,19 @@
         });
     }
 
+    function seedExampleCart() {
+        if (getCart().length === 0 && !localStorage.getItem('wagba_cart_seeded')) {
+            addToCart({
+                name: 'Wagba Signature Burger',
+                price: 16.00,
+                image: 'https://api.builder.io/api/v1/image/assets/TEMP/2571377a2f685273570ec25bd7434e12c5479281?width=234'
+            });
+            localStorage.setItem('wagba_cart_seeded', '1');
+        }
+    }
+
     document.addEventListener('DOMContentLoaded', function () {
+        seedExampleCart();
         updateCartBadge();
         wireAddToCartButtons();
     });
