@@ -198,7 +198,7 @@
                 if (category === 'card' || category === 'ewallet') {
                     renderCredentialForm(category, optionId, optionName);
                 } else {
-                    renderTransferInstructions(category, optionId, optionName);
+                    finalizePaymentSelection(category, optionId, optionName);
                 }
             });
         });
@@ -310,15 +310,20 @@
     }
 
     /* ---------------------------------------------------------
-       Step 5b: transfer instructions (VA / Minimarket - no credentials needed)
+       Buy Now step (VA / Minimarket): transfer instructions.
+       Shown only after "Buy Now" is clicked, since the VA number /
+       transfer ID / deadline represent a real pending transaction
+       and shouldn't appear while the person is still just picking
+       a payment method.
        --------------------------------------------------------- */
-    function renderTransferInstructions(category, optionId, optionName) {
+    function renderTransferInstructions(payment) {
+        var category = payment.category;
+        var optionName = payment.optionName;
         var isVA = category === 'va';
         var refNumber = isVA ? '1282-1621-3618-361192' : '1920-1023-1932';
         var deadline = formatDeadline();
 
         openModal(
-            BACK_ARROW_BTN() +
             '<div class="redirect-icon">' + (isVA ? TRANSFER_ICON : CASHREG_ICON) + '</div>' +
             '<h2 class="redirect-title">' + (isVA ? 'Transfer to this Virtual Account number to continue' : 'Go to your local minimarket and give them this ID') + '</h2>' +
             '<div class="va-details">' +
@@ -331,17 +336,17 @@
             '</div>' +
             '<div class="modal-btn-stack">' +
             '<button type="button" class="modal-btn-primary" id="redirectConfirm">' + (isVA ? 'I have already transferred' : 'I have finished the transaction') + '</button>' +
-            '<button type="button" class="modal-btn-secondary" id="redirectBack">Back to Payment</button>' +
+            '<button type="button" class="modal-btn-secondary" id="redirectBack">Back to Checkout</button>' +
             '</div>',
             ''
         );
 
-        wireBack(function () { renderSubChoice(category); });
         modalBox.querySelector('#redirectConfirm').addEventListener('click', function () {
-            finalizePaymentSelection(category, optionId, optionName);
+            closeModal();
+            renderOrderSuccess();
         });
         modalBox.querySelector('#redirectBack').addEventListener('click', function () {
-            renderSubChoice(category);
+            closeModal();
         });
     }
 
@@ -562,6 +567,11 @@
        Buy-now redirect flow
        --------------------------------------------------------- */
     function renderPaymentRedirect() {
+        if (selectedPayment.category === 'va' || selectedPayment.category === 'minimarket') {
+            renderTransferInstructions(selectedPayment);
+            return;
+        }
+
         var title = 'Redirecting to payment apps';
         var subtitle = 'You are now being redirected to finish your payment';
         if (selectedPayment.category === 'card') {
@@ -569,10 +579,6 @@
             subtitle = 'Continue in your card app to complete the transaction';
         } else if (selectedPayment.category === 'ewallet') {
             subtitle = 'Continue in your e-wallet app to complete the transaction';
-        } else if (selectedPayment.category === 'va') {
-            subtitle = 'Complete the transfer to confirm your payment';
-        } else if (selectedPayment.category === 'minimarket') {
-            subtitle = 'Finish the transaction at the selected minimarket';
         } else if (selectedPayment.category === 'cod') {
             subtitle = 'Your order will be confirmed on delivery';
         }

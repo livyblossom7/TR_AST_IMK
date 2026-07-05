@@ -39,14 +39,27 @@
                 db.close();
             };
         };
+        request.onerror = function () {
+            // IndexedDB unavailable/blocked — cart still works via localStorage.
+        };
     }
 
     function hydrateCartFromIndexedDb() {
         if (!window.indexedDB) return;
 
         var request = window.indexedDB.open(DB_NAME, 1);
+        request.onupgradeneeded = function () {
+            var db = request.result;
+            if (!db.objectStoreNames.contains(STORE_NAME)) {
+                db.createObjectStore(STORE_NAME, { keyPath: 'id' });
+            }
+        };
         request.onsuccess = function () {
             var db = request.result;
+            if (!db.objectStoreNames.contains(STORE_NAME)) {
+                db.close();
+                return;
+            }
             var tx = db.transaction(STORE_NAME, 'readonly');
             var store = tx.objectStore(STORE_NAME);
             var getRequest = store.get('cart');
@@ -58,6 +71,9 @@
                 }
                 db.close();
             };
+        };
+        request.onerror = function () {
+            // IndexedDB unavailable/blocked — cart still works via localStorage.
         };
     }
 
@@ -119,20 +135,8 @@
         });
     }
 
-    function seedExampleCart() {
-        if (getCart().length === 0 && !localStorage.getItem('wagba_cart_seeded')) {
-            addToCart({
-                name: 'Wagba Signature Burger',
-                price: 16.00,
-                image: 'https://api.builder.io/api/v1/image/assets/TEMP/2571377a2f685273570ec25bd7434e12c5479281?width=234'
-            });
-            localStorage.setItem('wagba_cart_seeded', '1');
-        }
-    }
-
     document.addEventListener('DOMContentLoaded', function () {
         hydrateCartFromIndexedDb();
-        seedExampleCart();
         updateCartBadge();
         wireAddToCartButtons();
     });
