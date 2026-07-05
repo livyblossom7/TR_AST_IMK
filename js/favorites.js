@@ -13,4 +13,10 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.setAttribute('aria-pressed', String(isFavorited));
         });
     });
+
+    document.querySelectorAll('.favorite-card-heart').forEach((btn) => {
+        btn.addEventListener('click', () => {
+            btn.classList.toggle('is-active');
+        });
+    });
 });

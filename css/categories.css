@@ -1,6 +1,10 @@
 /* === Categories Page === */
+/* Layout/flex/gap/rounded/shadow handled via Bootstrap utility classes in HTML.
+   Only brand-specific fixed pixel values (from the Figma design) live here. */
+
 .categories-page-main {
-    padding: 36px 76px 60px;
+    padding-top: 36px;
+    padding-bottom: 60px;
 }
 
 .categories-content {
@@ -9,29 +13,29 @@
     gap: 36px;
 }
 
+.categories-grid {
+    gap: 64px !important;
+    justify-content: center !important;
+}
+
 .page-title {
     color: #000;
     font-size: 35px;
     line-height: normal;
 }
 
-.categories-grid {
-    gap: 64px;
-}
-
 .category-page-card {
     width: 391.333px;
     height: 290px;
-    padding: 13px 85px 32px 85px;
-    border-radius: 10px;
+    padding: 13px 85px 32px;
     border: 2px solid var(--border-color);
     background: #fff;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08) !important;
     transition: box-shadow 0.15s;
 }
 
 .category-page-card:hover {
-    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18) !important;
 }
 
 .category-page-image {
@@ -47,19 +51,12 @@
 }
 
 .category-page-name {
-    align-self: stretch;
     color: #000;
-    text-align: center;
     font-size: 25px;
-    font-weight: 700;
-    line-height: normal;
 }
 
 .category-page-count {
-    align-self: stretch;
     color: var(--text-muted);
-    text-align: center;
     font-size: 18px;
     font-weight: 500;
-    line-height: normal;
 }

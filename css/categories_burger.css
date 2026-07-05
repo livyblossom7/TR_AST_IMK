@@ -1,0 +1,105 @@
+/* === Burgers Category Page ===
+   Struktur layout (flex, grid, spacing, posisi umum) sudah dipindah
+   ke utility class Bootstrap langsung di HTML. CSS di sini hanya untuk
+   hal yang tidak punya padanan utility Bootstrap: ukuran fixed px,
+   posisi absolute presisi, dan warna brand. */
+
+.burger-page-content {
+    max-width: 1150px;
+}
+
+.burger-page-title {
+    color: #000;
+    font-size: 35px;
+}
+
+/* Tombol back — lingkaran hover, mirip .icon-btn di index.css */
+.back-btn {
+    width: 44px;
+    height: 44px;
+    border: none;
+    background-color: transparent;
+    color: #000;
+    transition: background 0.15s;
+}
+.back-btn:hover {
+    background: #EBEBEB;
+}
+
+/* Kartu burger — ukuran fixed px, tidak ada utility Bootstrap untuk ini */
+.burger-card {
+    width: 250px;
+    max-width: 100%;
+    height: 278px;
+    border: 2px solid var(--border-color);
+    background: #fff;
+    transition: box-shadow 0.15s;
+}
+.burger-card:hover {
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18) !important;
+}
+
+/* Posisi absolute presisi (px) — Bootstrap cuma punya top-0/50/100 (persen) */
+.burger-card-photo {
+    top: 15px;
+    left: 28px;
+    width: 147px;
+    height: 120px;
+    padding: 10px 10px 10px 15px;
+}
+.burger-card-photo img {
+    width: 117px;
+    height: 103px;
+    object-fit: contain;
+}
+
+.burger-card-info {
+    top: 145px;
+    left: 28px;
+    width: 193px;
+}
+
+.burger-card-name {
+    font-size: 18px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.burger-card-rating {
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+.burger-card-footer {
+    top: 231px;
+    left: 28px;
+    right: 18px;
+}
+
+.burger-card-price {
+    font-size: 18px;
+}
+
+/* Tombol favorite — lingkaran hover, sama pola dengan .meal-favorite-btn */
+.burger-favorite-btn {
+    width: 36px;
+    height: 36px;
+    border: none;
+    background-color: transparent;
+    transition: background 0.15s;
+}
+.burger-favorite-btn:hover {
+    background: #EBEBEB;
+}
+.burger-favorite-btn svg path {
+    fill: none;
+    stroke: #000;
+    stroke-width: 1.5;
+    transition: fill 0.15s, stroke 0.15s;
+}
+.burger-favorite-btn.is-favorited svg path {
+    fill: var(--orange-primary);
+    stroke: var(--orange-primary);
+}

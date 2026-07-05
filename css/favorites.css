@@ -1,194 +1,443 @@
-:root {
-    --brand-orange: #fd5c28;
-    --brand-orange-hover: #e04a1b;
-    --brand-orange-light: #ffeadf;
+.wagba-navbar {
+    min-height: 105px;
+    border-bottom: 3px solid #F3F3F3;
+    z-index: 100;
 }
 
-body {
-    background-color: #f9f9fb;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+.brand-name {
+    color: var(--orange-primary);
+   font-family: 'Idiqlat', sans-serif !important;
+    font-size: 32px;
+    font-weight: 400;
 }
 
-/* Navbar Styling */
-.navbar-brand span {
-    color: var(--brand-orange);
-    font-weight: 700;
-    font-size: 1.5rem;
-    margin-left: 8px;
-}
-.nav-link {
-    font-weight: 600;
-    color: #333;
-}
-.nav-link:hover {
-    color: var(--brand-orange);
-}
-.icon-nav {
-    font-size: 1.2rem;
-    color: #333;
-    cursor: pointer;
+.nav-links .nav-link {
+    width: 167px;
+    height: 53px;
+    background: #FFFCFC;
+    color: #000;
+    font-size: 20px;
+    transition: background 0.15s, color 0.15s;
 }
 
-/* Card Styling */
-.card {
-    border: 1px solid #f0f0f0;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-    transition: transform 0.2s ease;
-    background-color: #fff;
-}
-.card:hover {
-    transform: translateY(-5px);
-}
-.card-img-top {
-    padding: 15px;
-    object-fit: contain;
-    height: 180px;
+.nav-links .nav-link:hover:not(.nav-link--active) {
+    background: #EBEBEB;
 }
 
-/* Badges & Buttons */
-.btn-add {
-    background-color: var(--brand-orange);
-    color: white;
+.nav-links .nav-link--active {
+    background: var(--orange-light-bg);
+    color: var(--orange-primary);
+}
+
+/* Icon buttons (search, favorites, cart) — circular hover, logo excluded */
+.icon-btn {
+    width: 44px;
+    height: 44px;
     border: none;
-    border-radius: 6px;
-    width: 28px;
-    height: 28px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
+    background-color: transparent;
+    transition: background 0.15s;
+}
+.icon-btn:hover {
+    background: #EBEBEB;
+    border: none;
+}
+
+.cart-badge {
+    font-size: 11px;
     line-height: 1;
-    cursor: pointer;
-}
-.btn-add:hover {
-    background-color: var(--brand-orange-hover);
-}
-.fav-badge {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: white;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    color: var(--brand-orange);
-    font-size: 0.9rem;
+    padding: 0.35em 0.5em;
 }
 
-/* Typography */
-.price {
-    font-weight: 700;
-    font-size: 1.1rem;
-}
-.rating-star {
-    color: var(--brand-orange);
-    font-size: 0.85rem;
-}
-.text-orange {
-    color: var(--brand-orange);
-}
-.title-fw {
-    font-weight: 800;
+.cart-badge.bg-danger {
+    background-color: #FF3B30 !important;
 }
 
-/* Horizontal Card (Recommended) */
-.card-horizontal {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 10px;
-}
-.card-horizontal img {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    border-radius: 8px;
-}
-.card-horizontal .fav-badge-horiz {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    color: #555;
-    cursor: pointer;
-}
-.card-horizontal .btn-add {
-    position: absolute;
-    bottom: 15px;
-    right: 15px;
-}
-
-/* Profile Dropdown */
-.profile-dropdown-menu {
-    width: 320px;
-    padding: 0;
+/* Profile trigger — rounded-rectangle hover */
+.profile-trigger {
     border: none;
-    border-radius: 10px;
-    box-shadow: 0 4px 13px rgba(0, 0, 0, 0.25);
-    overflow: hidden;
+    background-color: transparent;
+    transition: background 0.15s;
+}
+.profile-trigger:hover,
+.profile-trigger[aria-expanded="true"] {
+    background: #EBEBEB;
+    border: none;
 }
 
-.profile-dropdown-menu.show {
-    animation: profileDropdownSlide 0.2s ease;
+.profile-avatar,
+.profile-dropdown-avatar {
+    border: 1.5px solid var(--orange-primary);
+    object-fit: cover;
+}
+.profile-avatar { width: 32px; height: 32px; }
+.profile-dropdown-avatar { width: 36px; height: 36px; }
+
+/* Bootstrap toggles the dropdown's own "show" class and handles
+   positioning via Popper; we only layer sizing + entrance animation. */
+.profile-dropdown {
+    width: 320px;
+    margin-top: 12px !important;
+    opacity: 0;
+    transform: translateY(-12px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
-@keyframes profileDropdownSlide {
-    from { opacity: 0; transform: translateY(-12px); }
-    to { opacity: 1; transform: translateY(0); }
+.profile-dropdown.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
 }
 
-.profile-dropdown-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 16px 20px;
-    border-bottom: 1px solid #eee;
+.profile-trigger[aria-expanded="true"] .profile-trigger-arrow {
+    transform: rotate(180deg);
 }
 
-.profile-dropdown-header img {
-    width: 36px;
-    height: 36px;
-    flex-shrink: 0;
-    border: 1.5px solid var(--brand-orange);
+.profile-trigger-arrow {
+    transition: transform 0.2s ease;
 }
 
 .profile-dropdown-name {
-    font-weight: 600;
-    font-size: 0.95rem;
-    color: #1a1c1c;
+    color: #1A1C1C;
+    font-size: 16px;
 }
 
 .profile-dropdown-email {
-    font-size: 0.8rem;
-    color: #9a9999;
+    color: #9A9999;
+    font-size: 14px;
 }
 
 .profile-dropdown-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 20px;
-    font-weight: 600;
     color: #000;
+    font-size: 16px;
+    transition: background 0.15s, color 0.15s;
 }
-
-.profile-dropdown-item:hover,
-.profile-dropdown-item:focus {
-    background: var(--brand-orange-light);
-    color: var(--brand-orange);
+.profile-dropdown-item:hover {
+    background: var(--orange-light-bg);
+    color: var(--orange-primary);
 }
 
 .profile-dropdown-item--logout {
-    color: #f00;
-    border-top: 1px solid #eee;
+    color: #F00;
+    border-radius: 0 0 0.5rem 0.5rem !important;
+}
+.profile-dropdown-item--logout:hover {
+    background: #FFE1E1;
+    color: #F00;
 }
 
-.profile-dropdown-item--logout:hover,
-.profile-dropdown-item--logout:focus {
-    background: #ffe1e1;
-    color: #f00;
+/* === Hero === */
+.hero-banner {
+    background: var(--orange-banner);
+    min-height: 470px;
+}
+
+.hero-text {
+    max-width: 467px;
+    padding: 89px 0 89px 76px;
+    z-index: 2;
+}
+
+.hero-badge {
+    background: rgba(255, 255, 255, 0.30);
+    font-size: 18px;
+}
+
+.hero-title { font-size: 42px; }
+.hero-subtitle { font-size: 30px; }
+
+.hero-cta {
+    width: 185px;
+    height: 56px;
+    font-size: 20px;
+    color: #000;
+}
+
+.hero-cta:hover {
+    background-color: var(--bs-gray-300) !important;
+    color: #000 !important;
+}
+
+.hero-image-wrap { width: 861px; }
+.hero-image { object-fit: cover; }
+
+
+/* === Favorites Page === */
+.favorites-page {
+    max-width: 1440px; /* 1344px (4 card + gap) + 2x48px padding */
+    margin: 0 auto;
+    padding: 32px 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+/* --- Header --- */
+.favorites-header {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.favorites-heading-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.favorites-back-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+}
+
+.favorites-title {
+    color: #1A1C1C;
+    font-size: 40px;
+    font-weight: 800;
+    line-height: 48px;
+    letter-spacing: -0.8px;
+}
+
+.favorites-subtitle {
+    color: #5B4039;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 28.8px;
+    margin-left: 60px; /* biar sejajar sama teks "Favorite Menu" (48px back-btn + 12px gap) */
+}
+
+/* --- Favorites Grid --- */
+.favorites-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding-bottom: 32px;
+}
+
+.favorite-card {
+    display: flex;
+    width: 321px;
+    flex-direction: column;
+    border-radius: 16px;
+    border: 2px solid var(--border-color);
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.favorite-card-photo {
+    position: relative;
+    height: 192px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.favorite-card-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 16px 16px 0 0;
+}
+
+.favorite-card-heart {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    display: flex;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    background: #fff;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.10), 0 2px 4px -2px rgba(0, 0, 0, 0.10);
+}
+
+.favorite-card-heart svg path {
+    fill: none;
+    stroke: #000;
+    stroke-width: 1.5;
+}
+
+.favorite-card-heart.is-active svg path {
+    fill: var(--orange-primary);
+    stroke: none;
+}
+
+.favorite-card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 16px;
+}
+
+.favorite-card-name {
+    color: #1A1C1C;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 28px;
+}
+
+.favorite-card-rating {
+    color: #000;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.favorite-card-footer {
+    display: flex;
+    align-items: center;
+    padding-top: 12px;
+}
+
+.favorite-card-price {
+    color: #1A1C1C;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 31.2px;
+}
+
+/* --- Recommended Section --- */
+.recommended-section {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border-color);
+}
+
+.recommended-section-header {
+    margin-bottom: 0;
+}
+
+.recommended-title {
+    font-size: 32px;
+}
+
+.recommended-grid {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.recommended-card {
+    display: flex;
+    flex: 1;
+    min-width: 0;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px;
+    border-radius: 16px;
+    border: 2px solid var(--border-color);
+    background: #fff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.recommended-card-photo {
+    flex-shrink: 0;
+    width: 96px;
+    height: 96px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.recommended-card-body {
+    display: flex;
+    flex: 1;
+    min-width: 0;
+    flex-direction: column;
+    justify-content: space-between;
+    align-self: stretch;
+    gap: 12px;
+}
+
+.recommended-card-top {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.recommended-card-name {
+    color: #1A1C1C;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 28px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.recommended-card-rating {
+    color: #000;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.recommended-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.recommended-card-price {
+    color: #1A1C1C;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 14px;
+}
+
+.recommended-heart-btn svg .heart-outline {
+    fill: #000;
+    stroke: none;
+}
+
+.recommended-heart-btn svg .heart-solid {
+    display: none;
+    fill: var(--orange-primary);
+}
+
+.recommended-heart-btn.is-favorited svg .heart-outline {
+    display: none;
+}
+
+.recommended-heart-btn.is-favorited svg .heart-solid {
+    display: block;
+}
+
+/* === Responsive === */
+@media (max-width: 1200px) {
+    .favorites-page {
+        padding: 32px 24px;
+    }
+
+    .recommended-grid {
+        flex-wrap: wrap;
+    }
+
+    .recommended-card {
+        flex: 1 1 calc(50% - 10px);
+    }
+}
+
+@media (max-width: 768px) {
+    .favorites-title {
+        font-size: 30px;
+        line-height: 36px;
+    }
+
+    .favorites-grid {
+        gap: 16px;
+    }
+
+    .favorite-card {
+        width: 100%;
+        max-width: 321px;
+    }
+
+    .recommended-card {
+        flex: 1 1 100%;
+    }
 }
