@@ -186,7 +186,7 @@
     gap: 40px;
 }
 
-.btn {
+.cart-summary-actions .btn {
     display: flex;
     width: 174px;
     height: 53px;
@@ -199,12 +199,12 @@
     font-weight: 600;
 }
 
-.btn-primary {
+.cart-summary-actions .btn-primary {
     background: var(--orange-primary);
     color: #fff;
 }
 
-.btn-secondary {
+.cart-summary-actions .btn-secondary {
     background: #ebebeb;
     color: #000;
 }

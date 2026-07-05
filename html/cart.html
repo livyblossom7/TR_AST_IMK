@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Cart - Wagba</title>
-    <link rel="stylesheet" href="../css/index.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Idiqlat&display=swap" rel="stylesheet">
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Idiqlat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/cart.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
 <div class="page-wrapper">
@@ -19,7 +19,7 @@
     <nav class="navbar navbar-expand-lg bg-white sticky-top wagba-navbar">
         <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap gap-3 px-4 px-lg-5">
 
-            <a href="index.html" class="navbar-brand d-flex align-items-center gap-1 m-0 flex-shrink-0">
+            <a href="../index.html" class="navbar-brand d-flex align-items-center gap-1 m-0 flex-shrink-0">
                 <svg class="brand-logo" width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M10.5 42C9.675 42 9 42.675 9 43.5C9 47.6437 12.3562 51 16.5 51H43.5C47.6437 51 51 47.6437 51 43.5C51 42.675 50.325 42 49.5 42H10.5ZM9 24.9375C9 26.0812 9.92812 27 11.0625 27H48.9375C50.0812 27 51 26.0719 51 24.9375C51 23.325 50.7563 21.7125 49.9875 20.2969C47.9062 16.4719 42.2719 9 30 9C17.7281 9 12.0938 16.4625 10.0125 20.2969C9.24375 21.7125 9 23.325 9 24.9375ZM6 34.5C6 36.1594 7.34062 37.5 9 37.5H51C52.6594 37.5 54 36.1594 54 34.5C54 32.8406 52.6594 31.5 51 31.5H9C7.34062 31.5 6 32.8406 6 34.5ZM30 12.75C31.2469 12.75 32.25 13.7531 32.25 15C32.25 16.2469 31.2469 17.25 30 17.25C28.7531 17.25 27.75 16.2469 27.75 15C27.75 13.7531 28.7531 12.75 30 12.75ZM17.25 18C17.25 16.7531 18.2531 15.75 19.5 15.75C20.7469 15.75 21.75 16.7531 21.75 18C21.75 19.2469 20.7469 20.25 19.5 20.25C18.2531 20.25 17.25 19.2469 17.25 18ZM40.5 15.75C41.7469 15.75 42.75 16.7531 42.75 18C42.75 19.2469 41.7469 20.25 40.5 20.25C39.2531 20.25 38.25 19.2469 38.25 18C38.25 16.7531 39.2531 15.75 40.5 15.75Z" fill="#F4530A"/>
                 </svg>
@@ -28,10 +28,10 @@
 
             <ul class="nav-links nav d-none d-lg-flex align-items-center gap-3 mb-0">
                 <li class="nav-item">
-                    <a href="index.html" class="nav-link nav-link--active fw-semibold rounded-3 text-center d-flex align-items-center justify-content-center">Home</a>
+                    <a href="../index.html" class="nav-link fw-semibold rounded-3 text-center d-flex align-items-center justify-content-center">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a href="html/categories.html" class="nav-link fw-semibold rounded-3 text-center d-flex align-items-center justify-content-center">Categories</a>
+                    <a href="categories.html" class="nav-link fw-semibold rounded-3 text-center d-flex align-items-center justify-content-center">Categories</a>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link fw-semibold rounded-3 text-center d-flex align-items-center justify-content-center">Offers</a>
@@ -49,7 +49,7 @@
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M15.0505 26.9333C14.7278 26.8222 14.4443 26.6444 14.1998 26.4L11.8998 24.3C9.54428 22.1444 7.41673 20.0058 5.51717 17.884C3.61761 15.7622 2.66739 13.4231 2.6665 10.8667C2.6665 8.77777 3.3665 7.03332 4.7665 5.63332C6.1665 4.23332 7.91095 3.53333 9.99984 3.53333C11.1776 3.53333 12.2887 3.7831 13.3332 4.28266C14.3776 4.78221 15.2665 5.46577 15.9998 6.33332C16.7332 5.46666 17.6221 4.78355 18.6665 4.28399C19.7109 3.78444 20.8221 3.53421 21.9998 3.53333C24.0887 3.53333 25.8332 4.23332 27.2332 5.63332C28.6332 7.03332 29.3332 8.77777 29.3332 10.8667C29.3332 13.4222 28.3887 15.7667 26.4998 17.9C24.6109 20.0333 22.4665 22.1778 20.0665 24.3333L17.7998 26.4C17.5554 26.6444 17.2723 26.8222 16.9505 26.9333C16.6287 27.0444 16.3118 27.1 15.9998 27.1C15.6878 27.1 15.3714 27.0444 15.0505 26.9333ZM14.7332 8.99999C14.0887 8.08888 13.3998 7.39466 12.6665 6.91733C11.9332 6.43999 11.0443 6.20088 9.99984 6.19999C8.6665 6.19999 7.55539 6.64444 6.6665 7.53332C5.77761 8.42221 5.33317 9.53332 5.33317 10.8667C5.33317 12.0222 5.74428 13.2502 6.5665 14.5507C7.38873 15.8511 8.37228 17.112 9.51717 18.3333C10.6621 19.5547 11.8398 20.6991 13.0505 21.7667C14.2612 22.8342 15.2443 23.712 15.9998 24.4C16.7554 23.7111 17.7389 22.8333 18.9505 21.7667C20.1621 20.7 21.3398 19.5555 22.4838 18.3333C23.6278 17.1111 24.6109 15.8502 25.4332 14.5507C26.2554 13.2511 26.6665 12.0231 26.6665 10.8667C26.6665 9.53332 26.2221 8.42221 25.3332 7.53332C24.4443 6.64444 23.3332 6.19999 21.9998 6.19999C20.9554 6.19999 20.0665 6.4391 19.3332 6.91733C18.5998 7.39555 17.9109 8.08977 17.2665 8.99999C17.1109 9.22221 16.9221 9.38888 16.6998 9.49999C16.4776 9.6111 16.2443 9.66666 15.9998 9.66666C15.7554 9.66666 15.5221 9.6111 15.2998 9.49999C15.0776 9.38888 14.8887 9.22221 14.7332 8.99999Z" fill="black"/>
                     </svg>
                 </button>
-                <a href="html/cart.html" class="icon-btn rounded-circle btn p-0 d-flex align-items-center justify-content-center position-relative" data-cart-icon aria-label="Cart">
+                <a href="cart.html" class="icon-btn rounded-circle btn p-0 d-flex align-items-center justify-content-center position-relative" data-cart-icon aria-label="Cart">
                     <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M22.5186 22.1112C23.1473 22.1112 23.7502 22.3609 24.1947 22.8054C24.6393 23.25 24.889 23.8529 24.889 24.4815C24.889 25.1102 24.6393 25.7131 24.1947 26.1576C23.7502 26.6022 23.1473 26.8519 22.5186 26.8519C21.89 26.8519 21.2871 26.6022 20.8425 26.1576C20.398 25.7131 20.1483 25.1102 20.1483 24.4815C20.1483 23.166 21.2031 22.1112 22.5186 22.1112ZM3.55566 3.14819H7.43122L8.54529 5.51856H26.0742C26.3885 5.51856 26.69 5.64343 26.9122 5.8657C27.1345 6.08796 27.2594 6.38942 27.2594 6.70375C27.2594 6.90523 27.2001 7.10671 27.1171 7.29634L22.8742 14.9645C22.4712 15.6875 21.689 16.1852 20.8001 16.1852H11.9705L10.9038 18.1171L10.8683 18.2593C10.8683 18.3379 10.8995 18.4132 10.955 18.4688C11.0106 18.5244 11.086 18.5556 11.1646 18.5556H24.889V20.926H10.6668C10.0381 20.926 9.4352 20.6762 8.99067 20.2317C8.54614 19.7872 8.2964 19.1843 8.2964 18.5556C8.2964 18.1408 8.40307 17.7497 8.58085 17.4178L10.1927 14.5141L5.92603 5.51856H3.55566V3.14819ZM10.6668 22.1112C11.2954 22.1112 11.8983 22.3609 12.3429 22.8054C12.7874 23.25 13.0371 23.8529 13.0371 24.4815C13.0371 25.1102 12.7874 25.7131 12.3429 26.1576C11.8983 26.6022 11.2954 26.8519 10.6668 26.8519C10.0381 26.8519 9.4352 26.6022 8.99067 26.1576C8.54614 25.7131 8.2964 25.1102 8.2964 24.4815C8.2964 23.166 9.35122 22.1112 10.6668 22.1112ZM21.3334 13.8149L24.6283 7.88893H9.64752L12.4446 13.8149H21.3334Z" fill="black"/>
                     </svg>
