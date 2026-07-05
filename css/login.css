@@ -1,1 +1,305 @@
+/* ===========================
+   Google Font
+=========================== */
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#fff;
+}
+
+/* ===========================
+LEFT SIDE
+=========================== */
+
+.auth-side{
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#fff;
+    padding:40px;
+}
+
+.form-box{
+
+    width:100%;
+    max-width:420px;
+}
+
+.back{
+
+    color:#ff8a00;
+    font-size:22px;
+    text-decoration:none;
+}
+
+h2{
+
+    font-weight:700;
+    margin-top:20px;
+    margin-bottom:10px;
+}
+
+.form-box p{
+
+    color:#777;
+    margin-bottom:25px;
+}
+
+/* ===========================
+INPUT
+=========================== */
+
+label{
+
+    font-weight:500;
+    margin-bottom:8px;
+    display:block;
+}
+
+.form-control{
+
+    border-radius:15px;
+    border:1px solid #ddd;
+    padding:14px 16px;
+    font-size:15px;
+    box-shadow:none;
+}
+
+.form-control:focus{
+
+    border-color:#ff8a00;
+    box-shadow:none;
+}
+
+.password{
+
+    position:relative;
+}
+
+.password i{
+
+    position:absolute;
+    right:18px;
+    top:15px;
+    cursor:pointer;
+    color:#888;
+}
+
+/* ===========================
+BUTTON
+=========================== */
+
+.btn-login{
+
+    background:#ff8a00;
+    color:#fff;
+    padding:14px;
+    border-radius:14px;
+    border:none;
+    font-weight:600;
+    transition:.3s;
+}
+
+.btn-login:hover{
+
+    background:#ff7300;
+    color:#fff;
+}
+
+/* ===========================
+LINK
+=========================== */
+
+a{
+
+    text-decoration:none;
+    color:#ff8a00;
+}
+
+.bottom{
+
+    margin-top:30px;
+    text-align:center;
+}
+
+.bottom a{
+
+    font-weight:600;
+}
+
+/* ===========================
+DIVIDER
+=========================== */
+
+.divider{
+
+    margin:35px 0;
+    text-align:center;
+    position:relative;
+}
+
+.divider span{
+
+    background:#fff;
+    padding:0 15px;
+    color:#999;
+    font-size:13px;
+    position:relative;
+    z-index:2;
+}
+
+.divider::before{
+
+    content:'';
+    position:absolute;
+    width:100%;
+    height:1px;
+    background:#ddd;
+    left:0;
+    top:50%;
+}
+
+/* ===========================
+SOCIAL
+=========================== */
+
+.social{
+
+    display:flex;
+    justify-content:center;
+    gap:15px;
+}
+
+.social button{
+
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    border:1px solid #ddd;
+    background:white;
+    font-size:22px;
+    transition:.3s;
+}
+
+.social button:hover{
+
+    background:#ff8a00;
+    color:white;
+    border-color:#ff8a00;
+}
+
+/* ===========================
+RIGHT SIDE
+=========================== */
+
+.image-side{
+
+    background:linear-gradient(135deg,#ff9300,#ffcc48);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    overflow:hidden;
+}
+
+.image-wrapper{
+
+    width:90%;
+    text-align:center;
+}
+
+.image-wrapper img{
+
+    width:85%;
+    max-width:700px;
+    animation:float 4s ease-in-out infinite;
+}
+
+/* ===========================
+ANIMATION
+=========================== */
+
+@keyframes float{
+
+    0%{
+
+        transform:translateY(0px);
+    }
+
+    50%{
+
+        transform:translateY(-15px);
+    }
+
+    100%{
+
+        transform:translateY(0px);
+    }
+
+}
+
+/* ===========================
+RESPONSIVE
+=========================== */
+
+@media(max-width:992px){
+
+.image-side{
+
+display:none;
+
+}
+
+.auth-side{
+
+padding:30px;
+
+}
+
+.form-box{
+
+max-width:100%;
+}
+
+}
+
+@media(max-width:576px){
+
+.auth-side{
+
+padding:20px;
+}
+
+h2{
+
+font-size:28px;
+}
+
+.form-control{
+
+padding:12px;
+}
+
+.btn-login{
+
+padding:12px;
+}
+
+.social button{
+
+width:48px;
+height:48px;
+font-size:20px;
+}
+
+}
