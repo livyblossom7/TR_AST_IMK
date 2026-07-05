@@ -6,7 +6,7 @@
     <title>Checkout - Wagba</title>
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/checkout.css">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Idiqlat&display=swap" rel="stylesheet">
 </head>
 <body>
 <div class="page-wrapper">
@@ -51,6 +51,13 @@
                     <p class="address-row-sub" id="addressRowSub">Jl. Soekarno-Hatta No 87, RT 029/RW 012, Menteng, Jakarta Pusat, DKI Jakarta</p>
                 </div>
 
+                <div class="checkout-order-box">
+                    <p class="notes-box-label">Your order</p>
+                    <div class="checkout-order-list" id="checkoutOrderList">
+                        <p class="checkout-order-empty">Your cart is empty.</p>
+                    </div>
+                </div>
+
                 <!-- Payment Method -->
                 <div class="checkout-box payment-box">
                     <p class="payment-box-label" id="paymentBoxLabel">Payment Method</p>
@@ -71,22 +78,22 @@
                 <!-- Notes -->
                 <div class="checkout-box notes-box">
                     <p class="notes-box-label">Notes for the chef</p>
-                    <input type="text" class="notes-input" placeholder="Ex: Add more onions please" />
+                    <textarea class="notes-input" placeholder="Ex: Add more onions please"></textarea>
                 </div>
 
             </div>
 
             <aside class="checkout-summary">
                 <h2 class="checkout-summary-title">Checkout Summary</h2>
-                <div class="checkout-summary-line"><span>Subtotal</span><span>$30.00</span></div>
-                <div class="checkout-summary-line"><span>Delivery Fee</span><span>$4.00</span></div>
-                <div class="checkout-summary-line"><span>PPN Tax (11%)</span><span>$3.74</span></div>
-                <div class="checkout-summary-line"><span>MBG Tax (69%)*</span><span>$23.76</span></div>
+                <div class="checkout-summary-line"><span>Subtotal</span><span id="checkoutSubtotal">$0.00</span></div>
+                <div class="checkout-summary-line"><span>Delivery Fee</span><span id="checkoutDelivery">$0.00</span></div>
+                <div class="checkout-summary-line"><span>PPN Tax (11%)</span><span id="checkoutTax">$0.00</span></div>
+                <div class="checkout-summary-line"><span>MBG Tax (69%)*</span><span id="checkoutMbg">$0.00</span></div>
                 <p class="checkout-summary-note">*MBG (Makan Bergizi Gratis) tax is intended to fund the MBG programme to feed the children in this country and the MBG kitchen owner, the minister of BGN, and to our glorious supreme leader, Prabowo Subianto. Glory to Prabowo! Long Live Jokowi!</p>
                 <div class="checkout-summary-divider"></div>
                 <div class="checkout-summary-total">
                     <span>Total</span>
-                    <span>$61.50</span>
+                    <span id="checkoutTotal">$0.00</span>
                 </div>
                 <div class="checkout-summary-actions">
                     <button type="button" class="btn btn-primary" id="buyNowBtn">Buy Now</button>
@@ -101,6 +108,7 @@
     <div class="modal" id="modalBox"></div>
 </div>
 
+<script src="../js/cart.js"></script>
 <script src="../js/checkout.js"></script>
 </body>
 </html>

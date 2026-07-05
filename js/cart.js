@@ -2,17 +2,69 @@
     'use strict';
 
     var CART_KEY = 'wagba_cart';
+    var DB_NAME = 'wagba_db';
+    var STORE_NAME = 'cart_store';
+
+    function normalizeCart(cart) {
+        if (!Array.isArray(cart)) return [];
+        return cart.filter(function (item) {
+            return item && typeof item === 'object' && item.name;
+        });
+    }
 
     function getCart() {
         try {
-            return JSON.parse(localStorage.getItem(CART_KEY)) || [];
+            return normalizeCart(JSON.parse(localStorage.getItem(CART_KEY)));
         } catch (e) {
             return [];
         }
     }
 
+    function persistToIndexedDb(cart) {
+        if (!window.indexedDB) return;
+
+        var request = window.indexedDB.open(DB_NAME, 1);
+        request.onupgradeneeded = function () {
+            var db = request.result;
+            if (!db.objectStoreNames.contains(STORE_NAME)) {
+                db.createObjectStore(STORE_NAME, { keyPath: 'id' });
+            }
+        };
+        request.onsuccess = function () {
+            var db = request.result;
+            var tx = db.transaction(STORE_NAME, 'readwrite');
+            var store = tx.objectStore(STORE_NAME);
+            store.put({ id: 'cart', items: cart });
+            tx.oncomplete = function () {
+                db.close();
+            };
+        };
+    }
+
+    function hydrateCartFromIndexedDb() {
+        if (!window.indexedDB) return;
+
+        var request = window.indexedDB.open(DB_NAME, 1);
+        request.onsuccess = function () {
+            var db = request.result;
+            var tx = db.transaction(STORE_NAME, 'readonly');
+            var store = tx.objectStore(STORE_NAME);
+            var getRequest = store.get('cart');
+            getRequest.onsuccess = function () {
+                var data = getRequest.result;
+                if (data && Array.isArray(data.items) && data.items.length && getCart().length === 0) {
+                    localStorage.setItem(CART_KEY, JSON.stringify(normalizeCart(data.items)));
+                    updateCartBadge();
+                }
+                db.close();
+            };
+        };
+    }
+
     function saveCart(cart) {
-        localStorage.setItem(CART_KEY, JSON.stringify(cart));
+        var normalizedCart = normalizeCart(cart);
+        localStorage.setItem(CART_KEY, JSON.stringify(normalizedCart));
+        persistToIndexedDb(normalizedCart);
         updateCartBadge();
     }
 
@@ -79,6 +131,7 @@
     }
 
     document.addEventListener('DOMContentLoaded', function () {
+        hydrateCartFromIndexedDb();
         seedExampleCart();
         updateCartBadge();
         wireAddToCartButtons();
