@@ -326,7 +326,7 @@ img { display: block; max-width: 100%; }
 }
 .meal-favorite-btn.is-favorited svg path {
     fill: var(--orange-primary);
-    stroke: var(--orange-primary);
+    stroke: none;
 }
 
 /* === Spacing antar section (update) === */

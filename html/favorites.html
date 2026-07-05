@@ -1,353 +1,271 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Wagba - Favorite Menu</title>
-
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-<style>
-:root {
-    --brand-orange: #F4530A;
-    --brand-orange-hover: #d14708;
-    --brand-orange-light: #ffeadf;
-}
-body {
-    background-color: #f9f9fb;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-}
-.navbar-brand span { color: var(--brand-orange); font-weight: 700; font-size: 1.5rem; margin-left: 8px; }
-.nav-link { font-weight: 600; color: #333; padding: 8px 20px !important; }
-.nav-link:hover { color: var(--brand-orange); }
-.nav-active { background-color: var(--brand-orange-light); color: var(--brand-orange) !important; border-radius: 8px; }
-.icon-nav { font-size: 1.2rem; color: #333; cursor: pointer; }
-.text-orange { color: var(--brand-orange) !important; }
-.title-fw { font-weight: 800; }
-.rating-star { color: var(--brand-orange); font-size: 0.9rem; }
-.btn-back { background: #fff; border: 1px solid #eee; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; color: #333; cursor: pointer; transition: 0.2s; }
-.btn-back:hover { background: var(--brand-orange-light); color: var(--brand-orange); }
-
-/* --- CSS TAMBAHAN BUAT HALAMAN FAVORITE --- */
-.fav-card {
-    border: 1px solid #eaeaea;
-    border-radius: 12px;
-    background-color: #fff;
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-.fav-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.04);
-}
-.fav-card-img-wrap {
-    position: relative;
-    padding: 20px;
-    text-align: center;
-}
-.fav-card-img-wrap img {
-    height: 130px;
-    object-fit: contain;
-}
-.btn-heart-circle {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: #fff;
-    border: 1px solid #f0f0f0;
-    border-radius: 50%;
-    width: 32px;
-    height: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #ccc;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.03);
-    cursor: pointer;
-    transition: 0.2s;
-}
-.btn-heart-circle:hover {
-    background: var(--brand-orange-light);
-}
-.btn-heart-circle.active {
-    color: var(--brand-orange);
-}
-.fav-card-body {
-    border-top: 1px solid #eaeaea;
-    padding: 15px;
-}
-.price-medium {
-    font-weight: 800;
-    font-size: 1.25rem;
-}
-
-/* Horizontal Cards buat "Recommended" */
-.rec-horizontal-card {
-    border: 1px solid #eaeaea;
-    border-radius: 12px;
-    background-color: #fff;
-    padding: 12px;
-    display: flex;
-    align-items: center;
-    transition: transform 0.2s;
-}
-.rec-horizontal-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
-}
-.rec-horizontal-card img {
-    width: 70px;
-    height: 70px;
-    object-fit: contain;
-    margin-right: 15px;
-}
-.btn-heart-plain {
-    background: none;
-    border: none;
-    color: #333;
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: 0.2s;
-}
-.btn-heart-plain:hover {
-    transform: scale(1.1);
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorite Menu - Wagba</title>
+    
+    <!-- Ini Bootstrap CSS biar class d-flex dll jalan bro -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/favorites.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Idiqlat&display=swap" rel="stylesheet">
 </head>
 <body>
+<div class="page-wrapper">
 
-<nav class="navbar navbar-expand-lg bg-white border-bottom py-3">
-  <div class="container">
-    <a class="navbar-brand d-flex align-items-center" href="#">
-       <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M10.5 42C9.675 42 9 42.675 9 43.5C9 47.6437 12.3562 51 16.5 51H43.5C47.6437 51 51 47.6437 51 43.5C51 42.675 50.325 42 49.5 42H10.5ZM9 24.9375C9 26.0812 9.92812 27 11.0625 27H48.9375C50.0812 27 51 26.0719 51 24.9375C51 23.325 50.7563 21.7125 49.9875 20.2969C47.9062 16.4719 42.2719 9 30 9C17.7281 9 12.0938 16.4625 10.0125 20.2969C9.24375 21.7125 9 23.325 9 24.9375ZM6 34.5C6 36.1594 7.34062 37.5 9 37.5H51C52.6594 37.5 54 36.1594 54 34.5C54 32.8406 52.6594 31.5 51 31.5H9C7.34062 31.5 6 32.8406 6 34.5ZM30 12.75C31.2469 12.75 32.25 13.7531 32.25 15C32.25 16.2469 31.2469 17.25 30 17.25C28.7531 17.25 27.75 16.2469 27.75 15C27.75 13.7531 28.7531 12.75 30 12.75ZM17.25 18C17.25 16.7531 18.2531 15.75 19.5 15.75C20.7469 15.75 21.75 16.7531 21.75 18C21.75 19.2469 20.7469 20.25 19.5 20.25C18.2531 20.25 17.25 19.2469 17.25 18ZM40.5 15.75C41.7469 15.75 42.75 16.7531 42.75 18C42.75 19.2469 41.7469 20.25 40.5 20.25C39.2531 20.25 38.25 19.2469 38.25 18C38.25 16.7531 39.2531 15.75 40.5 15.75Z" fill="#F4530A"/>
-</svg>
-      <span>Wagba</span>
-    </a>
-    <div class="collapse navbar-collapse justify-content-center">
-      <ul class="navbar-nav gap-2">
-        <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Categories</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Offers</a></li>
-      </ul>
-    </div>
-    <div class="d-flex align-items-center gap-3">
-      <i class="bi bi-search icon-nav"></i>
-      <i class="bi bi-suit-heart-fill text-orange icon-nav"></i>
-      <i class="bi bi-cart3 icon-nav"></i>
-      <div class="dropdown">
-        <a class="d-flex align-items-center text-decoration-none dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-          <img src="https://i.pravatar.cc/32" class="rounded-circle" width="32" height="32" alt="Profile">
-        </a>
-      </div>
-    </div>
-  </div>
-</nav>
+    <nav class="navbar navbar-expand-lg bg-white sticky-top wagba-navbar">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap gap-3 px-4 px-lg-5">
 
-<div class="container py-4">
+            <a href="../index.html" class="navbar-brand d-flex align-items-center gap-1 m-0 flex-shrink-0">
+                <svg class="brand-logo" width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10.5 42C9.675 42 9 42.675 9 43.5C9 47.6437 12.3562 51 16.5 51H43.5C47.6437 51 51 47.6437 51 43.5C51 42.675 50.325 42 49.5 42H10.5ZM9 24.9375C9 26.0812 9.92812 27 11.0625 27H48.9375C50.0812 27 51 26.0719 51 24.9375C51 23.325 50.7563 21.7125 49.9875 20.2969C47.9062 16.4719 42.2719 9 30 9C17.7281 9 12.0938 16.4625 10.0125 20.2969C9.24375 21.7125 9 23.325 9 24.9375ZM6 34.5C6 36.1594 7.34062 37.5 9 37.5H51C52.6594 37.5 54 36.1594 54 34.5C54 32.8406 52.6594 31.5 51 31.5H9C7.34062 31.5 6 32.8406 6 34.5ZM30 12.75C31.2469 12.75 32.25 13.7531 32.25 15C32.25 16.2469 31.2469 17.25 30 17.25C28.7531 17.25 27.75 16.2469 27.75 15C27.75 13.7531 28.7531 12.75 30 12.75ZM17.25 18C17.25 16.7531 18.2531 15.75 19.5 15.75C20.7469 15.75 21.75 16.7531 21.75 18C21.75 19.2469 20.7469 20.25 19.5 20.25C18.2531 20.25 17.25 19.2469 17.25 18ZM40.5 15.75C41.7469 15.75 42.75 16.7531 42.75 18C42.75 19.2469 41.7469 20.25 40.5 20.25C39.2531 20.25 38.25 19.2469 38.25 18C38.25 16.7531 39.2531 15.75 40.5 15.75Z" fill="#F4530A"/>
+                </svg>
+                <span class="brand-name">Wagba</span>
+            </a>
 
-  <div class="d-flex align-items-center mb-1">
-    <button class="btn-back me-3" id="backBtn">
-      <i class="bi bi-chevron-left fw-bold"></i>
-    </button>
-    <h2 class="title-fw m-0 fs-3">Favorite Menu</h2>
-  </div>
-  <p class="text-muted mb-4" style="margin-left: 3.5rem; font-size: 0.95rem;">Delicious meals you've saved for later. Just one tap away.</p>
+            <ul class="nav-links nav d-none d-lg-flex align-items-center gap-3 mb-0">
+                <li class="nav-item">
+                    <a href="../index.html" class="nav-link fw-semibold rounded-3 text-center d-flex align-items-center justify-content-center">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="categories.html" class="nav-link fw-semibold rounded-3 text-center d-flex align-items-center justify-content-center">Categories</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link fw-semibold rounded-3 text-center d-flex align-items-center justify-content-center">Offers</a>
+                </li>
+            </ul>
 
-  <div class="row g-4 mb-5">
-    
-    <div class="col-sm-6 col-lg-3">
-      <div class="fav-card h-100">
-        <div class="fav-card-img-wrap">
-          <div class="btn-heart-circle active"><i class="bi bi-suit-heart-fill"></i></div>
-          <img src="assets/img/jumbo-burger.png" alt="Jumbo Burger" class="img-fluid">
-        </div>
-        <div class="fav-card-body">
-          <h6 class="fw-bold mb-1 fs-6">Jumbo Burger</h6>
-          <div class="d-flex align-items-center gap-1 mb-2" style="font-size: 0.85rem;">
-            <i class="bi bi-star-fill rating-star"></i>
-            <span class="fw-semibold">4.8</span>
-            <span class="text-muted">(2.3k+)</span>
-          </div>
-          <div class="price-medium text-dark">$12.00</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-sm-6 col-lg-3">
-      <div class="fav-card h-100">
-        <div class="fav-card-img-wrap">
-          <div class="btn-heart-circle active"><i class="bi bi-suit-heart-fill"></i></div>
-          <img src="assets/img/margherita-pizza.png" alt="Margherita Pizza" class="img-fluid">
-        </div>
-        <div class="fav-card-body">
-          <h6 class="fw-bold mb-1 fs-6">Margherita Pizza</h6>
-          <div class="d-flex align-items-center gap-1 mb-2" style="font-size: 0.85rem;">
-            <i class="bi bi-star-fill rating-star"></i>
-            <span class="fw-semibold">4.6</span>
-            <span class="text-muted">(1.4k+)</span>
-          </div>
-          <div class="price-medium text-dark">$10.00</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-sm-6 col-lg-3">
-      <div class="fav-card h-100">
-        <div class="fav-card-img-wrap">
-          <div class="btn-heart-circle active"><i class="bi bi-suit-heart-fill"></i></div>
-          <img src="assets/img/chicken-shawarma.png" alt="Chicken Shawarma" class="img-fluid">
-        </div>
-        <div class="fav-card-body">
-          <h6 class="fw-bold mb-1 fs-6">Chicken Shawarma</h6>
-          <div class="d-flex align-items-center gap-1 mb-2" style="font-size: 0.85rem;">
-            <i class="bi bi-star-fill rating-star"></i>
-            <span class="fw-semibold">4.8</span>
-            <span class="text-muted">(2.2k+)</span>
-          </div>
-          <div class="price-medium text-dark">$9.00</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-sm-6 col-lg-3">
-      <div class="fav-card h-100">
-        <div class="fav-card-img-wrap">
-          <div class="btn-heart-circle active"><i class="bi bi-suit-heart-fill"></i></div>
-          <img src="assets/img/beef-bulgogi.png" alt="Beef Bulgogi Bowl" class="img-fluid">
-        </div>
-        <div class="fav-card-body">
-          <h6 class="fw-bold mb-1 fs-6">Beef Bulgogi Bowl</h6>
-          <div class="d-flex align-items-center gap-1 mb-2" style="font-size: 0.85rem;">
-            <i class="bi bi-star-fill rating-star"></i>
-            <span class="fw-semibold">4.8</span>
-            <span class="text-muted">(1.2k+)</span>
-          </div>
-          <div class="price-medium text-dark">$13.00</div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <hr class="text-muted opacity-25 mb-4">
-
-  <div class="d-flex justify-content-between align-items-center mb-3">
-    <h4 class="title-fw m-0 fs-4">Reccomended For You</h4>
-    <a href="#" class="text-orange fw-bold text-decoration-none">View All</a>
-  </div>
-
-  <div class="row g-4">
-    
-    <div class="col-md-6 col-lg-4">
-      <div class="rec-horizontal-card">
-        <img src="assets/img/fried-chicken.png" alt="Crispy Fried Chicken">
-        <div class="d-flex justify-content-between align-items-center w-100">
-          <div>
-            <h6 class="fw-bold mb-1" style="font-size: 0.95rem;">Crispy Fried Chicken</h6>
-            <div class="d-flex align-items-center gap-1 mb-2" style="font-size: 0.8rem;">
-              <i class="bi bi-star-fill rating-star"></i>
-              <span class="fw-semibold">4.8</span>
-              <span class="text-muted">(2.4k+)</span>
+            <div class="nav-actions d-flex align-items-center gap-3 gap-lg-4">
+                <button class="icon-btn rounded-circle btn p-0 d-flex align-items-center justify-content-center" aria-label="Search">
+                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M13.1251 2.5C11.4308 2.50014 9.76115 2.90546 8.25539 3.68212C6.74963 4.45878 5.45144 5.58427 4.46912 6.96469C3.4868 8.34511 2.84884 9.94043 2.60846 11.6176C2.36808 13.2947 2.53226 15.005 3.0873 16.6057C3.64233 18.2065 4.57213 19.6513 5.79912 20.8197C7.02611 21.988 8.5147 22.846 10.1407 23.322C11.7667 23.798 13.483 23.8783 15.1463 23.5561C16.8097 23.234 18.3719 22.5187 19.7026 21.47L24.2676 26.035C24.5033 26.2627 24.8191 26.3887 25.1468 26.3858C25.4746 26.383 25.7881 26.2515 26.0198 26.0198C26.2516 25.788 26.3831 25.4745 26.3859 25.1468C26.3888 24.819 26.2628 24.5033 26.0351 24.2675L21.4701 19.7025C22.7051 18.1358 23.474 16.253 23.6889 14.2697C23.9039 12.2863 23.5561 10.2825 22.6854 8.48762C21.8146 6.69271 20.4562 5.1792 18.7654 4.12029C17.0747 3.06138 15.12 2.49987 13.1251 2.5ZM5.00007 13.125C5.00007 10.9701 5.8561 8.90349 7.37983 7.37976C8.90356 5.85602 10.9702 5 13.1251 5C15.28 5 17.3466 5.85602 18.8703 7.37976C20.394 8.90349 21.2501 10.9701 21.2501 13.125C21.2501 15.2799 20.394 17.3465 18.8703 18.8702C17.3466 20.394 15.28 21.25 13.1251 21.25C10.9702 21.25 8.90356 20.394 7.37983 18.8702C5.8561 17.3465 5.00007 15.2799 5.00007 13.125Z" fill="black"/>
+                    </svg>
+                </button>
+                <button class="icon-btn rounded-circle btn p-0 d-flex align-items-center justify-content-center" aria-label="Favorites">
+                    <!-- Icon hati versi SOLID biar full orange, bukan cuma outline -->
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 8C12 8 12 8 12.76 7C13.64 5.84 14.94 5 16.5 5C18.99 5 21 7.01 21 9.5C21 10.43 20.72 11.29 20.24 12C19.43 13.21 12 21 12 21C12 21 4.57 13.21 3.76 12C3.28 11.29 3 10.43 3 9.5C3 7.01 5.01 5 7.5 5C9.06 5 10.37 5.84 11.24 7C12 8 12 8 12 8Z" fill="#F4530A"/>
+                    </svg>
+                </button>
+                <a href="cart.html" class="icon-btn rounded-circle btn p-0 d-flex align-items-center justify-content-center position-relative" data-cart-icon aria-label="Cart">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M22.5186 22.1112C23.1473 22.1112 23.7502 22.3609 24.1947 22.8054C24.6393 23.25 24.889 23.8529 24.889 24.4815C24.889 25.1102 24.6393 25.7131 24.1947 26.1576C23.7502 26.6022 23.1473 26.8519 22.5186 26.8519C21.89 26.8519 21.2871 26.6022 20.8425 26.1576C20.398 25.7131 20.1483 25.1102 20.1483 24.4815C20.1483 23.166 21.2031 22.1112 22.5186 22.1112ZM3.55566 3.14819H7.43122L8.54529 5.51856H26.0742C26.3885 5.51856 26.69 5.64343 26.9122 5.8657C27.1345 6.08796 27.2594 6.38942 27.2594 6.70375C27.2594 6.90523 27.2001 7.10671 27.1171 7.29634L22.8742 14.9645C22.4712 15.6875 21.689 16.1852 20.8001 16.1852H11.9705L10.9038 18.1171L10.8683 18.2593C10.8683 18.3379 10.8995 18.4132 10.955 18.4688C11.0106 18.5244 11.086 18.5556 11.1646 18.5556H24.889V20.926H10.6668C10.0381 20.926 9.4352 20.6762 8.99067 20.2317C8.54614 19.7872 8.2964 19.1843 8.2964 18.5556C8.2964 18.1408 8.40307 17.7497 8.58085 17.4178L10.1927 14.5141L5.92603 5.51856H3.55566V3.14819ZM10.6668 22.1112C11.2954 22.1112 11.8983 22.3609 12.3429 22.8054C12.7874 23.25 13.0371 23.8529 13.0371 24.4815C13.0371 25.1102 12.7874 25.7131 12.3429 26.1576C11.8983 26.6022 11.2954 26.8519 10.6668 26.8519C10.0381 26.8519 9.4352 26.6022 8.99067 26.1576C8.54614 25.7131 8.2964 25.1102 8.2964 24.4815C8.2964 23.166 9.35122 22.1112 10.6668 22.1112ZM21.3334 13.8149L24.6283 7.88893H9.64752L12.4446 13.8149H21.3334Z" fill="black"/>
+                    </svg>
+                    <!-- Ini Badge Keranjangnya Bro -->
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger cart-badge">3</span>
+                </a>
+                <div class="dropdown profile-menu-wrapper">
+                    <button type="button" class="profile-trigger btn d-flex align-items-center gap-2 rounded-3 px-2 py-1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img class="profile-avatar rounded-circle" src="https://api.builder.io/api/v1/image/assets/TEMP/d72c18d8c76a764ee2060136c759512df31773fb?width=64" alt="Profile" />
+                        <svg class="profile-trigger-arrow" width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7.875 11.25L13.5 16.875L19.125 11.25" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <div class="profile-dropdown dropdown-menu dropdown-menu-end p-0 rounded-3 shadow overflow-hidden">
+                        <div class="profile-dropdown-header d-flex align-items-center gap-2 border-bottom px-4 py-3">
+                            <img class="profile-dropdown-avatar rounded-circle flex-shrink-0" src="https://api.builder.io/api/v1/image/assets/TEMP/d72c18d8c76a764ee2060136c759512df31773fb?width=64" alt="Profile" />
+                            <div class="profile-dropdown-info d-flex flex-column gap-1 min-w-0">
+                                <p class="profile-dropdown-name fw-semibold mb-0">SpongeBob SquarePants</p>
+                                <p class="profile-dropdown-email mb-0 text-truncate">spongebob1407@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="profile-dropdown-body d-flex flex-column">
+                            <a href="#" class="profile-dropdown-item dropdown-item d-flex align-items-center gap-2 fw-semibold px-4 py-3">
+                                <svg class="profile-dropdown-icon" width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M4.1665 18.7497C4.1665 17.6446 4.60549 16.5848 5.38689 15.8034C6.16829 15.022 7.2281 14.583 8.33317 14.583H16.6665C17.7716 14.583 18.8314 15.022 19.6128 15.8034C20.3942 16.5848 20.8332 17.6446 20.8332 18.7497C20.8332 19.3022 20.6137 19.8321 20.223 20.2228C19.8323 20.6135 19.3024 20.833 18.7498 20.833H6.24984C5.6973 20.833 5.1674 20.6135 4.7767 20.2228C4.386 19.8321 4.1665 19.3022 4.1665 18.7497Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                                    <path d="M12.5 10.4165C14.2259 10.4165 15.625 9.01739 15.625 7.2915C15.625 5.56561 14.2259 4.1665 12.5 4.1665C10.7741 4.1665 9.375 5.56561 9.375 7.2915C9.375 9.01739 10.7741 10.4165 12.5 10.4165Z" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                                <span>My Profile</span>
+                            </a>
+                            <a href="#" class="profile-dropdown-item dropdown-item d-flex align-items-center gap-2 fw-semibold px-4 py-3">
+                                <svg class="profile-dropdown-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <span>Settings</span>
+                            </a>
+                        </div>
+                        <a href="#" class="profile-dropdown-item profile-dropdown-item--logout dropdown-item d-flex align-items-center gap-2 fw-semibold px-4 py-3 border-top">
+                            <svg class="profile-dropdown-icon" width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5.20833 21.875C4.63542 21.875 4.14514 21.6712 3.7375 21.2635C3.32986 20.8559 3.12569 20.3653 3.125 19.7917V5.20833C3.125 4.63542 3.32917 4.14514 3.7375 3.7375C4.14583 3.32986 4.63611 3.12569 5.20833 3.125H11.4583C11.7535 3.125 12.001 3.225 12.201 3.425C12.401 3.625 12.5007 3.87222 12.5 4.16667C12.4993 4.46111 12.3993 4.70868 12.2 4.90937C12.0007 5.11007 11.7535 5.20972 11.4583 5.20833H5.20833V19.7917H11.4583C11.7535 19.7917 12.001 19.8917 12.201 20.0917C12.401 20.2917 12.5007 20.5389 12.5 20.8333C12.4993 21.1278 12.3993 21.3753 12.2 21.576C12.0007 21.7767 11.7535 21.8764 11.4583 21.875H5.20833ZM17.8906 13.5417H10.4167C10.1215 13.5417 9.87431 13.4417 9.675 13.2417C9.47569 13.0417 9.37569 12.7944 9.375 12.5C9.37431 12.2056 9.47431 11.9583 9.675 11.7583C9.87569 11.5583 10.1229 11.4583 10.4167 11.4583H17.8906L15.9375 9.50521C15.7465 9.31424 15.651 9.07986 15.651 8.80208C15.651 8.52431 15.7465 8.28125 15.9375 8.07292C16.1285 7.86458 16.3715 7.7559 16.6667 7.74687C16.9618 7.73785 17.2135 7.83785 17.4219 8.04687L21.1458 11.7708C21.3542 11.9792 21.4583 12.2222 21.4583 12.5C21.4583 12.7778 21.3542 13.0208 21.1458 13.2292L17.4219 16.9531C17.2135 17.1615 16.9663 17.2615 16.6802 17.2531C16.3941 17.2448 16.1465 17.1361 15.9375 16.9271C15.7465 16.7187 15.6556 16.4715 15.6646 16.1854C15.6736 15.8993 15.7733 15.6604 15.9635 15.4688L17.8906 13.5417Z" fill="currentColor"/>
+                            </svg>
+                            <span>Logout</span>
+                        </a>
+                    </div>
+                </div>
             </div>
-            <div class="fw-bold fs-6">$10.00</div>
-          </div>
-          <button class="btn-heart-plain">
-            <i class="bi bi-suit-heart"></i>
-          </button>
         </div>
-      </div>
-    </div>
+    </nav>
 
-    <div class="col-md-6 col-lg-4">
-      <div class="rec-horizontal-card">
-        <img src="assets/img/truffle-burger.png" alt="Truffle Burger">
-        <div class="d-flex justify-content-between align-items-center w-100">
-          <div>
-            <h6 class="fw-bold mb-1" style="font-size: 0.95rem;">Truffle Burger</h6>
-            <div class="d-flex align-items-center gap-1 mb-2" style="font-size: 0.8rem;">
-              <i class="bi bi-star-fill rating-star"></i>
-              <span class="fw-semibold">4.9</span>
-              <span class="text-muted">(1.8k+)</span>
+    <!-- Main Content -->
+    <main class="favorites-page">
+
+        <section class="favorites-header">
+            <div class="favorites-heading-row">
+                <a href="../index.html" class="favorites-back-btn" aria-label="Go back">
+                    <svg width="28" height="28" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15.105 22.3049C14.1675 23.2424 14.1675 24.7649 15.105 25.7024L27.105 37.7024C28.0425 38.6399 29.565 38.6399 30.5025 37.7024C31.44 36.7649 31.44 35.2424 30.5025 34.3049L20.1975 23.9999L30.495 13.6949C31.4325 12.7574 31.4325 11.2349 30.495 10.2974C29.5575 9.35986 28.035 9.35986 27.0975 10.2974L15.0975 22.2974L15.105 22.3049Z" fill="black"/>
+                    </svg>
+                </a>
+                <h1 class="favorites-title">Favorite Menu</h1>
             </div>
-            <div class="fw-bold fs-6">$15.00</div>
-          </div>
-          <button class="btn-heart-plain">
-            <i class="bi bi-suit-heart"></i>
-          </button>
-        </div>
-      </div>
-    </div>
+            <p class="favorites-subtitle">Delicious meals you've saved for later. Just one tap away.</p>
+        </section>
 
-    <div class="col-md-6 col-lg-4">
-      <div class="rec-horizontal-card">
-        <img src="assets/img/matcha-latte.png" alt="Matcha Latte">
-        <div class="d-flex justify-content-between align-items-center w-100">
-          <div>
-            <h6 class="fw-bold mb-1" style="font-size: 0.95rem;">Matcha Latte</h6>
-            <div class="d-flex align-items-center gap-1 mb-2" style="font-size: 0.8rem;">
-              <i class="bi bi-star-fill rating-star"></i>
-              <span class="fw-semibold">4.7</span>
-              <span class="text-muted">(1.2k+)</span>
+        <section class="favorites-grid">
+
+            <article class="favorite-card">
+                <div class="favorite-card-photo">
+                    <img src="https://api.builder.io/api/v1/image/assets/TEMP/24b37d40d07cd6b3301e2733808ec12ef2cde767?width=642" alt="Jumbo Burger" />
+                    <button class="favorite-card-heart is-active" aria-label="Remove Jumbo Burger from favorites">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 8C12 8 12 8 12.76 7C13.64 5.84 14.94 5 16.5 5C18.99 5 21 7.01 21 9.5C21 10.43 20.72 11.29 20.24 12C19.43 13.21 12 21 12 21C12 21 4.57 13.21 3.76 12C3.28 11.29 3 10.43 3 9.5C3 7.01 5.01 5 7.5 5C9.06 5 10.37 5.84 11.24 7C12 8 12 8 12 8Z" fill="#F4530A"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="favorite-card-body">
+                    <h3 class="favorite-card-name">Jumbo Burger</h3>
+                    <p class="favorite-card-rating"><span class="star">★</span> 4.8 <span class="rating-count">(2.3k+)</span></p>
+                    <div class="favorite-card-footer">
+                        <span class="favorite-card-price">$12.00</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="favorite-card">
+                <div class="favorite-card-photo">
+                    <img src="https://api.builder.io/api/v1/image/assets/TEMP/a3d4c5d00f059236127a7b25ced8228482c7d053?width=642" alt="Margherita Pizza" />
+                    <button class="favorite-card-heart is-active" aria-label="Remove Margherita Pizza from favorites">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 8C12 8 12 8 12.76 7C13.64 5.84 14.94 5 16.5 5C18.99 5 21 7.01 21 9.5C21 10.43 20.72 11.29 20.24 12C19.43 13.21 12 21 12 21C12 21 4.57 13.21 3.76 12C3.28 11.29 3 10.43 3 9.5C3 7.01 5.01 5 7.5 5C9.06 5 10.37 5.84 11.24 7C12 8 12 8 12 8Z" fill="#F4530A"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="favorite-card-body">
+                    <h3 class="favorite-card-name">Margherita Pizza</h3>
+                    <p class="favorite-card-rating"><span class="star">★</span> 4.6 <span class="rating-count">(1.4k+)</span></p>
+                    <div class="favorite-card-footer">
+                        <span class="favorite-card-price">$10.00</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="favorite-card">
+                <div class="favorite-card-photo">
+                    <img src="https://api.builder.io/api/v1/image/assets/TEMP/43d5ae95e2639690ad7d8d953f69f851889947b9?width=642" alt="Chicken Shawarma" />
+                    <button class="favorite-card-heart is-active" aria-label="Remove Chicken Shawarma from favorites">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 8C12 8 12 8 12.76 7C13.64 5.84 14.94 5 16.5 5C18.99 5 21 7.01 21 9.5C21 10.43 20.72 11.29 20.24 12C19.43 13.21 12 21 12 21C12 21 4.57 13.21 3.76 12C3.28 11.29 3 10.43 3 9.5C3 7.01 5.01 5 7.5 5C9.06 5 10.37 5.84 11.24 7C12 8 12 8 12 8Z" fill="#F4530A"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="favorite-card-body">
+                    <h3 class="favorite-card-name">Chicken Shawarma</h3>
+                    <p class="favorite-card-rating"><span class="star">★</span> 4.8 <span class="rating-count">(2.2k+)</span></p>
+                    <div class="favorite-card-footer">
+                        <span class="favorite-card-price">$9.00</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="favorite-card">
+                <div class="favorite-card-photo">
+                    <img src="https://api.builder.io/api/v1/image/assets/TEMP/9207054598f5bda1e153810c19cc1a8124351c5e?width=642" alt="Beef Bulgogi Bowl" />
+                    <button class="favorite-card-heart is-active" aria-label="Remove Beef Bulgogi Bowl from favorites">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 8C12 8 12 8 12.76 7C13.64 5.84 14.94 5 16.5 5C18.99 5 21 7.01 21 9.5C21 10.43 20.72 11.29 20.24 12C19.43 13.21 12 21 12 21C12 21 4.57 13.21 3.76 12C3.28 11.29 3 10.43 3 9.5C3 7.01 5.01 5 7.5 5C9.06 5 10.37 5.84 11.24 7C12 8 12 8 12 8Z" fill="#F4530A"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="favorite-card-body">
+                    <h3 class="favorite-card-name">Beef Bulgogi Bowl</h3>
+                    <p class="favorite-card-rating"><span class="star">★</span> 4.8 <span class="rating-count">(1.2k+)</span></p>
+                    <div class="favorite-card-footer">
+                        <span class="favorite-card-price">$13.00</span>
+                    </div>
+                </div>
+            </article>
+
+        </section>
+
+        <section class="recommended-section">
+            <div class="section-header recommended-section-header">
+                <h2 class="section-title recommended-title">Reccomended For You</h2>
+                <a href="#" class="view-all-link">View All</a>
             </div>
-            <div class="fw-bold fs-6">$6.00</div>
-          </div>
-          <button class="btn-heart-plain">
-            <i class="bi bi-suit-heart"></i>
-          </button>
-        </div>
-      </div>
-    </div>
 
-  </div>
+            <div class="recommended-grid">
+
+                <article class="recommended-card">
+                    <img class="recommended-card-photo" src="https://api.builder.io/api/v1/image/assets/TEMP/dbc835caa752da044fceeb72c3f989ce96186482?width=192" alt="Crispy Fried Chicken" />
+                    <div class="recommended-card-body">
+                        <div class="recommended-card-top">
+                            <h3 class="recommended-card-name">Crispy Fried Chicken</h3>
+                            <p class="recommended-card-rating"><span class="star">★</span> 4.8 <span class="rating-count">(2.4k+)</span></p>
+                        </div>
+                        <div class="recommended-card-footer">
+                            <span class="recommended-card-price">$10.00</span>
+                            <button class="meal-favorite-btn recommended-heart-btn" aria-label="Add Crispy Fried Chicken to favorites">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path class="heart-outline" d="M11.288 20.1999C11.046 20.1166 10.8333 19.9832 10.65 19.7999L8.925 18.2249C7.15833 16.6082 5.56267 15.0042 4.138 13.4129C2.71333 11.8216 2.00067 10.0672 2 8.1499C2 6.58324 2.525 5.2749 3.575 4.2249C4.625 3.1749 5.93333 2.6499 7.5 2.6499C8.38333 2.6499 9.21667 2.83724 10 3.2119C10.7833 3.58657 11.45 4.09924 12 4.7499C12.55 4.0999 13.2167 3.58757 14 3.2129C14.7833 2.83824 15.6167 2.65057 16.5 2.6499C18.0667 2.6499 19.375 3.1749 20.425 4.2249C21.475 5.2749 22 6.58324 22 8.1499C22 10.0666 21.2917 11.8249 19.875 13.4249C18.4583 15.0249 16.85 16.6332 15.05 18.2499L13.35 19.7999C13.1667 19.9832 12.9543 20.1166 12.713 20.1999C12.4717 20.2832 12.234 20.3249 12 20.3249C11.766 20.3249 11.5287 20.2832 11.288 20.1999ZM11.05 6.7499C10.5667 6.06657 10.05 5.5459 9.5 5.1879C8.95 4.8299 8.28333 4.65057 7.5 4.6499C6.5 4.6499 5.66667 4.98324 5 5.6499C4.33333 6.31657 4 7.1499 4 8.1499C4 9.01657 4.30833 9.93757 4.925 10.9129C5.54167 11.8882 6.27933 12.8339 7.138 13.7499C7.99667 14.6659 8.88 15.5242 9.788 16.3249C10.696 17.1256 11.4333 17.7839 12 18.2999C12.5667 17.7832 13.3043 17.1249 14.213 16.3249C15.1217 15.5249 16.005 14.6666 16.863 13.7499C17.721 12.8332 18.4583 11.8876 19.075 10.9129C19.6917 9.93824 20 9.01724 20 8.1499C20 7.1499 19.6667 6.31657 19 5.6499C18.3333 4.98324 17.5 4.6499 16.5 4.6499C15.7167 4.6499 15.05 4.82924 14.5 5.1879C13.95 5.54657 13.4333 6.06724 12.95 6.7499C12.8333 6.91657 12.6917 7.04157 12.525 7.1249C12.3583 7.20824 12.1833 7.2499 12 7.2499C11.8167 7.2499 11.6417 7.20824 11.475 7.1249C11.3083 7.04157 11.1667 6.91657 11.05 6.7499Z" fill="black"/>
+                                    <path class="heart-solid" d="M12 8C12 8 12 8 12.76 7C13.64 5.84 14.94 5 16.5 5C18.99 5 21 7.01 21 9.5C21 10.43 20.72 11.29 20.24 12C19.43 13.21 12 21 12 21C12 21 4.57 13.21 3.76 12C3.28 11.29 3 10.43 3 9.5C3 7.01 5.01 5 7.5 5C9.06 5 10.37 5.84 11.24 7C12 8 12 8 12 8Z"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="recommended-card">
+                    <img class="recommended-card-photo" src="https://api.builder.io/api/v1/image/assets/TEMP/0a2c480d55913230dbbfe250fddbeb91d5e21e63?width=192" alt="Truffle Burger" />
+                    <div class="recommended-card-body">
+                        <div class="recommended-card-top">
+                            <h3 class="recommended-card-name">Truffle Burger</h3>
+                            <p class="recommended-card-rating"><span class="star">★</span> 4.9 <span class="rating-count">(1.8k+)</span></p>
+                        </div>
+                        <div class="recommended-card-footer">
+                            <span class="recommended-card-price">$15.00</span>
+                            <button class="meal-favorite-btn recommended-heart-btn" aria-label="Add Truffle Burger to favorites">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path class="heart-outline" d="M11.288 20.1999C11.046 20.1166 10.8333 19.9832 10.65 19.7999L8.925 18.2249C7.15833 16.6082 5.56267 15.0042 4.138 13.4129C2.71333 11.8216 2.00067 10.0672 2 8.1499C2 6.58324 2.525 5.2749 3.575 4.2249C4.625 3.1749 5.93333 2.6499 7.5 2.6499C8.38333 2.6499 9.21667 2.83724 10 3.2119C10.7833 3.58657 11.45 4.09924 12 4.7499C12.55 4.0999 13.2167 3.58757 14 3.2129C14.7833 2.83824 15.6167 2.65057 16.5 2.6499C18.0667 2.6499 19.375 3.1749 20.425 4.2249C21.475 5.2749 22 6.58324 22 8.1499C22 10.0666 21.2917 11.8249 19.875 13.4249C18.4583 15.0249 16.85 16.6332 15.05 18.2499L13.35 19.7999C13.1667 19.9832 12.9543 20.1166 12.713 20.1999C12.4717 20.2832 12.234 20.3249 12 20.3249C11.766 20.3249 11.5287 20.2832 11.288 20.1999ZM11.05 6.7499C10.5667 6.06657 10.05 5.5459 9.5 5.1879C8.95 4.8299 8.28333 4.65057 7.5 4.6499C6.5 4.6499 5.66667 4.98324 5 5.6499C4.33333 6.31657 4 7.1499 4 8.1499C4 9.01657 4.30833 9.93757 4.925 10.9129C5.54167 11.8882 6.27933 12.8339 7.138 13.7499C7.99667 14.6659 8.88 15.5242 9.788 16.3249C10.696 17.1256 11.4333 17.7839 12 18.2999C12.5667 17.7832 13.3043 17.1249 14.213 16.3249C15.1217 15.5249 16.005 14.6666 16.863 13.7499C17.721 12.8332 18.4583 11.8876 19.075 10.9129C19.6917 9.93824 20 9.01724 20 8.1499C20 7.1499 19.6667 6.31657 19 5.6499C18.3333 4.98324 17.5 4.6499 16.5 4.6499C15.7167 4.6499 15.05 4.82924 14.5 5.1879C13.95 5.54657 13.4333 6.06724 12.95 6.7499C12.8333 6.91657 12.6917 7.04157 12.525 7.1249C12.3583 7.20824 12.1833 7.2499 12 7.2499C11.8167 7.2499 11.6417 7.20824 11.475 7.1249C11.3083 7.04157 11.1667 6.91657 11.05 6.7499Z" fill="black"/>
+                                    <path class="heart-solid" d="M12 8C12 8 12 8 12.76 7C13.64 5.84 14.94 5 16.5 5C18.99 5 21 7.01 21 9.5C21 10.43 20.72 11.29 20.24 12C19.43 13.21 12 21 12 21C12 21 4.57 13.21 3.76 12C3.28 11.29 3 10.43 3 9.5C3 7.01 5.01 5 7.5 5C9.06 5 10.37 5.84 11.24 7C12 8 12 8 12 8Z"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="recommended-card">
+                    <img class="recommended-card-photo" src="https://api.builder.io/api/v1/image/assets/TEMP/324a7c63d1c1a5b101f7e35834fca1b2f9902aed?width=192" alt="Matcha Latte" />
+                    <div class="recommended-card-body">
+                        <div class="recommended-card-top">
+                            <h3 class="recommended-card-name">Matcha Latte</h3>
+                            <p class="recommended-card-rating"><span class="star">★</span> 4.7 <span class="rating-count">(1.2k+)</span></p>
+                        </div>
+                        <div class="recommended-card-footer">
+                            <span class="recommended-card-price">$6.00</span>
+                            <button class="meal-favorite-btn recommended-heart-btn" aria-label="Add Matcha Latte to favorites">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path class="heart-outline" d="M11.288 20.1999C11.046 20.1166 10.8333 19.9832 10.65 19.7999L8.925 18.2249C7.15833 16.6082 5.56267 15.0042 4.138 13.4129C2.71333 11.8216 2.00067 10.0672 2 8.1499C2 6.58324 2.525 5.2749 3.575 4.2249C4.625 3.1749 5.93333 2.6499 7.5 2.6499C8.38333 2.6499 9.21667 2.83724 10 3.2119C10.7833 3.58657 11.45 4.09924 12 4.7499C12.55 4.0999 13.2167 3.58757 14 3.2129C14.7833 2.83824 15.6167 2.65057 16.5 2.6499C18.0667 2.6499 19.375 3.1749 20.425 4.2249C21.475 5.2749 22 6.58324 22 8.1499C22 10.0666 21.2917 11.8249 19.875 13.4249C18.4583 15.0249 16.85 16.6332 15.05 18.2499L13.35 19.7999C13.1667 19.9832 12.9543 20.1166 12.713 20.1999C12.4717 20.2832 12.234 20.3249 12 20.3249C11.766 20.3249 11.5287 20.2832 11.288 20.1999ZM11.05 6.7499C10.5667 6.06657 10.05 5.5459 9.5 5.1879C8.95 4.8299 8.28333 4.65057 7.5 4.6499C6.5 4.6499 5.66667 4.98324 5 5.6499C4.33333 6.31657 4 7.1499 4 8.1499C4 9.01657 4.30833 9.93757 4.925 10.9129C5.54167 11.8882 6.27933 12.8339 7.138 13.7499C7.99667 14.6659 8.88 15.5242 9.788 16.3249C10.696 17.1256 11.4333 17.7839 12 18.2999C12.5667 17.7832 13.3043 17.1249 14.213 16.3249C15.1217 15.5249 16.005 14.6666 16.863 13.7499C17.721 12.8332 18.4583 11.8876 19.075 10.9129C19.6917 9.93824 20 9.01724 20 8.1499C20 7.1499 19.6667 6.31657 19 5.6499C18.3333 4.98324 17.5 4.6499 16.5 4.6499C15.7167 4.6499 15.05 4.82924 14.5 5.1879C13.95 5.54657 13.4333 6.06724 12.95 6.7499C12.8333 6.91657 12.6917 7.04157 12.525 7.1249C12.3583 7.20824 12.1833 7.2499 12 7.2499C11.8167 7.2499 11.6417 7.20824 11.475 7.1249C11.3083 7.04157 11.1667 6.91657 11.05 6.7499Z" fill="black"/>
+                                    <path class="heart-solid" d="M12 8C12 8 12 8 12.76 7C13.64 5.84 14.94 5 16.5 5C18.99 5 21 7.01 21 9.5C21 10.43 20.72 11.29 20.24 12C19.43 13.21 12 21 12 21C12 21 4.57 13.21 3.76 12C3.28 11.29 3 10.43 3 9.5C3 7.01 5.01 5 7.5 5C9.06 5 10.37 5.84 11.24 7C12 8 12 8 12 8Z"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+    </main>
 </div>
 
+<!-- Ini script Bootstrap buat benerin dropdown profile lu bro -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    
-    // 1. Logic Tombol Back
-    const backBtn = document.getElementById('backBtn');
-    if(backBtn) {
-        backBtn.addEventListener('click', function() {
-            // Bisa diganti jadi history.back() kalo udah nyambung halaman lain
-            alert("Tombol back dipencet! Balik ke halaman sebelumnya.");
-        });
-    }
-
-    // 2. Logic Tombol Favorite (Card Atas)
-    const favCircles = document.querySelectorAll('.btn-heart-circle');
-    favCircles.forEach(circle => {
-        circle.addEventListener('click', function() {
-            // Toggle class 'active' buat nyalain/matiin warna orange
-            this.classList.toggle('active');
-        });
-    });
-
-    // 3. Logic Tombol Favorite (Card Horizontal Bawah)
-    const favPlains = document.querySelectorAll('.btn-heart-plain i');
-    favPlains.forEach(icon => {
-        icon.addEventListener('click', function(e) {
-            // Biar ga lompat kalo kebetulan ini tag <a>
-            e.preventDefault(); 
-            
-            // Cek kalo lagi icon hati kosong
-            if (this.classList.contains('bi-suit-heart')) {
-                this.classList.remove('bi-suit-heart');
-                this.classList.add('bi-suit-heart-fill', 'text-orange');
-            } else {
-                // Kalo udah kepenuhin, balikin kosong
-                this.classList.remove('bi-suit-heart-fill', 'text-orange');
-                this.classList.add('bi-suit-heart');
-            }
-        });
-    });
-
-});
-</script>
-
+<script src="../js/navbar.js"></script>
+<script src="../js/cart.js"></script>
+<script src="../js/favorites.js"></script>
 </body>
 </html>
