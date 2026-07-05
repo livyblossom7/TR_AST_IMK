@@ -1,0 +1,104 @@
+.offer-hero {
+  background: linear-gradient(120deg, #E85A17, #FF8A3D);
+  border-radius: 16px;
+  color: #fff;
+  padding: 34px;
+  position: relative;
+  overflow: hidden;
+  min-height: 230px;
+}
+.offer-hero .badge-limited {
+  background: rgba(255,255,255,0.2);
+  font-size: 0.7rem;
+  letter-spacing: .05em;
+  padding: 5px 12px;
+  border-radius: 20px;
+}
+.offer-hero h2 {
+  font-weight: 800;
+  font-size: 2rem;
+  margin: 14px 0 4px;
+}
+.offer-hero .discount {
+  font-weight: 800;
+  font-size: 2.4rem;
+  color: var(--wagba-yellow);
+}
+.offer-hero .btn-order {
+  background: #fff;
+  color: var(--wagba-orange-dark);
+  border-radius: 20px;
+  font-weight: 600;
+  padding: 8px 22px;
+  border: none;
+  margin-top: 16px;
+}
+.offer-hero img {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  max-height: 230px;
+  object-fit: contain;
+}
+
+.side-card {
+  border-radius: 14px;
+  padding: 18px 20px;
+  height: 100%;
+}
+.side-card.free-delivery { background: #F1EDE7; }
+.side-card.buy1get1 { background: #FFE9A6; }
+.side-card small { color: var(--wagba-text-muted); font-weight: 600; }
+.side-card .side-title { font-weight: 700; font-size: 1.05rem; margin: 6px 0; }
+
+.promo-card {
+  border-radius: 14px;
+  overflow: hidden;
+  color: #fff;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.promo-card .promo-banner {
+  padding: 16px;
+  font-weight: 800;
+  font-size: 1.5rem;
+}
+.promo-card .promo-info {
+  background: #fff;
+  color: var(--wagba-text-dark);
+  padding: 12px 16px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.promo-card .promo-name { font-weight: 700; font-size: 0.85rem; }
+.promo-card .promo-desc { font-size: 0.75rem; color: var(--wagba-text-muted); }
+.promo-card .promo-value { color: var(--wagba-orange); font-weight: 800; margin: 6px 0; }
+.btn-copy-code {
+  background: var(--wagba-orange);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  padding: 6px 10px;
+  font-weight: 600;
+  width: 100%;
+}
+.btn-copy-code:hover { background: var(--wagba-orange-dark); color: #fff; }
+
+.bg-p1 { background: linear-gradient(135deg,#E85A17,#FF8A3D); }
+.bg-p2 { background: linear-gradient(135deg,#2E8B57,#4CAF7D); }
+.bg-p3 { background: linear-gradient(135deg,#7B4B2A,#A9713F); }
+.bg-p4 { background: linear-gradient(135deg,#D9962C,#F2B84B); }
+.bg-p5 { background: linear-gradient(135deg,#3B3B3B,#5C5C5C); }
+.bg-p6 { background: linear-gradient(135deg,#C0392B,#E5584A); }
+
+.view-all-link {
+  color: var(--wagba-orange);
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
