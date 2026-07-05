@@ -7,6 +7,7 @@
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+<link rel="stylesheet" href="../css/index.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
@@ -20,7 +21,6 @@ body {
     background-color: #f9f9fb;
     font-family: 'Plus Jakarta Sans', sans-serif;
 }
-.navbar-brand span { color: var(--brand-orange); font-weight: 700; font-size: 1.5rem; margin-left: 8px; }
 .nav-link { font-weight: 600; color: #333; padding: 8px 20px !important; }
 .nav-link:hover { color: var(--brand-orange); }
 .nav-active { background-color: var(--brand-orange-light); color: var(--brand-orange) !important; border-radius: 8px; }
@@ -118,22 +118,20 @@ body {
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg bg-white border-bottom py-3">
-  <div class="container">
-    <a class="navbar-brand d-flex align-items-center" href="#">
+<nav class="navbar navbar-expand-lg bg-white sticky-top wagba-navbar">
+  <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap gap-3 px-4 px-lg-5">
+    <a href="../index.html" class="navbar-brand d-flex align-items-center gap-1 m-0 flex-shrink-0">
        <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M10.5 42C9.675 42 9 42.675 9 43.5C9 47.6437 12.3562 51 16.5 51H43.5C47.6437 51 51 47.6437 51 43.5C51 42.675 50.325 42 49.5 42H10.5ZM9 24.9375C9 26.0812 9.92812 27 11.0625 27H48.9375C50.0812 27 51 26.0719 51 24.9375C51 23.325 50.7563 21.7125 49.9875 20.2969C47.9062 16.4719 42.2719 9 30 9C17.7281 9 12.0938 16.4625 10.0125 20.2969C9.24375 21.7125 9 23.325 9 24.9375ZM6 34.5C6 36.1594 7.34062 37.5 9 37.5H51C52.6594 37.5 54 36.1594 54 34.5C54 32.8406 52.6594 31.5 51 31.5H9C7.34062 31.5 6 32.8406 6 34.5ZM30 12.75C31.2469 12.75 32.25 13.7531 32.25 15C32.25 16.2469 31.2469 17.25 30 17.25C28.7531 17.25 27.75 16.2469 27.75 15C27.75 13.7531 28.7531 12.75 30 12.75ZM17.25 18C17.25 16.7531 18.2531 15.75 19.5 15.75C20.7469 15.75 21.75 16.7531 21.75 18C21.75 19.2469 20.7469 20.25 19.5 20.25C18.2531 20.25 17.25 19.2469 17.25 18ZM40.5 15.75C41.7469 15.75 42.75 16.7531 42.75 18C42.75 19.2469 41.7469 20.25 40.5 20.25C39.2531 20.25 38.25 19.2469 38.25 18C38.25 16.7531 39.2531 15.75 40.5 15.75Z" fill="#F4530A"/>
 </svg>
-      <span>Wagba</span>
+      <span class="brand-name">Wagba</span>
     </a>
-    <div class="collapse navbar-collapse justify-content-center">
-      <ul class="navbar-nav gap-2">
-        <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Categories</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Offers</a></li>
-      </ul>
-    </div>
-    <div class="d-flex align-items-center gap-3">
+    <ul class="nav-links nav d-none d-lg-flex align-items-center gap-3 mb-0">
+        <li class="nav-item"><a class="nav-link fw-semibold rounded-3 text-center d-flex align-items-center justify-content-center" href="../index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link fw-semibold rounded-3 text-center d-flex align-items-center justify-content-center" href="categories.html">Categories</a></li>
+        <li class="nav-item"><a class="nav-link fw-semibold rounded-3 text-center d-flex align-items-center justify-content-center" href="#">Offers</a></li>
+    </ul>
+    <div class="nav-actions d-flex align-items-center gap-3 gap-lg-4">
       <i class="bi bi-search icon-nav"></i>
       <i class="bi bi-suit-heart-fill text-orange icon-nav"></i>
       <i class="bi bi-cart3 icon-nav"></i>
