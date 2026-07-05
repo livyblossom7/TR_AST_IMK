@@ -6,7 +6,7 @@
     <title>Checkout - Wagba</title>
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/checkout.css">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Idiqlat&display=swap" rel="stylesheet">
 </head>
 <body>
 <div class="page-wrapper">
@@ -26,7 +26,7 @@
     <!-- Main Content -->
     <main class="checkout-page">
         <a href="../html/cart.html" class="checkout-back-link" aria-label="Back">
-            <svg width="36" height="36" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M16.3638 24.1639C15.3481 25.1795 15.3481 26.8289 16.3638 27.8445L29.3638 40.8445C30.3794 41.8601 32.0288 41.8601 33.0444 40.8445C34.06 39.8289 34.06 38.1795 33.0444 37.1639L21.8806 26.0001L33.0363 14.8364C34.0519 13.8208 34.0519 12.1714 33.0363 11.1558C32.0206 10.1401 30.3713 10.1401 29.3556 11.1558L16.3556 24.1558L16.3638 24.1639Z" fill="black"/>
             </svg>
         </a>
@@ -51,6 +51,13 @@
                     <p class="address-row-sub" id="addressRowSub">Jl. Soekarno-Hatta No 87, RT 029/RW 012, Menteng, Jakarta Pusat, DKI Jakarta</p>
                 </div>
 
+                <div class="checkout-order-box">
+                    <p class="notes-box-label">Your order</p>
+                    <div class="checkout-order-list" id="checkoutOrderList">
+                        <p class="checkout-order-empty">Your cart is empty.</p>
+                    </div>
+                </div>
+
                 <!-- Payment Method -->
                 <div class="checkout-box payment-box">
                     <p class="payment-box-label" id="paymentBoxLabel">Payment Method</p>
@@ -71,22 +78,22 @@
                 <!-- Notes -->
                 <div class="checkout-box notes-box">
                     <p class="notes-box-label">Notes for the chef</p>
-                    <input type="text" class="notes-input" placeholder="Ex: Add more onions please" />
+                    <textarea class="notes-input" placeholder="Ex: Add more onions please"></textarea>
                 </div>
 
             </div>
 
             <aside class="checkout-summary">
                 <h2 class="checkout-summary-title">Checkout Summary</h2>
-                <div class="checkout-summary-line"><span>Subtotal</span><span>$30.00</span></div>
-                <div class="checkout-summary-line"><span>Delivery Fee</span><span>$4.00</span></div>
-                <div class="checkout-summary-line"><span>PPN Tax (11%)</span><span>$3.74</span></div>
-                <div class="checkout-summary-line"><span>MBG Tax (69%)*</span><span>$23.76</span></div>
+                <div class="checkout-summary-line"><span>Subtotal</span><span id="checkoutSubtotal">$0.00</span></div>
+                <div class="checkout-summary-line"><span>Delivery Fee</span><span id="checkoutDelivery">$0.00</span></div>
+                <div class="checkout-summary-line"><span>PPN Tax (11%)</span><span id="checkoutTax">$0.00</span></div>
+                <div class="checkout-summary-line"><span>MBG Tax (69%)*</span><span id="checkoutMbg">$0.00</span></div>
                 <p class="checkout-summary-note">*MBG (Makan Bergizi Gratis) tax is intended to fund the MBG programme to feed the children in this country and the MBG kitchen owner, the minister of BGN, and to our glorious supreme leader, Prabowo Subianto. Glory to Prabowo! Long Live Jokowi!</p>
                 <div class="checkout-summary-divider"></div>
                 <div class="checkout-summary-total">
                     <span>Total</span>
-                    <span>$61.50</span>
+                    <span id="checkoutTotal">$0.00</span>
                 </div>
                 <div class="checkout-summary-actions">
                     <button type="button" class="btn btn-primary" id="buyNowBtn">Buy Now</button>
@@ -101,6 +108,7 @@
     <div class="modal" id="modalBox"></div>
 </div>
 
+<script src="../js/cart.js"></script>
 <script src="../js/checkout.js"></script>
 </body>
 </html>

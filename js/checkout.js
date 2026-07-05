@@ -1,6 +1,67 @@
 (function () {
     'use strict';
 
+    var CART_KEY = 'wagba_cart';
+
+    function getCartItems() {
+        try {
+            if (window.WagbaCart && typeof window.WagbaCart.getCart === 'function') {
+                return window.WagbaCart.getCart();
+            }
+            return JSON.parse(localStorage.getItem(CART_KEY)) || [];
+        } catch (e) {
+            return [];
+        }
+    }
+
+    function formatCurrency(value) {
+        return '$' + value.toFixed(2);
+    }
+
+    function renderCheckoutSummary() {
+        var items = getCartItems();
+        var subtotal = items.reduce(function (sum, item) {
+            return sum + (Number(item.price) || 0) * (Number(item.qty) || 1);
+        }, 0);
+        var deliveryFee = subtotal > 0 ? 4 : 0;
+        var ppnTax = subtotal * 0.11;
+        var mbgTax = subtotal * 0.69;
+        var total = subtotal + deliveryFee + ppnTax + mbgTax;
+
+        var subtotalEl = document.getElementById('checkoutSubtotal');
+        var deliveryEl = document.getElementById('checkoutDelivery');
+        var taxEl = document.getElementById('checkoutTax');
+        var mbgEl = document.getElementById('checkoutMbg');
+        var totalEl = document.getElementById('checkoutTotal');
+        var orderListEl = document.getElementById('checkoutOrderList');
+        var buyNowBtn = document.getElementById('buyNowBtn');
+
+        if (subtotalEl) subtotalEl.textContent = formatCurrency(subtotal);
+        if (deliveryEl) deliveryEl.textContent = formatCurrency(deliveryFee);
+        if (taxEl) taxEl.textContent = formatCurrency(ppnTax);
+        if (mbgEl) mbgEl.textContent = formatCurrency(mbgTax);
+        if (totalEl) totalEl.textContent = formatCurrency(total);
+
+        if (orderListEl) {
+            if (!items.length) {
+                orderListEl.innerHTML = '<p class="checkout-order-empty">Your cart is empty.</p>';
+            } else {
+                orderListEl.innerHTML = items.map(function (item) {
+                    return '<div class="checkout-order-item"><span>' + item.name + ' × ' + (item.qty || 1) + '</span><span>' + formatCurrency((Number(item.price) || 0) * (Number(item.qty) || 1)) + '</span></div>';
+                }).join('');
+            }
+        }
+
+        if (!buyNowBtn) return;
+        if (items.length === 0) {
+            buyNowBtn.disabled = true;
+            buyNowBtn.textContent = 'Cart is empty';
+        } else {
+            buyNowBtn.disabled = false;
+            buyNowBtn.textContent = 'Buy Now';
+        }
+    }
+
     var CHEVRON = '<svg width="18" height="19" viewBox="0 0 28 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19.2104 13.7881C19.7573 14.3676 19.7573 15.3088 19.2104 15.8883L12.2104 23.3062C11.6635 23.8857 10.7754 23.8857 10.2285 23.3062C9.68164 22.7267 9.68164 21.7855 10.2285 21.206L16.2398 14.8359L10.2329 8.46575C9.68602 7.88622 9.68602 6.94508 10.2329 6.36555C10.7798 5.78603 11.6679 5.78603 12.2148 6.36555L19.2148 13.7835L19.2104 13.7881Z" fill="black"/></svg>';
 
     var BACK_ARROW = '<svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.81152 13.0112C8.26465 13.5581 8.26465 14.4462 8.81152 14.9931L15.8115 21.9931C16.3584 22.54 17.2465 22.54 17.7934 21.9931C18.3403 21.4462 18.3403 20.5581 17.7934 20.0112L11.7821 14L17.789 7.98871C18.3359 7.44184 18.3359 6.55371 17.789 6.00684C17.2421 5.45996 16.354 5.45996 15.8071 6.00684L8.80715 13.0068L8.81152 13.0112Z" fill="black"/></svg>';
@@ -244,30 +305,8 @@
         wireBack(function () { renderCredentialForm(category, optionId, optionName); });
 
         modalBox.querySelector('#confirmSubmit').addEventListener('click', function () {
-            renderRedirect(category, optionId, optionName);
+            finalizePaymentSelection(category, optionId, optionName, data);
         });
-    }
-
-    /* ---------------------------------------------------------
-       Step 5a: redirect popup (card / e-wallet)
-       --------------------------------------------------------- */
-    function renderRedirect(category, optionId, optionName) {
-        var message = category === 'card' ?
-            'You will now be redirected to your ' + optionName.toLowerCase() + ' app' :
-            'You are now being redirected to your E-Wallet app';
-
-        openModal(
-            '<div class="redirect-icon">' + TRANSFER_ICON + '</div>' +
-            '<h2 class="redirect-title">' + message + '</h2>' +
-            '<p class="redirect-sub">Continue to your app to finish transaction</p>' +
-            '<div class="modal-btn-stack">' +
-            '<button type="button" class="modal-btn-primary" id="redirectConfirm">I have already transferred</button>' +
-            '<button type="button" class="modal-btn-secondary" id="redirectBack">Back to Payment</button>' +
-            '</div>',
-            ''
-        );
-
-        wireConfirmAndBack(category, optionId, optionName);
     }
 
     /* ---------------------------------------------------------
@@ -298,23 +337,28 @@
         );
 
         wireBack(function () { renderSubChoice(category); });
-        wireConfirmAndBack(category, optionId, optionName);
+        modalBox.querySelector('#redirectConfirm').addEventListener('click', function () {
+            finalizePaymentSelection(category, optionId, optionName);
+        });
+        modalBox.querySelector('#redirectBack').addEventListener('click', function () {
+            renderSubChoice(category);
+        });
+    }
+
+    function finalizePaymentSelection(category, optionId, optionName, data) {
+        setSelectedPayment({
+            category: category,
+            optionId: optionId || null,
+            optionName: optionName || null,
+            data: data || null
+        });
+        closeModal();
     }
 
     function formatDeadline() {
         var d = new Date(Date.now() + 24 * 60 * 60 * 1000);
         var pad = function (n) { return String(n).padStart(2, '0'); };
         return pad(d.getHours()) + ':' + pad(d.getMinutes()) + ', ' + pad(d.getDate()) + '-' + pad(d.getMonth() + 1) + '-' + d.getFullYear();
-    }
-
-    function wireConfirmAndBack(category, optionId, optionName) {
-        modalBox.querySelector('#redirectConfirm').addEventListener('click', function () {
-            setSelectedPayment({ category: category, optionId: optionId, optionName: optionName });
-            closeModal();
-        });
-        modalBox.querySelector('#redirectBack').addEventListener('click', function () {
-            renderCategoryList();
-        });
     }
 
     /* ---------------------------------------------------------
@@ -515,6 +559,45 @@
     }
 
     /* ---------------------------------------------------------
+       Buy-now redirect flow
+       --------------------------------------------------------- */
+    function renderPaymentRedirect() {
+        var title = 'Redirecting to payment apps';
+        var subtitle = 'You are now being redirected to finish your payment';
+        if (selectedPayment.category === 'card') {
+            title = 'Redirecting to payment apps';
+            subtitle = 'Continue in your card app to complete the transaction';
+        } else if (selectedPayment.category === 'ewallet') {
+            subtitle = 'Continue in your e-wallet app to complete the transaction';
+        } else if (selectedPayment.category === 'va') {
+            subtitle = 'Complete the transfer to confirm your payment';
+        } else if (selectedPayment.category === 'minimarket') {
+            subtitle = 'Finish the transaction at the selected minimarket';
+        } else if (selectedPayment.category === 'cod') {
+            subtitle = 'Your order will be confirmed on delivery';
+        }
+
+        openModal(
+            '<div class="redirect-icon">' + TRANSFER_ICON + '</div>' +
+            '<h2 class="redirect-title">' + title + '</h2>' +
+            '<p class="redirect-sub">' + subtitle + '</p>' +
+            '<div class="modal-btn-stack">' +
+            '<button type="button" class="modal-btn-primary" id="redirectConfirm">I have already transferred</button>' +
+            '<button type="button" class="modal-btn-secondary" id="redirectBack">Back to Checkout</button>' +
+            '</div>',
+            ''
+        );
+
+        modalBox.querySelector('#redirectConfirm').addEventListener('click', function () {
+            closeModal();
+            renderOrderSuccess();
+        });
+        modalBox.querySelector('#redirectBack').addEventListener('click', function () {
+            closeModal();
+        });
+    }
+
+    /* ---------------------------------------------------------
        Order success modal
        --------------------------------------------------------- */
     function renderOrderSuccess() {
@@ -525,7 +608,7 @@
             '<p class="success-time">Estimated Time : 30-40 Mins</p>' +
             '<div class="modal-btn-stack">' +
             '<a href="#" class="modal-btn-primary">Track your Order</a>' +
-            '<a href="index.html" class="modal-btn-secondary">Back to Menu</a>' +
+            '<a href="../index.html" class="modal-btn-secondary">Back to Menu</a>' +
             '</div>',
             ''
         );
@@ -543,6 +626,10 @@
             showPaymentError();
             return;
         }
-        renderOrderSuccess();
+        renderPaymentRedirect();
     });
+
+    document.addEventListener('DOMContentLoaded', renderCheckoutSummary);
+    window.addEventListener('storage', renderCheckoutSummary);
+    renderCheckoutSummary();
 })();
