@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    document.querySelectorAll('.meal-favorite-btn').forEach((btn) => {
+    document.querySelectorAll('.meal-favorite-btn, .detail-favorite-btn').forEach((btn) => {
         btn.setAttribute('aria-pressed', 'false');
         btn.addEventListener('click', (e) => {
             e.stopPropagation();

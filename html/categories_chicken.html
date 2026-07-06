@@ -6,7 +6,7 @@
     <title>Burgers - Wagba</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/index.css">
-    <link rel="stylesheet" href="../css/categories_burger.css">
+    <link rel="stylesheet" href="../css/categories_detail.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Idiqlat&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -95,32 +95,32 @@
     </nav>
 
     <!-- Main Content -->
-    <main class="burger-page-main container-fluid px-4 px-lg-5 py-4 d-flex justify-content-center">
-        <div class="burger-page-content w-100">
+    <main class="category-detail-main container-fluid px-4 px-lg-5 py-4 d-flex justify-content-center">
+        <div class="category-detail-content w-100">
 
-            <div class="burger-page-header d-flex align-items-center gap-3 mb-4">
+            <div class="category-detail-header d-flex align-items-center gap-3 mb-4">
                 <button type="button" class="back-btn btn rounded-circle p-0 d-flex align-items-center justify-content-center flex-shrink-0" id="burgerBackBtn" aria-label="Go back">
                     <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M11.3286 16.7288C10.6255 17.4319 10.6255 18.5738 11.3286 19.2769L20.3286 28.2769C21.0317 28.98 22.1736 28.98 22.8767 28.2769C23.5799 27.5738 23.5799 26.4319 22.8767 25.7288L15.148 18L22.8711 10.2713C23.5742 9.56814 23.5742 8.42627 22.8711 7.72314C22.168 7.02002 21.0261 7.02002 20.323 7.72314L11.323 16.7231L11.3286 16.7288Z" fill="black"/>
                     </svg>
                 </button>
-                <h1 class="burger-page-title fw-bold mb-0">Chickens</h1>
+                <h1 class="category-detail-title fw-bold mb-0">Chickens</h1>
             </div>
 
             <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4">
 
                 <div class="col d-flex justify-content-center">
-                    <div class="burger-card position-relative rounded-3 shadow-sm">
-                        <div class="burger-card-photo position-absolute d-flex align-items-start">
-                            <img src="https://api.builder.io/api/v1/image/assets/TEMP/0b6b7742cbb948b046b43dc4cbcdc36cf700ed2a?width=234" alt="Wagba Signature Burger" />
+                    <div class="detail-card position-relative rounded-3 shadow-sm">
+                        <div class="detail-card-photo position-absolute d-flex align-items-start">
+                            <img src="/img/Chicken/Grilled_Chicken.png" alt="Grilled Chicken" />
                         </div>
-                        <div class="burger-card-info position-absolute d-flex flex-column gap-2">
-                            <p class="burger-card-name fw-semibold mb-0">Grilled Chicken</p>
-                            <p class="burger-card-rating fw-medium mb-0"><span class="star">★</span> 4.5 <span class="rating-count">(876+)</span></p>
+                        <div class="detail-card-info position-absolute d-flex flex-column gap-2">
+                            <p class="detail-card-name fw-semibold mb-0">Grilled Chicken</p>
+                            <p class="detail-card-rating fw-medium mb-0"><span class="star">★</span> 4.5 <span class="rating-count">(876+)</span></p>
                         </div>
-                        <div class="burger-card-footer position-absolute d-flex align-items-center justify-content-between">
-                            <span class="burger-card-price fw-bold">$10.00</span>
-                            <button class="burger-favorite-btn rounded-circle btn p-0 d-flex align-items-center justify-content-center" aria-label="Add to favorites">
+                        <div class="detail-card-footer position-absolute d-flex align-items-center justify-content-between">
+                            <span class="detail-card-price fw-bold">$10.00</span>
+                            <button class="detail-favorite-btn rounded-circle btn p-0 d-flex align-items-center justify-content-center" aria-label="Add to favorites">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M11.288 20.2C11.046 20.1167 10.8333 19.9834 10.65 19.8L8.925 18.225C7.15833 16.6084 5.56267 15.0044 4.138 13.413C2.71333 11.8217 2.00067 10.0674 2 8.15002C2 6.58336 2.525 5.27502 3.575 4.22502C4.625 3.17502 5.93333 2.65002 7.5 2.65002C8.38333 2.65002 9.21667 2.83736 10 3.21202C10.7833 3.58669 11.45 4.09936 12 4.75002C12.55 4.10002 13.2167 3.58769 14 3.21302C14.7833 2.83836 15.6167 2.65069 16.5 2.65002C18.0667 2.65002 19.375 3.17502 20.425 4.22502C21.475 5.27502 22 6.58336 22 8.15002C22 10.0667 21.2917 11.825 19.875 13.425C18.4583 15.025 16.85 16.6334 15.05 18.25L13.35 19.8C13.1667 19.9834 12.9543 20.1167 12.713 20.2C12.4717 20.2834 12.234 20.325 12 20.325C11.766 20.325 11.5287 20.2834 11.288 20.2Z" fill="black"/>
                                 </svg>
@@ -130,17 +130,17 @@
                 </div>
 
                 <div class="col d-flex justify-content-center">
-                    <div class="burger-card position-relative rounded-3 shadow-sm">
-                        <div class="burger-card-photo position-absolute d-flex align-items-start">
-                            <img src="https://api.builder.io/api/v1/image/assets/TEMP/449d883ed01b6e47c47177c16a0383ad6dd9f35d?width=234" alt="Truffle Burger" />
+                    <div class="detail-card position-relative rounded-3 shadow-sm">
+                        <div class="detail-card-photo position-absolute d-flex align-items-start">
+                            <img src="/img/Chicken/Spicy_Chicken_Wings.png" alt="Spicy Chicken Wings" />
                         </div>
-                        <div class="burger-card-info position-absolute d-flex flex-column gap-2">
-                            <p class="burger-card-name fw-semibold mb-0">Spicy Chicken Wings</p>
-                            <p class="burger-card-rating fw-medium mb-0"><span class="star">★</span> 4.7 <span class="rating-count">(2.0k+)</span></p>
+                        <div class="detail-card-info position-absolute d-flex flex-column gap-2">
+                            <p class="detail-card-name fw-semibold mb-0">Spicy Chicken Wings</p>
+                            <p class="detail-card-rating fw-medium mb-0"><span class="star">★</span> 4.7 <span class="rating-count">(2.0k+)</span></p>
                         </div>
-                        <div class="burger-card-footer position-absolute d-flex align-items-center justify-content-between">
-                            <span class="burger-card-price fw-bold">$9.00</span>
-                            <button class="burger-favorite-btn rounded-circle btn p-0 d-flex align-items-center justify-content-center" aria-label="Add to favorites">
+                        <div class="detail-card-footer position-absolute d-flex align-items-center justify-content-between">
+                            <span class="detail-card-price fw-bold">$9.00</span>
+                            <button class="detail-favorite-btn rounded-circle btn p-0 d-flex align-items-center justify-content-center" aria-label="Add to favorites">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M11.288 20.2C11.046 20.1167 10.8333 19.9834 10.65 19.8L8.925 18.225C7.15833 16.6084 5.56267 15.0044 4.138 13.413C2.71333 11.8217 2.00067 10.0674 2 8.15002C2 6.58336 2.525 5.27502 3.575 4.22502C4.625 3.17502 5.93333 2.65002 7.5 2.65002C8.38333 2.65002 9.21667 2.83736 10 3.21202C10.7833 3.58669 11.45 4.09936 12 4.75002C12.55 4.10002 13.2167 3.58769 14 3.21302C14.7833 2.83836 15.6167 2.65069 16.5 2.65002C18.0667 2.65002 19.375 3.17502 20.425 4.22502C21.475 5.27502 22 6.58336 22 8.15002C22 10.0667 21.2917 11.825 19.875 13.425C18.4583 15.025 16.85 16.6334 15.05 18.25L13.35 19.8C13.1667 19.9834 12.9543 20.1167 12.713 20.2C12.4717 20.2834 12.234 20.325 12 20.325C11.766 20.325 11.5287 20.2834 11.288 20.2Z" fill="black"/>
                                 </svg>
@@ -150,17 +150,17 @@
                 </div>
 
                 <div class="col d-flex justify-content-center">
-                    <div class="burger-card position-relative rounded-3 shadow-sm">
-                        <div class="burger-card-photo position-absolute d-flex align-items-start">
-                            <img src="https://api.builder.io/api/v1/image/assets/TEMP/833f888da5887c67a9e172b6dc19501fff06781b?width=234" alt="Jumbo Burger" />
+                    <div class="detail-card position-relative rounded-3 shadow-sm">
+                        <div class="detail-card-photo position-absolute d-flex align-items-start">
+                            <img src="/img/Chicken/Crispy_Fried_Chicken.png" alt="Crispy Fried Chicken" />
                         </div>
-                        <div class="burger-card-info position-absolute d-flex flex-column gap-2">
-                            <p class="burger-card-name fw-semibold mb-0">Crispy Fried Chicken</p>
-                            <p class="burger-card-rating fw-medium mb-0"><span class="star">★</span> 4.8 <span class="rating-count">(2.4k+)</span></p>
+                        <div class="detail-card-info position-absolute d-flex flex-column gap-2">
+                            <p class="detail-card-name fw-semibold mb-0">Crispy Fried Chicken</p>
+                            <p class="detail-card-rating fw-medium mb-0"><span class="star">★</span> 4.8 <span class="rating-count">(2.4k+)</span></p>
                         </div>
-                        <div class="burger-card-footer position-absolute d-flex align-items-center justify-content-between">
-                            <span class="burger-card-price fw-bold">$10.00</span>
-                            <button class="burger-favorite-btn rounded-circle btn p-0 d-flex align-items-center justify-content-center" aria-label="Add to favorites">
+                        <div class="detail-card-footer position-absolute d-flex align-items-center justify-content-between">
+                            <span class="detail-card-price fw-bold">$10.00</span>
+                            <button class="detail-favorite-btn rounded-circle btn p-0 d-flex align-items-center justify-content-center" aria-label="Add to favorites">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M11.288 20.2C11.046 20.1167 10.8333 19.9834 10.65 19.8L8.925 18.225C7.15833 16.6084 5.56267 15.0044 4.138 13.413C2.71333 11.8217 2.00067 10.0674 2 8.15002C2 6.58336 2.525 5.27502 3.575 4.22502C4.625 3.17502 5.93333 2.65002 7.5 2.65002C8.38333 2.65002 9.21667 2.83736 10 3.21202C10.7833 3.58669 11.45 4.09936 12 4.75002C12.55 4.10002 13.2167 3.58769 14 3.21302C14.7833 2.83836 15.6167 2.65069 16.5 2.65002C18.0667 2.65002 19.375 3.17502 20.425 4.22502C21.475 5.27502 22 6.58336 22 8.15002C22 10.0667 21.2917 11.825 19.875 13.425C18.4583 15.025 16.85 16.6334 15.05 18.25L13.35 19.8C13.1667 19.9834 12.9543 20.1167 12.713 20.2C12.4717 20.2834 12.234 20.325 12 20.325C11.766 20.325 11.5287 20.2834 11.288 20.2Z" fill="black"/>
                                 </svg>
@@ -170,17 +170,17 @@
                 </div>
 
                 <div class="col d-flex justify-content-center">
-                    <div class="burger-card position-relative rounded-3 shadow-sm">
-                        <div class="burger-card-photo position-absolute d-flex align-items-start">
-                            <img src="https://api.builder.io/api/v1/image/assets/TEMP/6982749941b12d941ecc97707f13de0b6828fc2a?width=234" alt="Double Smash Burger" />
+                    <div class="detail-card position-relative rounded-3 shadow-sm">
+                        <div class="detail-card-photo position-absolute d-flex align-items-start">
+                            <img src="/img/Chicken/Honey_Garlic_Chicken.png" alt="Honey Garlic Chicken" />
                         </div>
-                        <div class="burger-card-info position-absolute d-flex flex-column gap-2">
-                            <p class="burger-card-name fw-semibold mb-0">Honey Garlic Chicken</p>
-                            <p class="burger-card-rating fw-medium mb-0"><span class="star">★</span> 4.6 <span class="rating-count">(934+)</span></p>
+                        <div class="detail-card-info position-absolute d-flex flex-column gap-2">
+                            <p class="detail-card-name fw-semibold mb-0">Honey Garlic Chicken</p>
+                            <p class="detail-card-rating fw-medium mb-0"><span class="star">★</span> 4.6 <span class="rating-count">(934+)</span></p>
                         </div>
-                        <div class="burger-card-footer position-absolute d-flex align-items-center justify-content-between">
-                            <span class="burger-card-price fw-bold">$12.00</span>
-                            <button class="burger-favorite-btn rounded-circle btn p-0 d-flex align-items-center justify-content-center" aria-label="Add to favorites">
+                        <div class="detail-card-footer position-absolute d-flex align-items-center justify-content-between">
+                            <span class="detail-card-price fw-bold">$12.00</span>
+                            <button class="detail-favorite-btn rounded-circle btn p-0 d-flex align-items-center justify-content-center" aria-label="Add to favorites">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M11.288 20.2C11.046 20.1167 10.8333 19.9834 10.65 19.8L8.925 18.225C7.15833 16.6084 5.56267 15.0044 4.138 13.413C2.71333 11.8217 2.00067 10.0674 2 8.15002C2 6.58336 2.525 5.27502 3.575 4.22502C4.625 3.17502 5.93333 2.65002 7.5 2.65002C8.38333 2.65002 9.21667 2.83736 10 3.21202C10.7833 3.58669 11.45 4.09936 12 4.75002C12.55 4.10002 13.2167 3.58769 14 3.21302C14.7833 2.83836 15.6167 2.65069 16.5 2.65002C18.0667 2.65002 19.375 3.17502 20.425 4.22502C21.475 5.27502 22 6.58336 22 8.15002C22 10.0667 21.2917 11.825 19.875 13.425C18.4583 15.025 16.85 16.6334 15.05 18.25L13.35 19.8C13.1667 19.9834 12.9543 20.1167 12.713 20.2C12.4717 20.2834 12.234 20.325 12 20.325C11.766 20.325 11.5287 20.2834 11.288 20.2Z" fill="black"/>
                                 </svg>
@@ -190,17 +190,17 @@
                 </div>
 
                 <div class="col d-flex justify-content-center">
-                    <div class="burger-card position-relative rounded-3 shadow-sm">
-                        <div class="burger-card-photo position-absolute d-flex align-items-start">
-                            <img src="https://api.builder.io/api/v1/image/assets/TEMP/4375117826d5121011784999367adaf9ac16ce3a?width=234" alt="Classic Cheeseburger" />
+                    <div class="detail-card position-relative rounded-3 shadow-sm">
+                        <div class="detail-card-photo position-absolute d-flex align-items-start">
+                            <img src="/img/Chicken/Butter_Chicken.png" alt="Butter Chicken" />
                         </div>
-                        <div class="burger-card-info position-absolute d-flex flex-column gap-2">
-                            <p class="burger-card-name fw-semibold mb-0">Butter Chicken</p>
-                            <p class="burger-card-rating fw-medium mb-0"><span class="star">★</span> 4.7 <span class="rating-count">(1.1k+)</span></p>
+                        <div class="detail-card-info position-absolute d-flex flex-column gap-2">
+                            <p class="detail-card-name fw-semibold mb-0">Butter Chicken</p>
+                            <p class="detail-card-rating fw-medium mb-0"><span class="star">★</span> 4.7 <span class="rating-count">(1.1k+)</span></p>
                         </div>
-                        <div class="burger-card-footer position-absolute d-flex align-items-center justify-content-between">
-                            <span class="burger-card-price fw-bold">$13.00</span>
-                            <button class="burger-favorite-btn rounded-circle btn p-0 d-flex align-items-center justify-content-center" aria-label="Add to favorites">
+                        <div class="detail-card-footer position-absolute d-flex align-items-center justify-content-between">
+                            <span class="detail-card-price fw-bold">$13.00</span>
+                            <button class="detail-favorite-btn rounded-circle btn p-0 d-flex align-items-center justify-content-center" aria-label="Add to favorites">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M11.288 20.2C11.046 20.1167 10.8333 19.9834 10.65 19.8L8.925 18.225C7.15833 16.6084 5.56267 15.0044 4.138 13.413C2.71333 11.8217 2.00067 10.0674 2 8.15002C2 6.58336 2.525 5.27502 3.575 4.22502C4.625 3.17502 5.93333 2.65002 7.5 2.65002C8.38333 2.65002 9.21667 2.83736 10 3.21202C10.7833 3.58669 11.45 4.09936 12 4.75002C12.55 4.10002 13.2167 3.58769 14 3.21302C14.7833 2.83836 15.6167 2.65069 16.5 2.65002C18.0667 2.65002 19.375 3.17502 20.425 4.22502C21.475 5.27502 22 6.58336 22 8.15002C22 10.0667 21.2917 11.825 19.875 13.425C18.4583 15.025 16.85 16.6334 15.05 18.25L13.35 19.8C13.1667 19.9834 12.9543 20.1167 12.713 20.2C12.4717 20.2834 12.234 20.325 12 20.325C11.766 20.325 11.5287 20.2834 11.288 20.2Z" fill="black"/>
                                 </svg>
@@ -210,17 +210,17 @@
                 </div>
 
                 <div class="col d-flex justify-content-center">
-                    <div class="burger-card position-relative rounded-3 shadow-sm">
-                        <div class="burger-card-photo position-absolute d-flex align-items-start">
-                            <img src="https://api.builder.io/api/v1/image/assets/TEMP/27612adadef706150a3f18baade1de92e6f367f7?width=234" alt="Korean Bulgogi Burger" />
+                    <div class="detail-card position-relative rounded-3 shadow-sm">
+                        <div class="detail-card-photo position-absolute d-flex align-items-start">
+                            <img src="/img/Chicken/Lemon_Herb_Chicken.png" alt="Lemon Herb Chicken" />
                         </div>
-                        <div class="burger-card-info position-absolute d-flex flex-column gap-2">
-                            <p class="burger-card-name fw-semibold mb-0">Lemon Herb Chicken</p>
-                            <p class="burger-card-rating fw-medium mb-0"><span class="star">★</span> 4.4 <span class="rating-count">(612+)</span></p>
+                        <div class="detail-card-info position-absolute d-flex flex-column gap-2">
+                            <p class="detail-card-name fw-semibold mb-0">Lemon Herb Chicken</p>
+                            <p class="detail-card-rating fw-medium mb-0"><span class="star">★</span> 4.4 <span class="rating-count">(612+)</span></p>
                         </div>
-                        <div class="burger-card-footer position-absolute d-flex align-items-center justify-content-between">
-                            <span class="burger-card-price fw-bold">$11.00</span>
-                            <button class="burger-favorite-btn rounded-circle btn p-0 d-flex align-items-center justify-content-center" aria-label="Add to favorites">
+                        <div class="detail-card-footer position-absolute d-flex align-items-center justify-content-between">
+                            <span class="detail-card-price fw-bold">$11.00</span>
+                            <button class="detail-favorite-btn rounded-circle btn p-0 d-flex align-items-center justify-content-center" aria-label="Add to favorites">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M11.288 20.2C11.046 20.1167 10.8333 19.9834 10.65 19.8L8.925 18.225C7.15833 16.6084 5.56267 15.0044 4.138 13.413C2.71333 11.8217 2.00067 10.0674 2 8.15002C2 6.58336 2.525 5.27502 3.575 4.22502C4.625 3.17502 5.93333 2.65002 7.5 2.65002C8.38333 2.65002 9.21667 2.83736 10 3.21202C10.7833 3.58669 11.45 4.09936 12 4.75002C12.55 4.10002 13.2167 3.58769 14 3.21302C14.7833 2.83836 15.6167 2.65069 16.5 2.65002C18.0667 2.65002 19.375 3.17502 20.425 4.22502C21.475 5.27502 22 6.58336 22 8.15002C22 10.0667 21.2917 11.825 19.875 13.425C18.4583 15.025 16.85 16.6334 15.05 18.25L13.35 19.8C13.1667 19.9834 12.9543 20.1167 12.713 20.2C12.4717 20.2834 12.234 20.325 12 20.325C11.766 20.325 11.5287 20.2834 11.288 20.2Z" fill="black"/>
                                 </svg>
@@ -230,17 +230,17 @@
                 </div>
 
                 <div class="col d-flex justify-content-center">
-                    <div class="burger-card position-relative rounded-3 shadow-sm">
-                        <div class="burger-card-photo position-absolute d-flex align-items-start">
-                            <img src="https://api.builder.io/api/v1/image/assets/TEMP/178677ea85ae08a549bdf6dbd0413a2e3b18b10b?width=234" alt="BBQ Bacon Burger" />
+                    <div class="detail-card position-relative rounded-3 shadow-sm">
+                        <div class="detail-card-photo position-absolute d-flex align-items-start">
+                            <img src="/img/Chicken/BBQ_Chicken_Platter.png" alt="BBQ Chicken Platter" />
                         </div>
-                        <div class="burger-card-info position-absolute d-flex flex-column gap-2">
-                            <p class="burger-card-name fw-semibold mb-0">BBQ Chicken Platter</p>
-                            <p class="burger-card-rating fw-medium mb-0"><span class="star">★</span> 4.6 <span class="rating-count">(788+)</span></p>
+                        <div class="detail-card-info position-absolute d-flex flex-column gap-2">
+                            <p class="detail-card-name fw-semibold mb-0">BBQ Chicken Platter</p>
+                            <p class="detail-card-rating fw-medium mb-0"><span class="star">★</span> 4.6 <span class="rating-count">(788+)</span></p>
                         </div>
-                        <div class="burger-card-footer position-absolute d-flex align-items-center justify-content-between">
-                            <span class="burger-card-price fw-bold">$14.00</span>
-                            <button class="burger-favorite-btn rounded-circle btn p-0 d-flex align-items-center justify-content-center" aria-label="Add to favorites">
+                        <div class="detail-card-footer position-absolute d-flex align-items-center justify-content-between">
+                            <span class="detail-card-price fw-bold">$14.00</span>
+                            <button class="detail-favorite-btn rounded-circle btn p-0 d-flex align-items-center justify-content-center" aria-label="Add to favorites">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M11.288 20.2C11.046 20.1167 10.8333 19.9834 10.65 19.8L8.925 18.225C7.15833 16.6084 5.56267 15.0044 4.138 13.413C2.71333 11.8217 2.00067 10.0674 2 8.15002C2 6.58336 2.525 5.27502 3.575 4.22502C4.625 3.17502 5.93333 2.65002 7.5 2.65002C8.38333 2.65002 9.21667 2.83736 10 3.21202C10.7833 3.58669 11.45 4.09936 12 4.75002C12.55 4.10002 13.2167 3.58769 14 3.21302C14.7833 2.83836 15.6167 2.65069 16.5 2.65002C18.0667 2.65002 19.375 3.17502 20.425 4.22502C21.475 5.27502 22 6.58336 22 8.15002C22 10.0667 21.2917 11.825 19.875 13.425C18.4583 15.025 16.85 16.6334 15.05 18.25L13.35 19.8C13.1667 19.9834 12.9543 20.1167 12.713 20.2C12.4717 20.2834 12.234 20.325 12 20.325C11.766 20.325 11.5287 20.2834 11.288 20.2Z" fill="black"/>
                                 </svg>
@@ -250,17 +250,17 @@
                 </div>
 
                 <div class="col d-flex justify-content-center">
-                    <div class="burger-card position-relative rounded-3 shadow-sm">
-                        <div class="burger-card-photo position-absolute d-flex align-items-start">
-                            <img src="https://api.builder.io/api/v1/image/assets/TEMP/5d79021fc096dea72cd31f374430bfb8c4753090?width=234" alt="Western BBQ Burger" />
+                    <div class="detail-card position-relative rounded-3 shadow-sm">
+                        <div class="detail-card-photo position-absolute d-flex align-items-start">
+                            <img src="/img/Chicken/Chicken_Parmesan.png" alt="Chicken Parmesan" />
                         </div>
-                        <div class="burger-card-info position-absolute d-flex flex-column gap-2">
-                            <p class="burger-card-name fw-semibold mb-0">Chicken Parmesan</p>
-                            <p class="burger-card-rating fw-medium mb-0"><span class="star">★</span> 4.5 <span class="rating-count">(543+)</span></p>
+                        <div class="detail-card-info position-absolute d-flex flex-column gap-2">
+                            <p class="detail-card-name fw-semibold mb-0">Chicken Parmesan</p>
+                            <p class="detail-card-rating fw-medium mb-0"><span class="star">★</span> 4.5 <span class="rating-count">(543+)</span></p>
                         </div>
-                        <div class="burger-card-footer position-absolute d-flex align-items-center justify-content-between">
-                            <span class="burger-card-price fw-bold">$13.00</span>
-                            <button class="burger-favorite-btn rounded-circle btn p-0 d-flex align-items-center justify-content-center" aria-label="Add to favorites">
+                        <div class="detail-card-footer position-absolute d-flex align-items-center justify-content-between">
+                            <span class="detail-card-price fw-bold">$13.00</span>
+                            <button class="detail-favorite-btn rounded-circle btn p-0 d-flex align-items-center justify-content-center" aria-label="Add to favorites">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M11.288 20.2C11.046 20.1167 10.8333 19.9834 10.65 19.8L8.925 18.225C7.15833 16.6084 5.56267 15.0044 4.138 13.413C2.71333 11.8217 2.00067 10.0674 2 8.15002C2 6.58336 2.525 5.27502 3.575 4.22502C4.625 3.17502 5.93333 2.65002 7.5 2.65002C8.38333 2.65002 9.21667 2.83736 10 3.21202C10.7833 3.58669 11.45 4.09936 12 4.75002C12.55 4.10002 13.2167 3.58769 14 3.21302C14.7833 2.83836 15.6167 2.65069 16.5 2.65002C18.0667 2.65002 19.375 3.17502 20.425 4.22502C21.475 5.27502 22 6.58336 22 8.15002C22 10.0667 21.2917 11.825 19.875 13.425C18.4583 15.025 16.85 16.6334 15.05 18.25L13.35 19.8C13.1667 19.9834 12.9543 20.1167 12.713 20.2C12.4717 20.2834 12.234 20.325 12 20.325C11.766 20.325 11.5287 20.2834 11.288 20.2Z" fill="black"/>
                                 </svg>
@@ -278,8 +278,9 @@
 <script src="../js/cart.js"></script>
 <script src="../js/navbar.js"></script>
 <script src="../js/favorites.js"></script>
+<!-- SESUDAH -->
 <script>
-    document.getElementById('burgerBackBtn').addEventListener('click', function () {
+    document.querySelector('.back-btn').addEventListener('click', function () {
         if (document.referrer && new URL(document.referrer).host === window.location.host) {
             history.back();
         } else {
