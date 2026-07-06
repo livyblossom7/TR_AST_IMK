@@ -1,0 +1,164 @@
+/* === Settings Page === */
+.settings-page {
+    padding: 45px 90px 86px 27px;
+}
+
+.settings-page-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.settings-back-link {
+    display: inline-flex;
+    flex-shrink: 0;
+}
+
+.settings-page-title {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.24px;
+    color: #1A1C1C;
+}
+
+.settings-page-subtitle {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--text-muted);
+    margin-top: 8px;
+}
+
+.settings-content {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+/* Cards */
+.settings-card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px;
+    border-radius: 12px;
+    background: #F9F9F9;
+    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.15);
+}
+
+.settings-card-title {
+    padding: 8px 8px 16px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #1A1C1C;
+}
+
+/* List items */
+.settings-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    border-radius: 8px;
+    transition: background 0.15s;
+}
+
+.settings-item:hover {
+    background: #F0F0F0;
+}
+
+.settings-item-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.settings-item-icon {
+    display: flex;
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 9999px;
+    background: #EEE;
+    flex-shrink: 0;
+}
+
+.settings-item-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.settings-item-title {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    color: #1A1C1C;
+}
+
+.settings-item-desc {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #5A4136;
+}
+
+.settings-chevron {
+    flex-shrink: 0;
+}
+
+.settings-divider {
+    height: 1px;
+    margin: 0 16px;
+    background: var(--border-color);
+}
+
+/* Preferences */
+.settings-preferences-row {
+    display: flex;
+    gap: 24px;
+    padding: 0 8px 8px;
+}
+
+.settings-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+}
+
+.settings-field-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    color: #5A4136;
+}
+
+.settings-select-wrap {
+    position: relative;
+}
+
+.settings-select {
+    width: 100%;
+    padding: 12px 40px 12px 16px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background: #F9F9F9;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    font-family: var(--font);
+    font-size: 16px;
+    font-weight: 400;
+    color: #1A1C1C;
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+}
+
+.settings-select-chevron {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
