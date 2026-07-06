@@ -116,20 +116,29 @@
         });
     }
 
+    function findMealInfo(btn) {
+        var card = btn.closest('.meal-card');
+        var nameEl = card ? card.querySelector('.meal-name') : null;
+        var priceEl = card ? card.querySelector('.meal-price') : null;
+        var imgEl = card ? card.querySelector('.meal-photo img') : null;
+
+        if (!nameEl) nameEl = document.querySelector('.meal-detail-title');
+        if (!priceEl) priceEl = document.querySelector('.meal-detail-price');
+        if (!imgEl) imgEl = document.querySelector('.meal-detail-image');
+
+        return { nameEl: nameEl, priceEl: priceEl, imgEl: imgEl };
+    }
+
     function wireAddToCartButtons() {
-        document.querySelectorAll('.add-to-cart-btn').forEach(function (btn) {
+        document.querySelectorAll('.add-to-cart-btn, .add-to-cart-btn-large').forEach(function (btn) {
             btn.addEventListener('click', function (e) {
                 e.preventDefault();
-                var card = btn.closest('.meal-card');
-                if (!card) return;
-                var nameEl = card.querySelector('.meal-name');
-                var priceEl = card.querySelector('.meal-price');
-                var imgEl = card.querySelector('.meal-photo img');
-                if (!nameEl || !priceEl) return;
+                var mealInfo = findMealInfo(btn);
+                if (!mealInfo.nameEl || !mealInfo.priceEl) return;
                 addToCart({
-                    name: nameEl.textContent.trim(),
-                    price: parseFloat(priceEl.textContent.replace(/[^0-9.]/g, '')),
-                    image: imgEl ? imgEl.getAttribute('src') : ''
+                    name: mealInfo.nameEl.textContent.trim(),
+                    price: parseFloat(mealInfo.priceEl.textContent.replace(/[^0-9.]/g, '')),
+                    image: mealInfo.imgEl ? mealInfo.imgEl.getAttribute('src') : ''
                 });
             });
         });

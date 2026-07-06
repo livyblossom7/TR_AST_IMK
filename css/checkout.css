@@ -255,6 +255,28 @@
     justify-content: flex-end;
 }
 
+.checkout-summary-actions .btn {
+    display: flex;
+    width: 174px;
+    height: 53px;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.checkout-summary-actions .btn-primary {
+    background: var(--orange-primary);
+    color: #fff;
+}
+
+.checkout-summary-actions .btn-primary:disabled {
+    opacity: 0.65;
+}
+
 /* =====================================================
    Modal system
    ===================================================== */
