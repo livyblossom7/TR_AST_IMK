@@ -14,10 +14,235 @@
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fraunces:wght@600;700&display=swap" rel="stylesheet">
 
     <!-- CSS -->
     <link rel="stylesheet" href="../css/login.css">
+
+    <style>
+      /* ====== Override / tambahan supaya layout jadi box kecil seperti sign up ====== */
+      :root{
+        --yellow:#ffce00;
+        --orange:#f0631d;
+        --orange-dark:#d9531a;
+        --ink:#1c1c1c;
+        --muted:#8a8a8a;
+        --border:#e6e6e6;
+      }
+
+      *{ box-sizing:border-box; }
+
+      body{
+        margin:0;
+        min-height:100vh;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        background:#f2f2f2;
+        font-family:'Plus Jakarta Sans', sans-serif;
+        color:var(--ink);
+        padding:32px 16px;
+      }
+
+      .auth-wrapper{
+        display:flex;
+        width:100%;
+        max-width:1020px;
+        min-height:720px;
+        background:#fff;
+        border-radius:28px;
+        overflow:hidden;
+        box-shadow:0 20px 60px rgba(0,0,0,0.08);
+      }
+
+      .auth-form-side{
+        flex:0 0 46%;
+        padding:56px 56px 40px;
+        display:flex;
+        flex-direction:column;
+        justify-content:space-between;
+        position:relative;
+      }
+
+      .auth-back-btn{
+        background:none;
+        border:none;
+        font-size:20px;
+        color:var(--ink);
+        cursor:pointer;
+        padding:0;
+        width:32px;
+        height:32px;
+        margin-bottom:20px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+      }
+
+      .auth-title{
+        font-family:'Fraunces', serif;
+        font-weight:700;
+        font-size:38px;
+        line-height:1.15;
+        margin:0 0 12px;
+        color:#111;
+      }
+
+      .auth-subtitle{
+        font-size:14.5px;
+        color:var(--muted);
+        margin:0 0 28px;
+        line-height:1.5;
+      }
+
+      .auth-form{ width:100%; }
+
+      .form-group{ margin-bottom:16px; }
+
+      .form-label{
+        display:block;
+        font-size:13.5px;
+        font-weight:700;
+        margin-bottom:6px;
+        color:#222;
+      }
+
+      .form-control{
+        width:100%;
+        padding:12px 14px;
+        border:1.5px solid var(--border);
+        border-radius:10px;
+        font-size:14px;
+        font-family:inherit;
+        color:#222;
+        outline:none;
+        transition:border-color .15s;
+      }
+      .form-control::placeholder{ color:#bdbdbd; }
+      .form-control:focus{ border-color:var(--orange); box-shadow:none; }
+
+      .input-eye-wrap{ position:relative; }
+      .input-eye-wrap .form-control{ padding-right:42px; }
+      .toggle-eye{
+        position:absolute;
+        right:12px;
+        top:12px;
+        background:none;
+        border:none;
+        color:#9a9a9a;
+        cursor:pointer;
+        padding:0;
+        font-size:15px;
+      }
+
+      .forgot-link{
+        font-size:12.5px;
+        color:var(--orange);
+        text-decoration:none;
+        font-weight:600;
+        display:inline-block;
+        margin-top:6px;
+      }
+      .forgot-link:hover{ text-decoration:underline; }
+
+      .btn-auth-primary{
+        width:100%;
+        background:var(--orange);
+        color:#fff;
+        border:none;
+        border-radius:12px;
+        padding:13px;
+        font-size:15px;
+        font-weight:700;
+        cursor:pointer;
+        transition:background .15s;
+        margin-top:8px;
+      }
+      .btn-auth-primary:hover{ background:var(--orange-dark); }
+
+      .divider-text{
+        text-align:center;
+        font-size:11px;
+        letter-spacing:.06em;
+        color:var(--muted);
+        margin:20px 0 16px;
+        position:relative;
+        text-transform:uppercase;
+      }
+      .divider-text::before,
+      .divider-text::after{
+        content:"";
+        position:absolute;
+        top:50%;
+        width:28%;
+        height:1px;
+        background:var(--border);
+      }
+      .divider-text::before{ left:0; }
+      .divider-text::after{ right:0; }
+
+      .social-btn-group{
+        display:flex;
+        width:100%;
+        align-items:center;
+        justify-content:center;
+        text-align:center;
+        gap:14px;
+        margin:0 auto;
+      }
+      .social-btn{
+        width:44px;
+        height:44px;
+        border-radius:50%;
+        border:1.5px solid var(--border);
+        background:#fff;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        font-size:17px;
+        cursor:pointer;
+        color:#333;
+        transition:box-shadow .15s;
+        flex-shrink:0;
+      }
+        .social-btn:hover{ box-shadow:0 4px 10px rgba(0,0,0,0.08); }
+        .social-btn svg{ width:18px; height:18px; display:block; }
+        .social-btn[aria-label="Apple"] i{ color:#111; }
+        .social-btn[aria-label="Facebook"] i{ color:#1877F2; }
+
+      .bottom-link{
+        text-align:center;
+        font-size:13px;
+        color:#666;
+        margin-top:18px;
+      }
+      .bottom-link a{
+        color:var(--orange);
+        font-weight:700;
+        text-decoration:none;
+      }
+      .bottom-link a:hover{ text-decoration:underline; }
+
+      .auth-image-side{
+        flex:1;
+        position:relative;
+        overflow:hidden;
+        background:var(--yellow);
+      }
+      .hero-food-image{
+        position:absolute;
+        inset:0;
+        width:100%;
+        height:100%;
+        object-fit:cover;
+      }
+
+      @media (max-width:860px){
+        .auth-wrapper{ flex-direction:column; min-height:auto; }
+        .auth-form-side{ flex:none; padding:40px 28px; }
+        .auth-image-side{ height:260px; }
+      }
+    </style>
 </head>
 
 <body>
@@ -41,7 +266,7 @@
             </div>
 
             <!-- Form -->
-            <form class="auth-form">
+            <form class="auth-form" id="loginForm" novalidate>
 
                 <div class="form-group">
                     <label class="form-label">Email Address</label>
@@ -52,8 +277,8 @@
                     <label class="form-label">Password</label>
 
                     <div class="input-eye-wrap">
-                        <input type="password" class="form-control" placeholder="Enter your password">
-                        <button type="button" class="toggle-eye">
+                        <input type="password" class="form-control" id="loginPassword" placeholder="Enter your password">
+                        <button type="button" class="toggle-eye" data-target="loginPassword">
                             <i class="bi bi-eye"></i>
                         </button>
                     </div>
@@ -72,9 +297,16 @@
 
                 <!-- Social -->
                 <div class="social-btn-group">
-                    <button type="button" class="social-btn"><i class="bi bi-google"></i></button>
-                    <button type="button" class="social-btn"><i class="bi bi-apple"></i></button>
-                    <button type="button" class="social-btn"><i class="bi bi-facebook"></i></button>
+                    <button type="button" class="social-btn" aria-label="Google">
+                        <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/>
+                        <path fill="#FF3D00" d="M6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"/>
+                        <path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238C29.211 35.091 26.715 36 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/>
+                        <path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 0 1-4.087 5.571l.003-.002 6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"/>
+                        </svg>
+                    </button>
+                    <button type="button" class="social-btn" aria-label="Apple"><i class="bi bi-apple"></i></button>
+                    <button type="button" class="social-btn" aria-label="Facebook"><i class="bi bi-facebook"></i></button>
                 </div>
 
             </form>
@@ -95,6 +327,25 @@
     </div>
 
 </section>
+
+<script>
+  document.querySelectorAll('.toggle-eye').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var input = document.getElementById(btn.dataset.target);
+      var icon = btn.querySelector('i');
+      var isHidden = input.type === 'password';
+      input.type = isHidden ? 'text' : 'password';
+      icon.classList.toggle('bi-eye', !isHidden);
+      icon.classList.toggle('bi-eye-slash', isHidden);
+    });
+  });
+
+  // Log in langsung lanjut ke halaman berikutnya tanpa validasi form
+  document.getElementById('loginForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    window.location.href = '../index.html'; // ganti dengan nama file halaman tujuan yang sebenarnya
+  });
+</script>
 
 </body>
 </html>

@@ -135,11 +135,11 @@
     <!-- Main Content -->
     <main class="meal-details-content">
 
-        <a href="burgers.html" class="back-btn" aria-label="Go back">
-            <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M16.3638 24.1636C15.3481 25.1793 15.3481 26.8286 16.3638 27.8443L29.3638 40.8443C30.3794 41.8599 32.0288 41.8599 33.0444 40.8443C34.06 39.8286 34.06 38.1793 33.0444 37.1636L21.8806 25.9999L33.0363 14.8361C34.0519 13.8205 34.0519 12.1711 33.0363 11.1555C32.0206 10.1399 30.3713 10.1399 29.3556 11.1555L16.3556 24.1555L16.3638 24.1636Z" fill="black"/>
+        <button type="button" class="back-btn btn rounded-circle p-0 d-flex align-items-center justify-content-center flex-shrink-0" id="burgerBackBtn" aria-label="Go back">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M11.3286 16.7288C10.6255 17.4319 10.6255 18.5738 11.3286 19.2769L20.3286 28.2769C21.0317 28.98 22.1736 28.98 22.8767 28.2769C23.5799 27.5738 23.5799 26.4319 22.8767 25.7288L15.148 18L22.8711 10.2713C23.5742 9.56814 23.5742 8.42627 22.8711 7.72314C22.168 7.02002 21.0261 7.02002 20.323 7.72314L11.323 16.7231L11.3286 16.7288Z" fill="black"/>
             </svg>
-        </a>
+        </button>
 
         <div class="meal-details-grid">
 
@@ -227,6 +227,15 @@
     });
 </script>
 <script src="../js/cart.js"></script>
+<script>
+    document.querySelector('.back-btn').addEventListener('click', function () {
+        if (document.referrer && new URL(document.referrer).host === window.location.host) {
+            history.back();
+        } else {
+            window.location.href = 'categories.html';
+        }
+    });
+</script>
 <script src="../js/logout-modal.js"></script>
 </body>
 </html>
