@@ -499,7 +499,7 @@
             '<h2 class="address-modal-title">Edit Address</h2>' +
             '<div class="address-form">' +
             '<div><label class="address-form-label">Location:</label>' +
-            '<div class="address-location-field">' + PIN_ICON + '<span class="address-location-value">' + address.address + '</span><span class="address-location-edit">Edit</span></div></div>' +
+            '<div class="address-location-field">' + PIN_ICON + '<input type="text" class="address-location-input" id="addrLocation" value="' + address.address + '" /></div></div>' +
             '<div><label class="address-form-label">Point Name:</label>' +
             '<input type="text" class="address-form-input" id="addrPointName" value="' + address.label + '" /></div>' +
             '<div><label class="address-form-label">Recepient\u2019s Name</label>' +
@@ -514,6 +514,7 @@
         wireBack(renderAddressList);
 
         modalBox.querySelector('#saveAddressBtn').addEventListener('click', function () {
+            address.address = valueOf('addrLocation') || address.address;
             address.label = valueOf('addrPointName') || address.label;
             address.recipient = valueOf('addrRecipientName') || address.recipient;
             address.phone = valueOf('addrRecipientPhone') || address.phone;
@@ -528,7 +529,7 @@
             '<h2 class="address-modal-title">Add New Address</h2>' +
             '<div class="address-form">' +
             '<div><label class="address-form-label">Location:</label>' +
-            '<div class="address-location-field">' + PIN_ICON + '<span class="address-location-value is-placeholder">Pick your location...</span><span class="address-location-edit">Edit</span></div></div>' +
+            '<div class="address-location-field">' + PIN_ICON + '<input type="text" class="address-location-input" id="addrLocation" placeholder="Insert your location..." /></div></div>' +
             '<div><label class="address-form-label">Point Name:</label>' +
             '<input type="text" class="address-form-input" id="addrPointName" placeholder="Save your address as...." /></div>' +
             '<div><label class="address-form-label">Recepient\u2019s Name</label>' +
@@ -547,7 +548,7 @@
                 id: 'addr' + Date.now(),
                 label: valueOf('addrPointName') || 'New Address',
                 recipient: valueOf('addrRecipientName') || 'John Doe',
-                address: addresses[0].address,
+                address: valueOf('addrLocation') || addresses[0].address,
                 phone: valueOf('addrRecipientPhone') || addresses[0].phone
             };
             addresses.push(newAddress);
