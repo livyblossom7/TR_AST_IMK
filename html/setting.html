@@ -4,65 +4,130 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Settings - Wagba</title>
-    <link rel="stylesheet" href="../css/index.css">
-    <link rel="stylesheet" href="../css/setting.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/index.css">
+
+    <style>
+        :root{
+            --wagba-orange: #F4530A;
+        }
+        body{ font-family: 'Plus Jakarta Sans', sans-serif; background-color: #FAFAFA; }
+
+        .settings-back-link{
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            transition: background .15s;
+        }
+        .settings-back-link:hover{ background: #EBEBEB; }
+
+        .settings-page-title{ font-weight: 800; font-size: 1.6rem; margin-bottom: .1rem; }
+        .settings-page-subtitle{ color: #777; margin-bottom: 0; }
+
+        .settings-card{
+            background: #fff;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+            border: none;
+        }
+        .settings-card-title{
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .settings-item{
+            border: none;
+            padding: .9rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #000;
+            text-decoration: none;
+            background: transparent;
+        }
+        .settings-item:hover{ color: var(--wagba-orange); }
+        .settings-item:hover .settings-item-icon svg path,
+        .settings-item:hover .settings-chevron path{ fill: var(--wagba-orange); }
+
+        .settings-item-icon{
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #F5F0EC;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .settings-item-title{ font-weight: 600; margin-bottom: .1rem; }
+        .settings-item-desc{ font-size: .85rem; color: #888; margin-bottom: 0; }
+
+        .settings-select:focus{
+            border-color: var(--wagba-orange);
+            box-shadow: 0 0 0 .2rem rgba(244,83,10,.15);
+        }
+    </style>
 </head>
 <body>
 <div class="page-wrapper">
 
-    <!-- Main Content -->
-    <main class="settings-page">
-        <div class="settings-page-header">
+    <main class="container py-5" style="max-width: 720px;">
+
+        <div class="d-flex align-items-center gap-3 mb-4">
             <a href="../html/profil.html" class="settings-back-link" aria-label="Back">
-                <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M13.4361 22.3223L21.8499 30.7361C22.1934 31.0795 22.3582 31.4802 22.3445 31.9381C22.3307 32.396 22.1516 32.7966 21.807 33.14C21.4636 33.4548 21.0629 33.6197 20.605 33.6346C20.1471 33.6494 19.7465 33.4846 19.4031 33.14L8.0702 21.8072C7.89849 21.6354 7.77658 21.4494 7.70446 21.2491C7.63234 21.0488 7.59743 20.8341 7.59972 20.6052C7.602 20.3762 7.63806 20.1616 7.70789 19.9613C7.77772 19.7609 7.89906 19.5749 8.07192 19.4032L19.4048 8.07035C19.7196 7.75554 20.1134 7.59814 20.5862 7.59814C21.0589 7.59814 21.4665 7.75554 21.8087 8.07035C22.1521 8.41377 22.3239 8.82187 22.3239 9.29464C22.3239 9.76742 22.1521 10.1749 21.8087 10.5172L13.4361 18.8881H32.6248C33.1113 18.8881 33.5194 19.0529 33.849 19.3826C34.1787 19.7123 34.343 20.1198 34.3419 20.6052C34.3407 21.0906 34.1759 21.4987 33.8473 21.8295C33.5188 22.1603 33.1113 22.3246 32.6248 22.3223H13.4361Z" fill="black"/>
+                <svg width="24" height="24" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13.4361 22.3223L21.8499 30.7361C22.1934 31.0795 22.3582 31.4802 22.3445 31.9381C22.3307 32.396 22.1516 32.7966 21.807 33.14C21.4636 33.4548 21.0629 33.6197 20.605 33.6346C20.1471 33.6494 19.7465 33.4846 19.4031 33.14L8.0702 21.8072C7.89849 21.6354 7.77658 21.4494 7.70446 21.2491C7.63234 21.0488 7.59743 20.8341 7.59972 20.6052C7.602 20.3762 7.63806 20.1616 7.70789 19.9613C7.77772 19.7609 7.89906 19.5749 8.07192 19.4032L19.4048 8.07035C19.7196 7.75554 20.1134 7.59814 20.5862 7.59814C21.0589 7.59814 21.4665 7.75554 21.8087 8.07035C22.1521 8.41377 22.3239 8.82187 22.3239 9.29464C22.3239 9.76742 22.1521 10.1749 21.8087 10.5172L13.4361 18.8881H32.6248C33.1113 18.8881 33.5194 19.0529 33.849 19.3826C34.1787 19.7123 34.343 20.1198 34.3419 20.6052C34.3407 21.0906 34.1759 21.4987 33.8473 21.8295C33.5188 22.1603 33.1113 22.3246 32.6248 22.3223H13.4361Z" fill="currentColor"/>
                 </svg>
             </a>
-            <div class="settings-page-heading">
+            <div>
                 <h1 class="settings-page-title">Settings</h1>
                 <p class="settings-page-subtitle">Manage your account settings</p>
             </div>
         </div>
 
-        <div class="settings-content">
+        <div class="d-flex flex-column gap-3">
 
             <!-- Account Settings -->
             <section class="settings-card">
                 <h2 class="settings-card-title">Account Settings</h2>
 
-                <a href="#" class="settings-item">
-                    <div class="settings-item-left">
+                <a href="#" class="settings-item border-bottom">
+                    <div class="d-flex align-items-center gap-3">
                         <span class="settings-item-icon">
                             <svg width="16" height="21" viewBox="0 0 16 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M2 21C1.45 21 0.979167 20.8042 0.5875 20.4125C0.195833 20.0208 0 19.55 0 19V9C0 8.45 0.195833 7.97917 0.5875 7.5875C0.979167 7.19583 1.45 7 2 7H3V5C3 3.61667 3.4875 2.4375 4.4625 1.4625C5.4375 0.4875 6.61667 0 8 0C9.38333 0 10.5625 0.4875 11.5375 1.4625C12.5125 2.4375 13 3.61667 13 5V7H14C14.55 7 15.0208 7.19583 15.4125 7.5875C15.8042 7.97917 16 8.45 16 9V19C16 19.55 15.8042 20.0208 15.4125 20.4125C15.0208 20.8042 14.55 21 14 21H2ZM2 19H14V9H2V19ZM8 16C8.55 16 9.02083 15.8042 9.4125 15.4125C9.80417 15.0208 10 14.55 10 14C10 13.45 9.80417 12.9792 9.4125 12.5875C9.02083 12.1958 8.55 12 8 12C7.45 12 6.97917 12.1958 6.5875 12.5875C6.19583 12.9792 6 13.45 6 14C6 14.55 6.19583 15.0208 6.5875 15.4125C6.97917 15.8042 7.45 16 8 16ZM5 7H11V5C11 4.16667 10.7083 3.45833 10.125 2.875C9.54167 2.29167 8.83333 2 8 2C7.16667 2 6.45833 2.29167 5.875 2.875C5.29167 3.45833 5 4.16667 5 5V7Z" fill="#5F5E5E"/>
                             </svg>
                         </span>
-                        <div class="settings-item-text">
+                        <div>
                             <p class="settings-item-title">Change Password</p>
                             <p class="settings-item-desc">Update your current password</p>
                         </div>
                     </div>
-                    <svg class="settings-chevron" width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg" class="settings-chevron">
                         <path d="M4.6 6L0 1.4L1.4 0L7.4 6L1.4 12L0 10.6L4.6 6Z" fill="#5F5E5E"/>
                     </svg>
                 </a>
 
-                <div class="settings-divider"></div>
-
-                <a href="#" class="settings-item">
-                    <div class="settings-item-left">
+                <a href="../html/updateemail.html" class="settings-item">
+                    <div class="d-flex align-items-center gap-3">
                         <span class="settings-item-icon">
                             <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M2 16C1.45 16 0.979167 15.8042 0.5875 15.4125C0.195833 15.0208 0 14.55 0 14V2C0 1.45 0.195833 0.979167 0.5875 0.5875C0.979167 0.195833 1.45 0 2 0H18C18.55 0 19.0208 0.195833 19.4125 0.5875C19.8042 0.979167 20 1.45 20 2V14C20 14.55 19.8042 15.0208 19.4125 15.4125C19.0208 15.8042 18.55 16 18 16H2ZM10 9L2 4V14H18V4L10 9ZM10 7L18 2H2L10 7ZM2 4V2V4V14V4Z" fill="#5F5E5E"/>
                             </svg>
                         </span>
-                        <div class="settings-item-text">
+                        <div>
                             <p class="settings-item-title">Update Email Address</p>
                             <p class="settings-item-desc">spongebob@bikini.bottom</p>
                         </div>
                     </div>
-                    <svg class="settings-chevron" width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg" class="settings-chevron">
                         <path d="M4.6 6L0 1.4L1.4 0L7.4 6L1.4 12L0 10.6L4.6 6Z" fill="#5F5E5E"/>
                     </svg>
                 </a>
@@ -72,30 +137,20 @@
             <section class="settings-card">
                 <h2 class="settings-card-title">Preferences</h2>
 
-                <div class="settings-preferences-row">
-                    <div class="settings-field">
-                        <label class="settings-field-label" for="settingsLanguage">Language</label>
-                        <div class="settings-select-wrap">
-                            <select id="settingsLanguage" class="settings-select">
-                                <option>English</option>
-                                <option>Indonesian</option>
-                            </select>
-                            <svg class="settings-select-chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M7.19995 9.6001L12 14.4001L16.8 9.6001" stroke="#1A1C1C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </div>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label fw-semibold" for="settingsLanguage">Language</label>
+                        <select id="settingsLanguage" class="form-select settings-select">
+                            <option>English</option>
+                            <option>Indonesian</option>
+                        </select>
                     </div>
-                    <div class="settings-field">
-                        <label class="settings-field-label" for="settingsCurrency">Currency</label>
-                        <div class="settings-select-wrap">
-                            <select id="settingsCurrency" class="settings-select">
-                                <option>Dollars</option>
-                                <option>Rupiah</option>
-                            </select>
-                            <svg class="settings-select-chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M7.19995 9.6001L12 14.4001L16.8 9.6001" stroke="#1A1C1C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-semibold" for="settingsCurrency">Currency</label>
+                        <select id="settingsCurrency" class="form-select settings-select">
+                            <option>Dollars</option>
+                            <option>Rupiah</option>
+                        </select>
                     </div>
                 </div>
             </section>
@@ -104,36 +159,30 @@
             <section class="settings-card">
                 <h2 class="settings-card-title">About</h2>
 
-                <a href="#" class="settings-item">
-                    <div class="settings-item-left">
+                <a href="#" class="settings-item border-bottom">
+                    <div class="d-flex align-items-center gap-3">
                         <span class="settings-item-icon">
                             <svg width="16" height="20" viewBox="0 0 16 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M4 16H12V14H4V16ZM4 12H12V10H4V12ZM2 20C1.45 20 0.979167 19.8042 0.5875 19.4125C0.195833 19.0208 0 18.55 0 18V2C0 1.45 0.195833 0.979167 0.5875 0.5875C0.979167 0.195833 1.45 0 2 0H10L16 6V18C16 18.55 15.8042 19.0208 15.4125 19.4125C15.0208 19.8042 14.55 20 14 20H2ZM9 7V2H2V18H14V7H9ZM2 2V7V2V7V18V2Z" fill="#5F5E5E"/>
                             </svg>
                         </span>
-                        <div class="settings-item-text">
-                            <p class="settings-item-title">Terms &amp; Conditions</p>
-                        </div>
+                        <p class="settings-item-title mb-0">Terms &amp; Conditions</p>
                     </div>
-                    <svg class="settings-chevron" width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg" class="settings-chevron">
                         <path d="M4.6 6L0 1.4L1.4 0L7.4 6L1.4 12L0 10.6L4.6 6Z" fill="#5F5E5E"/>
                     </svg>
                 </a>
 
-                <div class="settings-divider"></div>
-
                 <a href="#" class="settings-item">
-                    <div class="settings-item-left">
+                    <div class="d-flex align-items-center gap-3">
                         <span class="settings-item-icon">
                             <svg width="16" height="20" viewBox="0 0 16 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M8 20C5.68333 19.4167 3.77083 18.0875 2.2625 16.0125C0.754167 13.9375 0 11.6333 0 9.1V3L8 0L16 3V9.1C16 10.5167 15.7583 11.8792 15.275 13.1875C14.7917 14.4958 14.1 15.65 13.2 16.65L10 13.45C9.7 13.6333 9.37917 13.7708 9.0375 13.8625C8.69583 13.9542 8.35 14 8 14C6.9 14 5.95833 13.6083 5.175 12.825C4.39167 12.0417 4 11.1 4 10C4 8.9 4.39167 7.95833 5.175 7.175C5.95833 6.39167 6.9 6 8 6C9.1 6 10.0417 6.39167 10.825 7.175C11.6083 7.95833 12 8.9 12 10C12 10.3667 11.9542 10.7208 11.8625 11.0625C11.7708 11.4042 11.6333 11.7333 11.45 12.05L12.95 13.55C13.2833 12.8667 13.5417 12.15 13.725 11.4C13.9083 10.65 14 9.88333 14 9.1V4.375L8 2.125L2 4.375V9.1C2 11.1167 2.56667 12.95 3.7 14.6C4.83333 16.25 6.26667 17.35 8 17.9C8.43333 17.7667 8.84583 17.5958 9.2375 17.3875C9.62917 17.1792 10.0167 16.9333 10.4 16.65L11.8 18.05C11.25 18.5 10.6542 18.8917 10.0125 19.225C9.37083 19.5583 8.7 19.8167 8 20ZM8 12C8.55 12 9.02083 11.8042 9.4125 11.4125C9.80417 11.0208 10 10.55 10 10C10 9.45 9.80417 8.97917 9.4125 8.5875C9.02083 8.19583 8.55 8 8 8C7.45 8 6.97917 8.19583 6.5875 8.5875C6.19583 8.97917 6 9.45 6 10C6 10.55 6.19583 11.0208 6.5875 11.4125C6.97917 11.8042 7.45 12 8 12Z" fill="#5F5E5E"/>
                             </svg>
                         </span>
-                        <div class="settings-item-text">
-                            <p class="settings-item-title">Privacy Policy</p>
-                        </div>
+                        <p class="settings-item-title mb-0">Privacy Policy</p>
                     </div>
-                    <svg class="settings-chevron" width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg" class="settings-chevron">
                         <path d="M4.6 6L0 1.4L1.4 0L7.4 6L1.4 12L0 10.6L4.6 6Z" fill="#5F5E5E"/>
                     </svg>
                 </a>

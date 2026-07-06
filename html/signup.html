@@ -1,146 +1,363 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up - Wagba</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign Up - Wagba</title>
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fraunces:wght@600;700&display=swap" rel="stylesheet">
 
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --yellow:#ffce00;
+    --orange:#f0631d;
+    --orange-dark:#d9531a;
+    --red:#c73427;
+    --ink:#1c1c1c;
+    --muted:#8a8a8a;
+    --border:#e6e6e6;
+  }
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="../css/signup.css">
+  *{ box-sizing:border-box; }
+
+  body{
+    margin:0;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#f2f2f2;
+    font-family:'Plus Jakarta Sans', sans-serif;
+    color:var(--ink);
+    padding:32px 16px;
+  }
+
+  .auth-wrapper{
+    display:flex;
+    width:100%;
+    max-width:1020px;
+    min-height:720px;
+    background:#fff;
+    border-radius:28px;
+    overflow:hidden;
+    box-shadow:0 20px 60px rgba(0,0,0,0.08);
+  }
+
+  /* LEFT SIDE */
+  .auth-form-side{
+    flex:0 0 46%;
+    padding:56px 56px 40px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    position:relative;
+  }
+
+  .auth-back-btn{
+    background:none;
+    border:none;
+    font-size:20px;
+    color:var(--ink);
+    cursor:pointer;
+    padding:0;
+    width:32px;
+    height:32px;
+    margin-bottom:20px;
+  }
+
+  .auth-title{
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-size:38px;
+    line-height:1.15;
+    margin:0 0 12px;
+    color:#111;
+  }
+
+  .auth-subtitle{
+    font-size:14.5px;
+    color:var(--muted);
+    margin:0 0 28px;
+    line-height:1.5;
+  }
+
+  .auth-form{ width:100%; }
+
+  .form-group{ margin-bottom:16px; }
+
+  .form-label{
+    display:block;
+    font-size:13.5px;
+    font-weight:700;
+    margin-bottom:6px;
+    color:#222;
+  }
+
+  .form-control{
+    width:100%;
+    padding:12px 14px;
+    border:1.5px solid var(--border);
+    border-radius:10px;
+    font-size:14px;
+    font-family:inherit;
+    color:#222;
+    outline:none;
+    transition:border-color .15s;
+  }
+  .form-control::placeholder{ color:#bdbdbd; }
+  .form-control:focus{ border-color:var(--orange); }
+
+  .input-eye-wrap{ position:relative; }
+  .input-eye-wrap .form-control{ padding-right:42px; }
+  .toggle-eye{
+    position:absolute;
+    right:12px;
+    top:50%;
+    transform:translateY(-50%);
+    background:none;
+    border:none;
+    color:#9a9a9a;
+    cursor:pointer;
+    padding:0;
+    font-size:15px;
+  }
+
+  .terms-check{
+    display:flex;
+    align-items:flex-start;
+    gap:8px;
+    margin:14px 0 20px;
+  }
+  .terms-checkbox{
+    margin-top:3px;
+    width:15px;
+    height:15px;
+    accent-color:var(--orange);
+    flex-shrink:0;
+  }
+  .terms-label{
+    font-size:13px;
+    color:#666;
+    line-height:1.5;
+  }
+  .terms-link{
+    color:var(--orange);
+    text-decoration:none;
+    font-weight:600;
+  }
+  .terms-link:hover{ text-decoration:underline; }
+
+  .btn-auth-primary{
+    width:100%;
+    background:var(--orange);
+    color:#fff;
+    border:none;
+    border-radius:12px;
+    padding:14px;
+    font-size:15px;
+    font-weight:700;
+    cursor:pointer;
+    transition:background .15s;
+  }
+  .btn-auth-primary:hover{ background:var(--orange-dark); }
+
+  .divider-text{
+    text-align:center;
+    font-size:11.5px;
+    letter-spacing:.06em;
+    color:var(--muted);
+    margin:22px 0 18px;
+    position:relative;
+  }
+  .divider-text::before,
+  .divider-text::after{
+    content:"";
+    position:absolute;
+    top:50%;
+    width:30%;
+    height:1px;
+    background:var(--border);
+  }
+  .divider-text::before{ left:0; }
+  .divider-text::after{ right:0; }
+
+  .social-btn-group{
+    display:flex;
+    justify-content:center;
+    gap:14px;
+  }
+  .social-btn{
+    width:44px;
+    height:44px;
+    border-radius:50%;
+    border:1.5px solid var(--border);
+    background:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:17px;
+    cursor:pointer;
+    color:#333;
+    transition:box-shadow .15s;
+  }
+  .social-btn:hover{ box-shadow:0 4px 10px rgba(0,0,0,0.08); }
+  .social-btn svg{ width:18px; height:18px; }
+  .social-btn[aria-label="Apple"] i{ color:#111; }
+  .social-btn[aria-label="Facebook"] i{ color:#1877F2; }
+
+  .bottom-link{
+    text-align:center;
+    font-size:13.5px;
+    color:#666;
+    margin-top:20px;
+  }
+  .bottom-link a{
+    color:var(--orange);
+    font-weight:700;
+    text-decoration:none;
+  }
+  .bottom-link a:hover{ text-decoration:underline; }
+
+  /* RIGHT SIDE */
+  .auth-image-side{
+    flex:1;
+    position:relative;
+    overflow:hidden;
+    background:var(--yellow);
+  }
+
+  .doodle-pattern{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+  }
+
+  .hero-food-icon{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:56%;
+    max-width:280px;
+    filter:drop-shadow(0 14px 22px rgba(0,0,0,0.18));
+    z-index:1;
+  }
+
+  @media (max-width:860px){
+    .auth-wrapper{ flex-direction:column; min-height:auto; }
+    .auth-form-side{ flex:none; padding:40px 28px; }
+    .auth-image-side{ height:260px; }
+  }
+</style>
 </head>
-
 <body>
 
 <section class="auth-wrapper">
 
-    <!-- LEFT SIDE -->
-    <div class="auth-form-side">
+  <!-- LEFT SIDE -->
+  <div class="auth-form-side">
 
-        <!-- Back -->
-        <button class="auth-back-btn" onclick="window.history.back()">
-            <i class="bi bi-chevron-left"></i>
-        </button>
+    <div>
+      <button class="auth-back-btn" onclick="window.history.back()" aria-label="Back">
+        <i class="bi bi-chevron-left"></i>
+      </button>
 
-        <div class="auth-content">
+      <div class="auth-header">
+        <h1 class="auth-title">Create Your<br>Account</h1>
+        <p class="auth-subtitle">Sign up to get started with your culinary journey.</p>
+      </div>
 
-            <!-- Title -->
-            <div class="auth-header">
-                <h1 class="auth-title">Create Your<br>Account</h1>
-                <p class="auth-subtitle">Sign up to get started with your culinary journey.</p>
-            </div>
+      <form class="auth-form" id="signupForm" novalidate>
 
-            <!-- Form -->
-            <form class="auth-form" id="signupForm" novalidate>
-
-                <div class="form-group">
-                    <label for="fullName" class="form-label">Full Name</label>
-                    <input type="text" class="form-control" id="fullName" placeholder="Enter your full name" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="signupEmail" class="form-label">Email Address</label>
-                    <input type="email" class="form-control" id="signupEmail" placeholder="youremail@example.com" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="password" class="form-label">Password</label>
-                    <div class="input-eye-wrap">
-                        <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
-                        <button type="button" class="toggle-eye" data-target="password">
-                            <i class="bi bi-eye"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="confirmPassword" class="form-label">Confirm Password</label>
-                    <div class="input-eye-wrap">
-                        <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm your password" required>
-                        <button type="button" class="toggle-eye" data-target="confirmPassword">
-                            <i class="bi bi-eye"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="terms-check">
-                    <input type="checkbox" id="agreeTerms" class="terms-checkbox" required>
-                    <label for="agreeTerms" class="terms-label">
-                        I agree to the <a href="#" class="terms-link">Terms of Service</a> and <a href="#" class="terms-link">Privacy Policy</a>
-                    </label>
-                </div>
-
-                <button type="submit" class="btn-auth-primary">
-                    Sign Up
-                </button>
-
-                <!-- Divider -->
-                <div class="divider-text">OR CONTINUE WITH</div>
-
-                <!-- Social -->
-                <div class="social-btn-group">
-                    <button type="button" class="social-btn" aria-label="Google"><i class="bi bi-google"></i></button>
-                    <button type="button" class="social-btn" aria-label="Apple"><i class="bi bi-apple"></i></button>
-                    <button type="button" class="social-btn" aria-label="Facebook"><i class="bi bi-facebook"></i></button>
-                </div>
-
-            </form>
-
+        <div class="form-group">
+          <label for="fullName" class="form-label">Full Name</label>
+          <input type="text" class="form-control" id="fullName" placeholder="Enter your full name" required>
         </div>
 
-        <!-- Bottom -->
-        <p class="bottom-link">
-            Already have an account?
-            <a href="login.html">Sign In</a>
-        </p>
+        <div class="form-group">
+          <label for="signupEmail" class="form-label">Email Address</label>
+          <input type="email" class="form-control" id="signupEmail" placeholder="youremail@example.com" required>
+        </div>
 
+        <div class="form-group">
+          <label for="password" class="form-label">Password</label>
+          <div class="input-eye-wrap">
+            <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
+            <button type="button" class="toggle-eye" data-target="password">
+              <i class="bi bi-eye"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="confirmPassword" class="form-label">Confirm Password</label>
+          <div class="input-eye-wrap">
+            <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm your password" required>
+            <button type="button" class="toggle-eye" data-target="confirmPassword">
+              <i class="bi bi-eye"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="terms-check">
+          <input type="checkbox" id="agreeTerms" class="terms-checkbox" required>
+          <label for="agreeTerms" class="terms-label">
+            I agree to the <a href="#" class="terms-link">Terms of Service</a> and <a href="#" class="terms-link">Privacy Policy</a>
+          </label>
+        </div>
+
+        <button type="submit" class="btn-auth-primary">Sign Up</button>
+
+        <div class="divider-text">OR CONTINUE WITH</div>
+
+        <div class="social-btn-group">
+          <button type="button" class="social-btn" aria-label="Google">
+            <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+              <path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/>
+              <path fill="#FF3D00" d="M6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"/>
+              <path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238C29.211 35.091 26.715 36 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/>
+              <path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 0 1-4.087 5.571l.003-.002 6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"/>
+            </svg>
+          </button>
+          <button type="button" class="social-btn" aria-label="Apple"><i class="bi bi-apple"></i></button>
+          <button type="button" class="social-btn" aria-label="Facebook"><i class="bi bi-facebook"></i></button>
+        </div>
+
+      </form>
     </div>
 
-    <!-- RIGHT SIDE -->
-    <div class="auth-image-side signup-bg">
-        <svg class="doodle-pattern" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <defs>
-                <pattern id="foodDoodle" width="220" height="220" patternUnits="userSpaceOnUse">
-                    <path d="M20 60 L60 10 L100 60 Z" fill="none" stroke="#F5B400" stroke-width="2" opacity="0.55"/>
-                    <circle cx="45" cy="45" r="3" fill="none" stroke="#F5B400" stroke-width="2" opacity="0.55"/>
-                    <circle cx="170" cy="45" r="26" fill="none" stroke="#F5B400" stroke-width="2" opacity="0.55"/>
-                    <circle cx="170" cy="45" r="10" fill="none" stroke="#F5B400" stroke-width="2" opacity="0.55"/>
-                    <path d="M20 150 q20 -18 40 0 Z" fill="none" stroke="#F5B400" stroke-width="2" opacity="0.55"/>
-                    <rect x="18" y="150" width="44" height="8" rx="4" fill="none" stroke="#F5B400" stroke-width="2" opacity="0.55"/>
-                    <path d="M20 168 q20 10 40 0 Z" fill="none" stroke="#F5B400" stroke-width="2" opacity="0.55"/>
-                    <path d="M150 140 L156 190 L184 190 L190 140 Z" fill="none" stroke="#F5B400" stroke-width="2" opacity="0.55"/>
-                    <line x1="164" y1="128" x2="164" y2="145" stroke="#F5B400" stroke-width="2" opacity="0.55"/>
-                    <path d="M95 190 L111 150 L127 190 Z" fill="none" stroke="#F5B400" stroke-width="2" opacity="0.55"/>
-                </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#foodDoodle)"/>
-        </svg>
-        <div class="hero-food-icon">🍟</div>
-    </div>
+    <p class="bottom-link">
+      Already have an account?
+      <a href="login.html">Sign In</a>
+    </p>
+
+  </div>
+
+  <!-- RIGHT SIDE -->
+  <div class="auth-image-side">
+    <img src="../img/OLIPP_KUNING.png" class="doodle-pattern" alt="">
+    <img src="../img/Kentang_Olippp.png" class="hero-food-icon" alt="French fries illustration">
+  </div>
 
 </section>
 
 <script>
-    document.querySelectorAll('.toggle-eye').forEach(function (btn) {
-        btn.addEventListener('click', function () {
-            var input = document.getElementById(btn.dataset.target);
-            var icon = btn.querySelector('i');
-            var isHidden = input.type === 'password';
-            input.type = isHidden ? 'text' : 'password';
-            icon.classList.toggle('bi-eye', !isHidden);
-            icon.classList.toggle('bi-eye-slash', isHidden);
-        });
+  document.querySelectorAll('.toggle-eye').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var input = document.getElementById(btn.dataset.target);
+      var icon = btn.querySelector('i');
+      var isHidden = input.type === 'password';
+      input.type = isHidden ? 'text' : 'password';
+      icon.classList.toggle('bi-eye', !isHidden);
+      icon.classList.toggle('bi-eye-slash', isHidden);
     });
+  });
 </script>
 </body>
 </html>

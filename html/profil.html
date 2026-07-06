@@ -4,133 +4,236 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Profile - Wagba</title>
-    <link rel="stylesheet" href="../css/index.css">
-    <link rel="stylesheet" href="../css/profil.css">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #F7F7F8;
+        }
+
+        .profile-avatar-frame {
+            width: 88px;
+            height: 88px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .profile-avatar-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .back-link {
+            width: 42px;
+            height: 42px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: #111827;
+        }
+        .back-link:hover {
+            background-color: #F1F1F3;
+            color: #111827;
+        }
+
+        .form-control:disabled,
+        .form-control[readonly],
+        .form-select:disabled {
+            background-color: #F9FAFB;
+            color: #374151;
+            opacity: 1;
+        }
+
+        /* Custom brand color for primary actions */
+        .btn-brand {
+            background-color: #F4530A;
+            border-color: #F4530A;
+            color: #fff;
+        }
+        .btn-brand:hover {
+            background-color: #d8480a;
+            border-color: #d8480a;
+            color: #fff;
+        }
+        .btn-outline-brand {
+            border-color: #F4530A;
+            color: #F4530A;
+        }
+        .btn-outline-brand:hover {
+            background-color: #F4530A;
+            color: #fff;
+        }
+
+        .form-check-input:checked {
+            background-color: #F4530A;
+            border-color: #F4530A;
+        }
+
+        .modal-icon-circle {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background-color: #FEEBE3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
 </head>
 <body>
-<div class="page-wrapper">
 
-    <!-- Main Content -->
-    <main class="profile-page">
-        <div class="profile-page-header">
-            <a href="../index.html" class="profile-back-link" aria-label="Back">
-                <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M13.4363 22.3223L21.8501 30.7361C22.1935 31.0795 22.3583 31.4802 22.3446 31.9381C22.3308 32.396 22.1517 32.7966 21.8071 33.14C21.4637 33.4548 21.0631 33.6197 20.6052 33.6346C20.1473 33.6494 19.7466 33.4846 19.4032 33.14L8.07032 21.8072C7.89861 21.6354 7.7767 21.4494 7.70458 21.2491C7.63246 21.0488 7.59755 20.8341 7.59984 20.6052C7.60213 20.3762 7.63819 20.1616 7.70801 19.9613C7.77784 19.7609 7.89919 19.5749 8.07204 19.4032L19.4049 8.07035C19.7197 7.75554 20.1135 7.59814 20.5863 7.59814C21.059 7.59814 21.4666 7.75554 21.8089 8.07035C22.1523 8.41377 22.324 8.82187 22.324 9.29464C22.324 9.76742 22.1523 10.1749 21.8089 10.5172L13.4363 18.8881H32.6249C33.1114 18.8881 33.5195 19.0529 33.8492 19.3826C34.1788 19.7123 34.3431 20.1198 34.342 20.6052C34.3408 21.0906 34.176 21.4987 33.8474 21.8295C33.5189 22.1603 33.1114 22.3246 32.6249 22.3223H13.4363Z" fill="black"/>
-                </svg>
-            </a>
-            <div class="profile-page-heading">
-                <h1 class="profile-page-title">My Profile</h1>
-                <p class="profile-page-subtitle">Manage your profile settings</p>
-            </div>
+<main class="container py-4 py-md-5" style="max-width: 900px;">
+
+    <!-- Header -->
+    <div class="d-flex align-items-center gap-3 mb-4">
+        <a href="../index.html" class="back-link" aria-label="Back">
+            <i class="bi bi-arrow-left fs-4"></i>
+        </a>
+        <div>
+            <h1 class="h4 fw-bold mb-0">My Profile</h1>
+            <p class="text-secondary mb-0 small">Manage your profile settings</p>
         </div>
+    </div>
 
-        <div class="profile-card">
+    <div class="card border-0 shadow-sm rounded-4">
+        <div class="card-body p-4 p-md-5">
+
             <!-- Profile Information -->
-            <section class="profile-section">
-                <p class="profile-section-heading">Profile Information</p>
+            <section class="mb-4">
+                <p class="fw-semibold text-uppercase text-secondary small mb-3">Profile Information</p>
 
-                <div class="profile-info-row">
-                    <div class="profile-avatar-upload">
-                        <div class="profile-avatar-frame">
-                            <img src="https://api.builder.io/api/v1/image/assets/TEMP/6a024ec33e0e2944bbbce230ec75d1d2136eb17d?width=246" alt="Profile" class="profile-avatar-img" />
-                        </div>
-                        <div class="profile-identity">
-                            <p class="profile-identity-name">SpongeBob SquarePants</p>
-                            <p class="profile-identity-email">spongebob1407@gmail.com</p>
-                        </div>
+                <div class="d-flex align-items-center gap-3 mb-4">
+                    <div class="profile-avatar-frame">
+                        <img src="https://api.builder.io/api/v1/image/assets/TEMP/6a024ec33e0e2944bbbce230ec75d1d2136eb17d?width=246" alt="Profile">
                     </div>
+                    <div>
+                        <p class="fw-bold mb-0">SpongeBob SquarePants</p>
+                        <p class="text-secondary small mb-0">spongebob1407@gmail.com</p>
+                    </div>
+                </div>
 
-                    <div class="profile-form-grid">
-                        <div class="profile-field profile-field--full-name">
-                            <label class="profile-field-label" for="fullName">Full Name</label>
-                            <input type="text" id="fullName" class="profile-field-input profile-editable" value="Spongebob Squarepants" readonly>
-                        </div>
-                        <div class="profile-field profile-field--email">
-                            <label class="profile-field-label" for="emailAddress">Email Address</label>
-                            <input type="email" id="emailAddress" class="profile-field-input profile-editable" value="spongebob1407@gmail.com" readonly>
-                        </div>
-                        <div class="profile-field profile-field--phone">
-                            <label class="profile-field-label" for="phoneNumber">Phone Number</label>
-                            <input type="tel" id="phoneNumber" class="profile-field-input profile-editable" value="+1 (212) 555-1234" readonly>
-                        </div>
-                        <div class="profile-field profile-field--address">
-                            <label class="profile-field-label" for="address">Address</label>
-                            <input type="text" id="address" class="profile-field-input profile-editable" value="New York, NY 10001" readonly>
-                        </div>
-                        <div class="profile-field profile-field--language">
-                            <label class="profile-field-label" for="language">Language</label>
-                            <div class="profile-select-wrap">
-                                <select id="language" class="profile-field-select profile-editable" disabled>
-                                    <option>English</option>
-                                    <option>Indonesian</option>
-                                </select>
-                                <svg class="profile-select-chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M7.19995 9.6001L12 14.4001L16.8 9.6001" stroke="#6B7280" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </div>
-                        </div>
+                <div class="row g-3">
+                    <div class="col-12 col-md-6">
+                        <label for="fullName" class="form-label small fw-semibold">Full Name</label>
+                        <input type="text" id="fullName" class="form-control profile-editable" value="Spongebob Squarepants" readonly>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label for="emailAddress" class="form-label small fw-semibold">Email Address</label>
+                        <input type="email" id="emailAddress" class="form-control profile-editable" value="spongebob1407@gmail.com" readonly>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label for="phoneNumber" class="form-label small fw-semibold">Phone Number</label>
+                        <input type="tel" id="phoneNumber" class="form-control profile-editable" value="+1 (212) 555-1234" readonly>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label for="address" class="form-label small fw-semibold">Address</label>
+                        <input type="text" id="address" class="form-control profile-editable" value="New York, NY 10001" readonly>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label for="language" class="form-label small fw-semibold">Language</label>
+                        <select id="language" class="form-select profile-editable" disabled>
+                            <option>English</option>
+                            <option>Indonesian</option>
+                        </select>
                     </div>
                 </div>
             </section>
 
-            <div class="profile-divider"></div>
+            <hr class="my-4">
 
             <!-- Preferences -->
-            <section class="profile-section">
-                <p class="profile-section-heading">Preferences</p>
+            <section class="mb-4">
+                <p class="fw-semibold text-uppercase text-secondary small mb-3">Preferences</p>
 
-                <div class="profile-preferences">
-                    <div class="profile-pref-row">
-                        <div class="profile-pref-text">
-                            <p class="profile-pref-title">Notifications</p>
-                            <p class="profile-pref-desc">Get push alerts for orders and offers</p>
-                        </div>
-                        <button type="button" class="profile-toggle is-on" role="switch" aria-checked="true" aria-label="Toggle notifications">
-                            <span class="profile-toggle-thumb"></span>
-                        </button>
+                <div class="d-flex align-items-center justify-content-between py-2">
+                    <div>
+                        <p class="fw-semibold mb-0">Notifications</p>
+                        <p class="text-secondary small mb-0">Get push alerts for orders and offers</p>
                     </div>
-                    <div class="profile-pref-row">
-                        <div class="profile-pref-text">
-                            <p class="profile-pref-title">Email Updates</p>
-                            <p class="profile-pref-desc">Receive newsletter and weekly digest</p>
-                        </div>
-                        <button type="button" class="profile-toggle is-on" role="switch" aria-checked="true" aria-label="Toggle email updates">
-                            <span class="profile-toggle-thumb"></span>
-                        </button>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="notificationsToggle" checked style="width: 2.5em; height: 1.4em;">
+                    </div>
+                </div>
+
+                <div class="d-flex align-items-center justify-content-between py-2">
+                    <div>
+                        <p class="fw-semibold mb-0">Email Updates</p>
+                        <p class="text-secondary small mb-0">Receive newsletter and weekly digest</p>
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="emailUpdatesToggle" checked style="width: 2.5em; height: 1.4em;">
                     </div>
                 </div>
             </section>
 
-            <div class="profile-actions">
-                <button type="button" class="btn-profile-outline" id="editProfileBtn">Edit Profile</button>
-                <button type="button" class="btn-profile-logout" id="logoutBtn">
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M3.125 13.125C2.78125 13.125 2.48708 13.0027 2.2425 12.7581C1.99792 12.5135 1.87542 12.2192 1.875 11.875V3.125C1.875 2.78125 1.9975 2.48708 2.2425 2.2425C2.4875 1.99792 2.78167 1.87542 3.125 1.875H6.875C7.05208 1.875 7.20063 1.935 7.32063 2.055C7.44063 2.175 7.50042 2.32333 7.5 2.5C7.49958 2.67667 7.43958 2.82521 7.32 2.94562C7.20042 3.06604 7.05208 3.12583 6.875 3.125H3.125V11.875H6.875C7.05208 11.875 7.20063 11.935 7.32063 12.055C7.44063 12.175 7.50042 12.3233 7.5 12.5C7.49958 12.6767 7.43958 12.8252 7.32 12.9456C7.20042 13.066 7.05208 13.1258 6.875 13.125H3.125ZM10.7344 8.125H6.25C6.07292 8.125 5.92458 8.065 5.805 7.945C5.68542 7.825 5.62542 7.67667 5.625 7.5C5.62458 7.32333 5.68458 7.175 5.805 7.055C5.92542 6.935 6.07375 6.875 6.25 6.875H10.7344L9.5625 5.70312C9.44792 5.58854 9.39062 5.44792 9.39062 5.28125C9.39062 5.11458 9.44792 4.96875 9.5625 4.84375C9.67708 4.71875 9.82292 4.65354 10 4.64812C10.1771 4.64271 10.3281 4.70271 10.4531 4.82812L12.6875 7.0625C12.8125 7.1875 12.875 7.33333 12.875 7.5C12.875 7.66667 12.8125 7.8125 12.6875 7.9375L10.4531 10.1719C10.3281 10.2969 10.1798 10.3569 10.0081 10.3519C9.83646 10.3469 9.68792 10.2817 9.5625 10.1562C9.44792 10.0312 9.39333 9.88292 9.39875 9.71125C9.40417 9.53958 9.46396 9.39625 9.57812 9.28125L10.7344 8.125Z" fill="white"/>
-                    </svg>
-                    Logout
+            <!-- Actions -->
+            <div class="d-flex flex-column flex-sm-row gap-2 justify-content-end">
+                <button type="button" class="btn btn-outline-brand rounded-pill px-4" id="editProfileBtn">Edit Profile</button>
+                <button type="button" class="btn btn-brand rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#logoutModal">
+                    <i class="bi bi-box-arrow-right me-1"></i> Logout
                 </button>
             </div>
-        </div>
-    </main>
 
-    <div class="logout-modal-overlay" id="logoutModalOverlay">
-        <div class="logout-modal" role="dialog" aria-modal="true" aria-labelledby="logoutModalTitle">
-            <div class="logout-modal-icon">
-                <svg width="32" height="32" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M3.125 13.125C2.78125 13.125 2.48708 13.0027 2.2425 12.7581C1.99792 12.5135 1.87542 12.2192 1.875 11.875V3.125C1.875 2.78125 1.9975 2.48708 2.2425 2.2425C2.4875 1.99792 2.78167 1.87542 3.125 1.875H6.875C7.05208 1.875 7.20063 1.935 7.32063 2.055C7.44063 2.175 7.50042 2.32333 7.5 2.5C7.49958 2.67667 7.43958 2.82521 7.32 2.94562C7.20042 3.06604 7.05208 3.12583 6.875 3.125H3.125V11.875H6.875C7.05208 11.875 7.20063 11.935 7.32063 12.055C7.44063 12.175 7.50042 12.3233 7.5 12.5C7.49958 12.6767 7.43958 12.8252 7.32 12.9456C7.20042 13.066 7.05208 13.1258 6.875 13.125H3.125ZM10.7344 8.125H6.25C6.07292 8.125 5.92458 8.065 5.805 7.945C5.68542 7.825 5.62542 7.67667 5.625 7.5C5.62458 7.32333 5.68458 7.175 5.805 7.055C5.92542 6.935 6.07375 6.875 6.25 6.875H10.7344L9.5625 5.70312C9.44792 5.58854 9.39062 5.44792 9.39062 5.28125C9.39062 5.11458 9.44792 4.96875 9.5625 4.84375C9.67708 4.71875 9.82292 4.65354 10 4.64812C10.1771 4.64271 10.3281 4.70271 10.4531 4.82812L12.6875 7.0625C12.8125 7.1875 12.875 7.33333 12.875 7.5C12.875 7.66667 12.8125 7.8125 12.6875 7.9375L10.4531 10.1719C10.3281 10.2969 10.1798 10.3569 10.0081 10.3519C9.83646 10.3469 9.68792 10.2817 9.5625 10.1562C9.44792 10.0312 9.39333 9.88292 9.39875 9.71125C9.40417 9.53958 9.46396 9.39625 9.57812 9.28125L10.7344 8.125Z" fill="#F4530A"/>
-                </svg>
-            </div>
-            <h2 class="logout-modal-title" id="logoutModalTitle">Logout Account</h2>
-            <p class="logout-modal-text">Are you sure you want to log out of<br>your Wagba account?</p>
-            <div class="logout-modal-actions">
-                <button type="button" class="logout-modal-btn logout-modal-btn--cancel" id="logoutCancelBtn">Cancel</button>
-                <button type="button" class="logout-modal-btn logout-modal-btn--confirm" id="logoutConfirmBtn">Yes, Logout</button>
+        </div>
+    </div>
+</main>
+
+<!-- Logout Modal -->
+<div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content rounded-4">
+            <div class="modal-body text-center p-4">
+                <div class="modal-icon-circle mx-auto mb-3">
+                    <i class="bi bi-box-arrow-right fs-3" style="color:#F4530A;"></i>
+                </div>
+                <h2 class="h5 fw-bold" id="logoutModalTitle">Logout Account</h2>
+                <p class="text-secondary">Are you sure you want to log out of<br>your Wagba account?</p>
+                <div class="d-flex gap-2 justify-content-center mt-4">
+                    <button type="button" class="btn btn-light rounded-pill px-4 flex-fill" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-brand rounded-pill px-4 flex-fill" id="logoutConfirmBtn">Yes, Logout</button>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-<script src="../js/profil.js"></script>
+<!-- Bootstrap JS Bundle -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Toggle edit mode for profile fields
+    const editBtn = document.getElementById('editProfileBtn');
+    const editableFields = document.querySelectorAll('.profile-editable');
+    let isEditing = false;
+
+    editBtn.addEventListener('click', () => {
+        isEditing = !isEditing;
+        editableFields.forEach(field => {
+            if (field.tagName === 'SELECT') {
+                field.disabled = !isEditing;
+            } else {
+                field.readOnly = !isEditing;
+            }
+        });
+        editBtn.textContent = isEditing ? 'Save Profile' : 'Edit Profile';
+        editBtn.classList.toggle('btn-outline-brand', !isEditing);
+        editBtn.classList.toggle('btn-brand', isEditing);
+    });
+
+    // Logout confirm action
+    document.getElementById('logoutConfirmBtn').addEventListener('click', () => {
+        // Add real logout logic here (e.g. redirect or clear session)
+        window.location.href = '../login.html';
+    });
+</script>
+
 </body>
 </html>
