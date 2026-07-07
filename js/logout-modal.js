@@ -5,11 +5,7 @@
     if (!logoutLinks.length) return;
 
     var isInHtmlFolder = window.location.pathname.indexOf('/html/') !== -1;
-<<<<<<< HEAD
     var startedHref = isInHtmlFolder ? 'startedpage.html' : 'html/startedpage.html';
-=======
-    var homeHref = isInHtmlFolder ? 'startedpage.html' : 'html/startedpage.html';
->>>>>>> 764a0f264ca026795574c89355d544c045d1e58b
 
     var overlay = document.createElement('div');
     overlay.className = 'logout-modal-overlay';
