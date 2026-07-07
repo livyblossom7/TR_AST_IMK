@@ -188,12 +188,8 @@
 
   .social-btn-group{
     display:flex;
-    width:100%;
-    align-items:center;
     justify-content:center;
-    text-align:center;
     gap:14px;
-    margin:0 auto;
   }
   .social-btn{
     width:44px;
@@ -208,10 +204,9 @@
     cursor:pointer;
     color:#333;
     transition:box-shadow .15s;
-    flex-shrink:0;
   }
   .social-btn:hover{ box-shadow:0 4px 10px rgba(0,0,0,0.08); }
-  .social-btn svg{ width:18px; height:18px; display:block; }
+  .social-btn svg{ width:18px; height:18px; }
   .social-btn[aria-label="Apple"] i{ color:#111; }
   .social-btn[aria-label="Facebook"] i{ color:#1877F2; }
 
@@ -282,18 +277,18 @@
 
         <div class="form-group">
           <label for="fullName" class="form-label">Full Name</label>
-          <input type="text" class="form-control" id="fullName" placeholder="Enter your full name">
+          <input type="text" class="form-control" id="fullName" placeholder="Enter your full name" required>
         </div>
 
         <div class="form-group">
           <label for="signupEmail" class="form-label">Email Address</label>
-          <input type="email" class="form-control" id="signupEmail" placeholder="youremail@example.com">
+          <input type="email" class="form-control" id="signupEmail" placeholder="youremail@example.com" required>
         </div>
 
         <div class="form-group">
           <label for="password" class="form-label">Password</label>
           <div class="input-eye-wrap">
-            <input type="password" class="form-control" id="password" placeholder="Enter your password">
+            <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
             <button type="button" class="toggle-eye" data-target="password">
               <i class="bi bi-eye"></i>
             </button>
@@ -303,7 +298,7 @@
         <div class="form-group">
           <label for="confirmPassword" class="form-label">Confirm Password</label>
           <div class="input-eye-wrap">
-            <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm your password">
+            <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm your password" required>
             <button type="button" class="toggle-eye" data-target="confirmPassword">
               <i class="bi bi-eye"></i>
             </button>
@@ -311,7 +306,7 @@
         </div>
 
         <div class="terms-check">
-          <input type="checkbox" id="agreeTerms" class="terms-checkbox">
+          <input type="checkbox" id="agreeTerms" class="terms-checkbox" required>
           <label for="agreeTerms" class="terms-label">
             I agree to the <a href="#" class="terms-link">Terms of Service</a> and <a href="#" class="terms-link">Privacy Policy</a>
           </label>
@@ -339,7 +334,7 @@
 
     <p class="bottom-link">
       Already have an account?
-      <a href="login.html">Log In</a>
+      <a href="login.html">Sign In</a>
     </p>
 
   </div>
@@ -364,16 +359,9 @@
     });
   });
 
-<<<<<<< HEAD
   document.getElementById('signupForm').addEventListener('submit', function (e) {
     e.preventDefault();
     window.location.href = '../index.html';
-=======
-  // Sign up langsung lanjut ke halaman berikutnya tanpa validasi form
-  document.getElementById('signupForm').addEventListener('submit', function (e) {
-    e.preventDefault();
-    window.location.href = '../index.html'; // ganti dengan nama file halaman tujuan yang sebenarnya
->>>>>>> 764a0f264ca026795574c89355d544c045d1e58b
   });
 </script>
 </body>
