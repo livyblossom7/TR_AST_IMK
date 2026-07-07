@@ -130,7 +130,7 @@
                 </div>
 
                 <div class="col d-flex justify-content-center">
-                    <div class="detail-card position-relative rounded-3 shadow-sm">
+                    <div class="detail-card position-relative rounded-3 shadow-sm" data-href="meal_details.html" role="link" tabindex="0">
                         <div class="detail-card-photo position-absolute d-flex align-items-start">
                             <img src="/img/Chicken/Spicy_Chicken_Wings.png" alt="Spicy Chicken Wings" />
                         </div>
@@ -150,7 +150,7 @@
                 </div>
 
                 <div class="col d-flex justify-content-center">
-                    <div class="detail-card position-relative rounded-3 shadow-sm">
+                    <div class="detail-card position-relative rounded-3 shadow-sm" data-href="meal_details.html" role="link" tabindex="0">
                         <div class="detail-card-photo position-absolute d-flex align-items-start">
                             <img src="/img/Chicken/Crispy_Fried_Chicken.png" alt="Crispy Fried Chicken" />
                         </div>
@@ -170,7 +170,7 @@
                 </div>
 
                 <div class="col d-flex justify-content-center">
-                    <div class="detail-card position-relative rounded-3 shadow-sm">
+                    <div class="detail-card position-relative rounded-3 shadow-sm" data-href="meal_details.html" role="link" tabindex="0">
                         <div class="detail-card-photo position-absolute d-flex align-items-start">
                             <img src="/img/Chicken/Honey_Garlic_Chicken.png" alt="Honey Garlic Chicken" />
                         </div>
@@ -190,7 +190,7 @@
                 </div>
 
                 <div class="col d-flex justify-content-center">
-                    <div class="detail-card position-relative rounded-3 shadow-sm">
+                    <div class="detail-card position-relative rounded-3 shadow-sm" data-href="meal_details.html" role="link" tabindex="0">
                         <div class="detail-card-photo position-absolute d-flex align-items-start">
                             <img src="/img/Chicken/Butter_Chicken.png" alt="Butter Chicken" />
                         </div>
@@ -210,7 +210,7 @@
                 </div>
 
                 <div class="col d-flex justify-content-center">
-                    <div class="detail-card position-relative rounded-3 shadow-sm">
+                    <div class="detail-card position-relative rounded-3 shadow-sm" data-href="meal_details.html" role="link" tabindex="0">
                         <div class="detail-card-photo position-absolute d-flex align-items-start">
                             <img src="/img/Chicken/Lemon_Herb_Chicken.png" alt="Lemon Herb Chicken" />
                         </div>
@@ -230,7 +230,7 @@
                 </div>
 
                 <div class="col d-flex justify-content-center">
-                    <div class="detail-card position-relative rounded-3 shadow-sm">
+                    <div class="detail-card position-relative rounded-3 shadow-sm" data-href="meal_details.html" role="link" tabindex="0">
                         <div class="detail-card-photo position-absolute d-flex align-items-start">
                             <img src="/img/Chicken/BBQ_Chicken_Platter.png" alt="BBQ Chicken Platter" />
                         </div>
@@ -250,7 +250,7 @@
                 </div>
 
                 <div class="col d-flex justify-content-center">
-                    <div class="detail-card position-relative rounded-3 shadow-sm">
+                    <div class="detail-card position-relative rounded-3 shadow-sm" data-href="meal_details.html" role="link" tabindex="0">
                         <div class="detail-card-photo position-absolute d-flex align-items-start">
                             <img src="/img/Chicken/Chicken_Parmesan.png" alt="Chicken Parmesan" />
                         </div>
@@ -286,6 +286,24 @@
         } else {
             window.location.href = 'categories.html';
         }
+    });
+
+    // Klik kartu produk -> pindah ke halaman detail produk
+    document.querySelectorAll('.detail-card[data-href]').forEach(function (card) {
+        card.style.cursor = 'pointer';
+
+        card.addEventListener('click', function (e) {
+            // Jangan pindah halaman kalau yang diklik tombol favorite
+            if (e.target.closest('.detail-favorite-btn')) return;
+            window.location.href = card.dataset.href;
+        });
+
+        // Aksesibilitas: bisa dibuka dengan Enter saat difokus keyboard
+        card.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') {
+                window.location.href = card.dataset.href;
+            }
+        });
     });
 </script>
 <script src="../js/logout-modal.js"></script>

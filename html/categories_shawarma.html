@@ -110,7 +110,7 @@
             <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4">
 
                 <div class="col d-flex justify-content-center">
-                    <div class="detail-card position-relative rounded-3 shadow-sm">
+                    <div class="detail-card position-relative rounded-3 shadow-sm" data-href="meal_details.html" role="link" tabindex="0">
                         <div class="detail-card-photo position-absolute d-flex align-items-start">
                             <img src="/img/Shawarma/Chicken_Shawarma.png" alt="Chicken Shawarma" />
                         </div>
@@ -130,7 +130,7 @@
                 </div>
 
                 <div class="col d-flex justify-content-center">
-                    <div class="detail-card position-relative rounded-3 shadow-sm">
+                    <div class="detail-card position-relative rounded-3 shadow-sm" data-href="meal_details.html" role="link" tabindex="0">
                         <div class="detail-card-photo position-absolute d-flex align-items-start">
                             <img src="/img/Shawarma/Beef_Shawarma.png" alt="Beef Shawarma" />
                         </div>
@@ -150,7 +150,7 @@
                 </div>
 
                 <div class="col d-flex justify-content-center">
-                    <div class="detail-card position-relative rounded-3 shadow-sm">
+                    <div class="detail-card position-relative rounded-3 shadow-sm" data-href="meal_details.html" role="link" tabindex="0">
                         <div class="detail-card-photo position-absolute d-flex align-items-start">
                             <img src="/img/Shawarma/Lamb_Shawarma.png" alt="Lamb Shawarma" />
                         </div>
@@ -170,7 +170,7 @@
                 </div>
 
                 <div class="col d-flex justify-content-center">
-                    <div class="detail-card position-relative rounded-3 shadow-sm">
+                    <div class="detail-card position-relative rounded-3 shadow-sm" data-href="meal_details.html" role="link" tabindex="0">
                         <div class="detail-card-photo position-absolute d-flex align-items-start">
                             <img src="/img/Shawarma/Shawarma_Wrap.png" alt="Shawarma Wrap" />
                         </div>
@@ -190,7 +190,7 @@
                 </div>
 
                 <div class="col d-flex justify-content-center">
-                    <div class="detail-card position-relative rounded-3 shadow-sm">
+                    <div class="detail-card position-relative rounded-3 shadow-sm" data-href="meal_details.html" role="link" tabindex="0">
                         <div class="detail-card-photo position-absolute d-flex align-items-start">
                             <img src="/img/Shawarma/Shawarma_Plate.png" alt="Shawarma Plate" />
                         </div>
@@ -210,7 +210,7 @@
                 </div>
 
                 <div class="col d-flex justify-content-center">
-                    <div class="detail-card position-relative rounded-3 shadow-sm">
+                    <div class="detail-card position-relative rounded-3 shadow-sm" data-href="meal_details.html" role="link" tabindex="0">
                         <div class="detail-card-photo position-absolute d-flex align-items-start">
                             <img src="/img/Shawarma/Spicy_Chicken_Shawarma.png" alt="Spicy Chicken Shawarma" />
                         </div>
@@ -230,7 +230,7 @@
                 </div>
 
                 <div class="col d-flex justify-content-center">
-                    <div class="detail-card position-relative rounded-3 shadow-sm">
+                    <div class="detail-card position-relative rounded-3 shadow-sm" data-href="meal_details.html" role="link" tabindex="0">
                         <div class="detail-card-photo position-absolute d-flex align-items-start">
                             <img src="/img/Shawarma/Garlic_Beef_Shawarma.png" alt="Garlic Beef Shawarma" />
                         </div>
@@ -250,7 +250,7 @@
                 </div>
 
                 <div class="col d-flex justify-content-center">
-                    <div class="detail-card position-relative rounded-3 shadow-sm">
+                    <div class="detail-card position-relative rounded-3 shadow-sm" data-href="meal_details.html" role="link" tabindex="0">
                         <div class="detail-card-photo position-absolute d-flex align-items-start">
                             <img src="/img/Shawarma/Mixed_Shawarma_Platter.png" alt="Mixed Shawarma Platter" />
                         </div>
@@ -285,6 +285,24 @@
         } else {
             window.location.href = 'categories.html';
         }
+    });
+
+    // Klik kartu produk -> pindah ke halaman detail produk
+    document.querySelectorAll('.detail-card[data-href]').forEach(function (card) {
+        card.style.cursor = 'pointer';
+
+        card.addEventListener('click', function (e) {
+            // Jangan pindah halaman kalau yang diklik tombol favorite
+            if (e.target.closest('.detail-favorite-btn')) return;
+            window.location.href = card.dataset.href;
+        });
+
+        // Aksesibilitas: bisa dibuka dengan Enter saat difokus keyboard
+        card.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') {
+                window.location.href = card.dataset.href;
+            }
+        });
     });
 </script>
 <script src="../js/logout-modal.js"></script>

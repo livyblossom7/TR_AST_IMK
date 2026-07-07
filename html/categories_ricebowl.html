@@ -110,7 +110,7 @@
             <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4">
 
                 <div class="col d-flex justify-content-center">
-                    <div class="detail-card position-relative rounded-3 shadow-sm">
+                    <div class="detail-card position-relative rounded-3 shadow-sm" data-href="meal_details.html" role="link" tabindex="0">
                         <div class="detail-card-photo position-absolute d-flex align-items-start">
                             <img src="/img/Rice_Bowls/Chicken_Teriyaki_Bowl.png" alt="Chicken Teriyaki Bowl" />
                         </div>
@@ -130,7 +130,7 @@
                 </div>
 
                 <div class="col d-flex justify-content-center">
-                    <div class="detail-card position-relative rounded-3 shadow-sm">
+                    <div class="detail-card position-relative rounded-3 shadow-sm" data-href="meal_details.html" role="link" tabindex="0">
                         <div class="detail-card-photo position-absolute d-flex align-items-start">
                             <img src="/img/Rice_Bowls/Beef_Bulgogi_Bowl.png" alt="Beef Bulgogi Bowl" />
                         </div>
@@ -150,7 +150,7 @@
                 </div>
 
                 <div class="col d-flex justify-content-center">
-                    <div class="detail-card position-relative rounded-3 shadow-sm">
+                    <div class="detail-card position-relative rounded-3 shadow-sm" data-href="meal_details.html" role="link" tabindex="0">
                         <div class="detail-card-photo position-absolute d-flex align-items-start">
                             <img src="/img/Rice_Bowls/Salmon Rice Bowl.png" alt="Salmon Rice Bowl" />
                         </div>
@@ -170,7 +170,7 @@
                 </div>
 
                 <div class="col d-flex justify-content-center">
-                    <div class="detail-card position-relative rounded-3 shadow-sm">
+                    <div class="detail-card position-relative rounded-3 shadow-sm" data-href="meal_details.html" role="link" tabindex="0">
                         <div class="detail-card-photo position-absolute d-flex align-items-start">
                             <img src="/img/Rice_Bowls/Shrimp_Fried_Rice.png" alt="Shrimp Fried Rice" />
                         </div>
@@ -190,7 +190,7 @@
                 </div>
 
                 <div class="col d-flex justify-content-center">
-                    <div class="detail-card position-relative rounded-3 shadow-sm">
+                    <div class="detail-card position-relative rounded-3 shadow-sm" data-href="meal_details.html" role="link" tabindex="0">
                         <div class="detail-card-photo position-absolute d-flex align-items-start">
                             <img src="/img/Rice_Bowls/Veggie_Rice_Bowl.png" alt="Veggie Rice Bowl" />
                         </div>
@@ -210,7 +210,7 @@
                 </div>
 
                 <div class="col d-flex justify-content-center">
-                    <div class="detail-card position-relative rounded-3 shadow-sm">
+                    <div class="detail-card position-relative rounded-3 shadow-sm" data-href="meal_details.html" role="link" tabindex="0">
                         <div class="detail-card-photo position-absolute d-flex align-items-start">
                             <img src="/img/Rice_Bowls/Egg_Fried_Rice.png" alt="Egg Fried Rice" />
                         </div>
@@ -230,7 +230,7 @@
                 </div>
 
                 <div class="col d-flex justify-content-center">
-                    <div class="detail-card position-relative rounded-3 shadow-sm">
+                    <div class="detail-card position-relative rounded-3 shadow-sm" data-href="meal_details.html" role="link" tabindex="0">
                         <div class="detail-card-photo position-absolute d-flex align-items-start">
                             <img src="/img/Rice_Bowls/Curry_Chicken_Rice.png" alt="Curry Chicken Rice" />
                         </div>
@@ -250,7 +250,7 @@
                 </div>
 
                 <div class="col d-flex justify-content-center">
-                    <div class="detail-card position-relative rounded-3 shadow-sm">
+                    <div class="detail-card position-relative rounded-3 shadow-sm" data-href="meal_details.html" role="link" tabindex="0">
                         <div class="detail-card-photo position-absolute d-flex align-items-start">
                             <img src="/img/Rice_Bowls/Tuna_Poke_Bowl.png" alt="Tuna Poke Bowl" />
                         </div>
@@ -285,6 +285,24 @@
         } else {
             window.location.href = 'categories.html';
         }
+    });
+
+    // Klik kartu produk -> pindah ke halaman detail produk
+    document.querySelectorAll('.detail-card[data-href]').forEach(function (card) {
+        card.style.cursor = 'pointer';
+
+        card.addEventListener('click', function (e) {
+            // Jangan pindah halaman kalau yang diklik tombol favorite
+            if (e.target.closest('.detail-favorite-btn')) return;
+            window.location.href = card.dataset.href;
+        });
+
+        // Aksesibilitas: bisa dibuka dengan Enter saat difokus keyboard
+        card.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') {
+                window.location.href = card.dataset.href;
+            }
+        });
     });
 </script>
 <script src="../js/logout-modal.js"></script>

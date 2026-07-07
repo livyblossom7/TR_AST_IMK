@@ -110,7 +110,7 @@
             <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4">
 
                 <div class="col d-flex justify-content-center">
-                    <div class="detail-card position-relative rounded-3 shadow-sm">
+                    <div class="detail-card position-relative rounded-3 shadow-sm" data-href="meal_details.html" role="link" tabindex="0">
                         <div class="detail-card-photo position-absolute d-flex align-items-start">
                             <img src="/img/Pizza/Margherita_Pizza.png" alt="Margherita Pizza" />
                         </div>
@@ -130,7 +130,7 @@
                 </div>
 
                 <div class="col d-flex justify-content-center">
-                    <div class="detail-card position-relative rounded-3 shadow-sm">
+                    <div class="detail-card position-relative rounded-3 shadow-sm" data-href="meal_details.html" role="link" tabindex="0">
                         <div class="detail-card-photo position-absolute d-flex align-items-start">
                             <img src="/img/Pizza/Pepperoni_Pizza.png" alt="Pepperoni Pizza" />
                         </div>
@@ -150,7 +150,7 @@
                 </div>
 
                 <div class="col d-flex justify-content-center">
-                    <div class="detail-card position-relative rounded-3 shadow-sm">
+                    <div class="detail-card position-relative rounded-3 shadow-sm"data-href="meal_details.html" role="link" tabindex="0">
                         <div class="detail-card-photo position-absolute d-flex align-items-start">
                             <img src="/img/Pizza/BBQ_Chicken_Pizza.png" alt="BBQ Chicken Pizza" />
                         </div>
@@ -170,7 +170,7 @@
                 </div>
 
                 <div class="col d-flex justify-content-center">
-                    <div class="detail-card position-relative rounded-3 shadow-sm">
+                    <div class="detail-card position-relative rounded-3 shadow-sm" data-href="meal_details.html" role="link" tabindex="0">
                         <div class="detail-card-photo position-absolute d-flex align-items-start">
                             <img src="/img/Pizza/Four_Cheese_Pizza.png" alt="Four Cheese Pizza" />
                         </div>
@@ -190,7 +190,7 @@
                 </div>
 
                 <div class="col d-flex justify-content-center">
-                    <div class="detail-card position-relative rounded-3 shadow-sm">
+                    <div class="detail-card position-relative rounded-3 shadow-sm" data-href="meal_details.html" role="link" tabindex="0">
                         <div class="detail-card-photo position-absolute d-flex align-items-start">
                             <img src="/img/Pizza/Veggie_Surpreme_Pizza.png" alt="Veggie Supreme Pizza" />
                         </div>
@@ -210,7 +210,7 @@
                 </div>
 
                 <div class="col d-flex justify-content-center">
-                    <div class="detail-card position-relative rounded-3 shadow-sm">
+                    <div class="detail-card position-relative rounded-3 shadow-sm" data-href="meal_details.html" role="link" tabindex="0">
                         <div class="detail-card-photo position-absolute d-flex align-items-start">
                             <img src="/img/Pizza/Spicy_Beef_Pizza.png" alt="Spicy Beef Pizza" />
                         </div>
@@ -230,7 +230,7 @@
                 </div>
 
                 <div class="col d-flex justify-content-center">
-                    <div class="detail-card position-relative rounded-3 shadow-sm">
+                    <div class="detail-card position-relative rounded-3 shadow-sm" data-href="meal_details.html" role="link" tabindex="0">
                         <div class="detail-card-photo position-absolute d-flex align-items-start">
                             <img src="/img/Pizza/Hawaiian_Pizza.png" alt="Hawaiian Pizza" />
                         </div>
@@ -250,7 +250,7 @@
                 </div>
 
                 <div class="col d-flex justify-content-center">
-                    <div class="detail-card position-relative rounded-3 shadow-sm">
+                    <div class="detail-card position-relative rounded-3 shadow-sm" data-href="meal_details.html" role="link" tabindex="0">
                         <div class="detail-card-photo position-absolute d-flex align-items-start">
                             <img src="/img/Pizza/Mushroom_Truffle_Pizza.png" alt="Mushroom & Truffle Pizza" />
                         </div>
@@ -285,6 +285,24 @@
         } else {
             window.location.href = 'categories.html';
         }
+    });
+
+    // Klik kartu produk -> pindah ke halaman detail produk
+    document.querySelectorAll('.detail-card[data-href]').forEach(function (card) {
+        card.style.cursor = 'pointer';
+
+        card.addEventListener('click', function (e) {
+            // Jangan pindah halaman kalau yang diklik tombol favorite
+            if (e.target.closest('.detail-favorite-btn')) return;
+            window.location.href = card.dataset.href;
+        });
+
+        // Aksesibilitas: bisa dibuka dengan Enter saat difokus keyboard
+        card.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') {
+                window.location.href = card.dataset.href;
+            }
+        });
     });
 </script>
 <script src="../js/logout-modal.js"></script>
